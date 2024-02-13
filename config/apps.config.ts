@@ -1,8 +1,4 @@
-type App = {
-  id: string;
-  title: string;
-  icon: string;
-};
+import { App } from "@/types";
 
 export const APPS: App[] = [
   {

@@ -1,16 +1,15 @@
 "use client";
+import { useApp } from "@/hooks/store";
 import React, { useState, useEffect, useRef } from "react";
 import Draggable from "react-draggable";
 
 interface WindowProps {
   id: string;
   title: string;
-  focusedWindow: any;
-  setFocusedWindow: any;
-  handleRemoveWindow: (id: string) => void;
 }
 
 const Window: React.FC<WindowProps> = (props) => {
+  const {focusedWindow, setFocusedWindow, removeWindow} = useApp()
   const [width, setWidth] = useState(60);
   const [height, setHeight] = useState(85);
 
@@ -25,10 +24,10 @@ const Window: React.FC<WindowProps> = (props) => {
       bounds="parent"
     >
       <div
-        onClick={() => props.setFocusedWindow(props.id)}
+        onClick={() => setFocusedWindow({id: props.id, title: props.title})}
         style={{ width: `${width}%`, height: `${height}%` }}
         className={`flex-col bg-white 
-         ${props.focusedWindow === props.id ? "z-30 bg-blue-400" : "z-20"} 
+         ${focusedWindow?.id === props.id ? "z-30 bg-blue-400" : "z-20"} 
         opened-window min-w-1/4 min-h-1/4 main-window window-shadow border-blue-500rounded-xl absolute flex overflow-hidden border-4 border-opacity-40`}
         id={props.id}
       >
@@ -43,7 +42,7 @@ const Window: React.FC<WindowProps> = (props) => {
         </div>
         {props.title}
 
-        <button onClick={() => props.handleRemoveWindow(props.id)}>
+        <button onClick={() => removeWindow(props.id)}>
           remove
         </button>
       </div>
