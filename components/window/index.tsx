@@ -9,7 +9,7 @@ import { APP_TYPES } from "../constants/app-types.enum";
 interface WindowProps {
   id: string;
   title: string;
-  type: APP_TYPES
+  type: APP_TYPES;
 }
 
 const Window: React.FC<WindowProps> = (props) => {
@@ -25,11 +25,17 @@ const Window: React.FC<WindowProps> = (props) => {
       grid={[1, 1]}
       scale={1}
       allowAnyClick={false}
-      defaultPosition={{ x: 60, y: 10 }}
+      defaultPosition={{ x: 250, y: 50 }}
       bounds="parent"
     >
       <div
-        onClick={() => setFocusedWindow({ id: props.id, title: props.title, type: props.type })}
+        onClick={() =>
+          setFocusedWindow({
+            id: props.id,
+            title: props.title,
+            type: props.type,
+          })
+        }
         style={{ width: `${width}%`, height: `${height}%` }}
         className={`flex-col bg-white 
          ${focusedWindow?.id === props.id ? "z-30 bg-blue-400" : "z-20"} 
@@ -48,7 +54,6 @@ const Window: React.FC<WindowProps> = (props) => {
             onClick={() => removeWindow(props.id)}
             size={"icon"}
             variant={"destructive"}
-            className="h-7 w-7"
           >
             <X size={15} />
           </Button>

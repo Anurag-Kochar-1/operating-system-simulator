@@ -15,7 +15,8 @@ type State = {
 };
 
 export const useApp = create<State>()((set, get) => ({
-  windows: [],
+  // 🟥 TODO: Make the default opened window dyanmic
+  windows: [{ id: "0x", title: "About me", type: "APP" }],
   addWindow: (data) => {
     const isAlreadyAdded = get().windows.some((win) => win.id === data.id);
     if (isAlreadyAdded) {

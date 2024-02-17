@@ -1,5 +1,8 @@
 "use client";
 
+import { APPS } from "@/config/apps.config";
+import { useApp } from "@/hooks/store";
+import { App } from "@/types";
 import {
   MotionValue,
   motion,
@@ -16,20 +19,16 @@ export function Dock() {
     <motion.div
       onMouseMove={(e) => mouseX.set(e.pageX)}
       onMouseLeave={() => mouseX.set(Infinity)}
-      className="mx-auto flex h-16 gap-4 rounded-2xl bg-gray-700 px-5 fixed bottom-5 left-0 right-0 max-w-min justify-center items-center"
+      className="fixed bottom-5 left-0 right-0 mx-auto flex h-16 max-w-min items-center justify-center gap-4 rounded-2xl bg-foreground px-5"
     >
-      {Array(10)
-        ?.fill(null)
-        ?.map((i, idx) => (
-          <AppIcon mouseX={mouseX} key={idx} />
-        ))}
+      {APPS?.map((app, idx) => <AppIcon mouseX={mouseX} key={idx} app={app} />)}
     </motion.div>
   );
 }
 
-function AppIcon({ mouseX }: { mouseX: MotionValue }) {
+function AppIcon({ mouseX, app }: { mouseX: MotionValue; app: App }) {
+  const { addWindow } = useApp();
   let ref = useRef<HTMLDivElement>(null);
-
   let distance = useTransform(mouseX, (val) => {
     let bounds = ref.current?.getBoundingClientRect() ?? { x: 0, width: 0 };
 
@@ -43,9 +42,16 @@ function AppIcon({ mouseX }: { mouseX: MotionValue }) {
     <motion.div
       ref={ref}
       style={{ width }}
-      className="aspect-square w-10 rounded-full flex justify-center items-center bg-green-200"
+      className="flex aspect-square w-10 items-center justify-center rounded-full bg-secondary-foreground text-secondary border-2"
+      onClick={() => {
+        addWindow({
+          id: app.id,
+          title: app.title,
+          type: "APP",
+        });
+      }}
     >
-        🍉
+      <span className="text-sm font-bold">{app.icon}</span>
     </motion.div>
   );
 }
