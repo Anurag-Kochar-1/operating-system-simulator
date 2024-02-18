@@ -6,6 +6,8 @@ import Draggable from "react-draggable";
 import { Button } from "../ui/button";
 import { APP_TYPES } from "../constants/app-types.enum";
 import { BackgroundGradient } from "../ui/background-gradient";
+import useMediaQuery from "@/hooks/use-media-query";
+import { Topbar } from "./top-bar";
 
 interface WindowProps {
   id: string;
@@ -13,15 +15,11 @@ interface WindowProps {
   type: APP_TYPES;
 }
 
-const Window: React.FC<WindowProps> = (props) => {
-  const { focusedWindow, setFocusedWindow, removeWindow, getAppContentById } =
-    useApp();
+const Window: React.FC<WindowProps> = ({ id, title, type }) => {
+  const { focusedWindow, setFocusedWindow, getAppContentById } = useApp();
+  const isDesktop = useMediaQuery("(min-width: 1024px)");
   const [width, setWidth] = useState(60);
-  const [height, setHeight] = useState(85);
-
-  const handleSomething = (e: any) => {
-    console.log(e);
-  };
+  const [height, setHeight] = useState(70);
 
   return (
     <Draggable
@@ -31,63 +29,35 @@ const Window: React.FC<WindowProps> = (props) => {
       grid={[1, 1]}
       scale={1}
       allowAnyClick={false}
-      defaultPosition={{ x: 250, y: 50 }}
       bounds="parent"
     >
       <div
         onClick={() =>
           setFocusedWindow({
-            id: props.id,
-            title: props.title,
-            type: props.type,
+            id,
+            title,
+            type,
           })
         }
-        style={{ width: `${width}%`, height: `${height}%` }}
-        className={`flex-col bg-white 
-         ${focusedWindow?.id === props.id ? "z-30 bg-blue-400" : "z-20"} 
+        style={{
+          width: `${!isDesktop ? 100 : width}%`,
+          height: `${!isDesktop ? 100 : height}%`,
+        }}
+        className={`myElement flex-col bg-background 
+         ${focusedWindow?.id === id ? "z-30" : "z-20"} 
         opened-window min-w-1/4 min-h-1/4 absolute flex overflow-hidden rounded-lg border-2 shadow-lg`}
-        id={props.id}
       >
-        {/* ========== Top bar ========== */}
-        <div
-          className={
-            "bg-ub-window-title relative flex h-14 w-full select-none items-center justify-between rounded-b-none border-b-4 border-b-black border-opacity-5 px-3 py-1.5 text-foreground"
-          }
-        >
-          <h2 className="mx-auto text-sm font-bold">{props.title}</h2>
+        <Topbar
+          id={id}
+          setHeight={setHeight}
+          width={width}
+          setWidth={setWidth}
+          title={title}
+        />
 
-          <div className="flex items-center justify-center gap-2">
-            <Button
-              onClick={() => {
-                console.log(`clicked`);
-                removeWindow(props.id);
-              }}
-              size={"icon"}
-              variant={"destructive"}
-              className="btn-cancel"
-            >
-              <X size={15} />
-            </Button>
-            <Button
-              onClick={() => {
-                if (width === 100 && height === 100) {
-                  setWidth(50);
-                  setHeight(50);
-                } else {
-                  setWidth(100);
-                  setHeight(100);
-                }
-              }}
-              size={"icon"}
-              variant={"outline"}
-            >
-              m
-            </Button>
-          </div>
-        </div>
         {/* ========== Content ========== */}
         <div className="flex h-full w-full items-start justify-start p-4">
-          {getAppContentById({ id: props.id, type: props.type })}
+          {getAppContentById({ id, type })}
         </div>
       </div>
     </Draggable>

@@ -2,7 +2,7 @@ import React from "react";
 
 export const AboutMe = () => {
   return (
-    <div className="flex flex-col h-full w-full items-start justify-start bg-green-500 overflow-y-auto">
+    <div className="flex h-full w-full flex-col items-start justify-start overflow-y-auto bg-green-500">
       <p>
         Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusamus
         autem cum facere excepturi porro. Nihil dignissimos distinctio vero
