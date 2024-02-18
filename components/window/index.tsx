@@ -1,11 +1,8 @@
 "use client";
 import { useApp } from "@/hooks/store";
-import { X } from "lucide-react";
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState } from "react";
 import Draggable from "react-draggable";
-import { Button } from "../ui/button";
 import { APP_TYPES } from "../constants/app-types.enum";
-import { BackgroundGradient } from "../ui/background-gradient";
 import useMediaQuery from "@/hooks/use-media-query";
 import { Topbar } from "./top-bar";
 
@@ -24,12 +21,13 @@ const Window: React.FC<WindowProps> = ({ id, title, type }) => {
   return (
     <Draggable
       axis="both"
-      handle=".bg-ub-window-title"
+      handle=".window-top-bar"
       cancel=".btn-cancel"
       grid={[1, 1]}
       scale={1}
       allowAnyClick={false}
       bounds="parent"
+
     >
       <div
         onClick={() =>

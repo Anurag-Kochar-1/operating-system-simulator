@@ -31,7 +31,7 @@ export const Topbar = ({
   return (
     <div
       className={
-        "bg-ub-window-title relative flex h-14 w-full select-none items-center justify-between rounded-b-none border-b-4 border-b-black border-opacity-5 px-3 py-1.5 text-foreground"
+        "window-top-bar relative flex h-14 w-full select-none items-center justify-between rounded-b-none border-b-4 border-b-black border-opacity-5 px-3 py-1.5 text-foreground hover:cursor-move"
       }
     >
       <h2 className="mx-auto text-sm font-bold">{title}</h2>
