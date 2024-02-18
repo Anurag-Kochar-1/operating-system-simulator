@@ -7,17 +7,18 @@ import { useApp } from "@/hooks/store";
 export const Projects = () => {
   const { addWindow } = useApp();
   return (
-    <div className="flex w-full items-start justify-start gap-10 overflow-y-auto">
+    <div className="flex w-full flex-wrap items-start justify-start gap-10 overflow-y-auto">
       {PROJECTS?.map((project) => (
         <Button
           key={project.title}
-          onClick={() =>
+          onClick={() => {
             addWindow({
               id: project.id,
               title: project.title,
               type: "PROJECT",
-            })
-          }
+            });
+            alert(project.title);
+          }}
         >
           {" "}
           {project.title}{" "}
