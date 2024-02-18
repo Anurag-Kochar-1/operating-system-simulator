@@ -1,17 +1,17 @@
 "use client";
 import React from "react";
 import { useApp } from "@/hooks/store";
-import { Button } from "../ui/button";
+import { Folder } from "lucide-react";
 
 export const AppsIcon = () => {
   const { apps, addWindow } = useApp();
-  const appState = useApp();
   return (
     <div className="flex h-full w-min flex-col items-start justify-start gap-10 p-5">
       {apps?.map((app) => {
         return (
-          <Button
+          <div
             key={app.id}
+            className="flex flex-col items-center justify-center gap-1 hover:cursor-pointer"
             onClick={() => {
               addWindow({
                 id: app.id,
@@ -20,12 +20,11 @@ export const AppsIcon = () => {
               });
             }}
           >
-            {app.title}
-          </Button>
+            <Folder size={50} />
+            <span className="text-sm"> {app.title} </span>
+          </div>
         );
       })}
-
-      <span onClick={() => console.log(appState)}>LOG STATE</span>
     </div>
   );
 };

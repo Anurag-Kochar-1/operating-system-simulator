@@ -11,6 +11,12 @@ import {
   useTransform,
 } from "framer-motion";
 import { useRef } from "react";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "../ui/tooltip";
 
 export function Dock() {
   let mouseX = useMotionValue(Infinity);
@@ -19,9 +25,13 @@ export function Dock() {
     <motion.div
       onMouseMove={(e) => mouseX.set(e.pageX)}
       onMouseLeave={() => mouseX.set(Infinity)}
-      className="fixed bottom-5 left-0 right-0 mx-auto flex h-16 max-w-min items-center justify-center gap-4 rounded-2xl bg-foreground px-5"
+      className="fixed bottom-5 left-0 right-0 mx-auto flex h-16 max-w-min items-center justify-center gap-4 rounded-2xl border-2 bg-secondary px-2"
     >
-      {APPS?.map((app, idx) => <AppIcon mouseX={mouseX} key={idx} app={app} />)}
+      <TooltipProvider delayDuration={0}>
+        {APPS?.map((app, idx) => (
+          <AppIcon mouseX={mouseX} key={idx} app={app} />
+        ))}
+      </TooltipProvider>
     </motion.div>
   );
 }
@@ -39,19 +49,28 @@ function AppIcon({ mouseX, app }: { mouseX: MotionValue; app: App }) {
   let width = useSpring(widthSync, { mass: 0.1, stiffness: 150, damping: 12 });
 
   return (
-    <motion.div
-      ref={ref}
-      style={{ width }}
-      className="flex aspect-square w-10 items-center justify-center rounded-full bg-secondary-foreground text-secondary border-2"
-      onClick={() => {
-        addWindow({
-          id: app.id,
-          title: app.title,
-          type: "APP",
-        });
-      }}
-    >
-      <span className="text-sm font-bold">{app.icon}</span>
-    </motion.div>
+    <Tooltip>
+      <TooltipTrigger>
+        <motion.div
+          ref={ref}
+          style={{ width }}
+          className="flex aspect-square w-10 items-center justify-center rounded-full border-2 bg-background hover:cursor-pointer"
+          onClick={() => {
+            addWindow({
+              id: app.id,
+              title: app.title,
+              type: "APP",
+            });
+          }}
+        >
+          <span className="text-xl font-bold text-secondary-foreground">
+            {app.icon}
+          </span>
+        </motion.div>
+      </TooltipTrigger>
+      <TooltipContent>
+        <p>{app.title}</p>
+      </TooltipContent>
+    </Tooltip>
   );
 }

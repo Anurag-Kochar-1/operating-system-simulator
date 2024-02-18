@@ -5,6 +5,7 @@ import React, { useState, useEffect, useRef } from "react";
 import Draggable from "react-draggable";
 import { Button } from "../ui/button";
 import { APP_TYPES } from "../constants/app-types.enum";
+import { BackgroundGradient } from "../ui/background-gradient";
 
 interface WindowProps {
   id: string;
@@ -56,6 +57,21 @@ const Window: React.FC<WindowProps> = (props) => {
             variant={"destructive"}
           >
             <X size={15} />
+          </Button>
+          <Button
+            onClick={() => {
+              if (width === 100 && height === 100) {
+                setWidth(50);
+                setHeight(50);
+              } else {
+                setWidth(100);
+                setHeight(100);
+              }
+            }}
+            size={"icon"}
+            variant={"destructive"}
+          >
+            m
           </Button>
         </div>
         {/* ========== Content ========== */}
