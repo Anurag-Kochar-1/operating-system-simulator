@@ -27,7 +27,7 @@ const Window: React.FC<WindowProps> = ({ id, title, type }) => {
       scale={1}
       allowAnyClick={false}
       bounds="parent"
-
+      disabled={!isDesktop}
     >
       <div
         onClick={() =>
@@ -54,7 +54,7 @@ const Window: React.FC<WindowProps> = ({ id, title, type }) => {
         />
 
         {/* ========== Content ========== */}
-        <div className="flex h-full w-full items-start justify-start p-4">
+        <div className="flex h-full w-full items-start justify-start p-4 overflow-y-auto overflow-x-hidden">
           {getAppContentById({ id, type })}
         </div>
       </div>

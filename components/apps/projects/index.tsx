@@ -17,7 +17,6 @@ export const Projects = () => {
               title: project.title,
               type: "PROJECT",
             });
-            alert(project.title);
           }}
         >
           {" "}

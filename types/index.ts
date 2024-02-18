@@ -16,3 +16,8 @@ export interface Project {
   id: string;
   content: JSX.Element;
 }
+export interface Skill {
+  title: string;
+  id: string;
+  icon: string;
+}
