@@ -13,8 +13,11 @@ export interface App {
 
 export interface Project {
   title: string;
+  tagline: string;
+  thumbnail: string;
   id: string;
   content: JSX.Element;
+  techStack: { title: string }[];
 }
 export interface Skill {
   title: string;

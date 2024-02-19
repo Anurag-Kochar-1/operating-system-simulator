@@ -18,7 +18,7 @@ export default function Home() {
         <main className="flex h-screen w-full flex-col overflow-hidden">
           <Windows />
           <Header />
-          <section className="flex h-full max-h-[calc(100vh-40px)] w-full flex-row items-center justify-between overflow-y-hidden ">
+          <section className="flex h-full max-h-[calc(100vh-40px)] w-full flex-row items-start justify-between overflow-y-hidden ">
             <AppsIcon />
             <Dock />
           </section>

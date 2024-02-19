@@ -6,12 +6,12 @@ import { Folder } from "lucide-react";
 export const AppsIcon = () => {
   const { apps, addWindow } = useApp();
   return (
-    <div className="flex h-full w-min flex-col items-start justify-start gap-10 p-5">
+    <div className="flex h-[93vh] flex-col flex-wrap items-start justify-start gap-10 p-4">
       {apps?.map((app) => {
         return (
           <div
             key={app.id}
-            className="flex flex-col items-center justify-center gap-1 hover:cursor-pointer"
+            className=" flex flex-col items-start justify-start gap-1 hover:cursor-pointer"
             onClick={() => {
               addWindow({
                 id: app.id,
