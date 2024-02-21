@@ -1,6 +1,6 @@
 "use client";
 import { useApp } from "@/hooks/store";
-import React, { useState } from "react";
+import React, { useCallback, useMemo, useState } from "react";
 import Draggable from "react-draggable";
 import { APP_TYPES } from "../constants/app-types.enum";
 import useMediaQuery from "@/hooks/use-media-query";
@@ -29,6 +29,7 @@ const Window: React.FC<WindowProps> = ({ id, title, type }) => {
       allowAnyClick={false}
       bounds="parent"
       disabled={!isDesktop}
+      positionOffset={isDesktop ? { x: 150, y: 75 } : { x: 0, y: 0 }}
     >
       <div
         onClick={() =>
@@ -55,7 +56,7 @@ const Window: React.FC<WindowProps> = ({ id, title, type }) => {
         />
 
         {/* ========== Content ========== */}
-        <div className="flex h-full w-full items-start justify-start p-4 overflow-y-auto overflow-x-hidden">
+        <div className="flex h-full w-full items-start justify-start overflow-y-auto overflow-x-hidden p-4">
           {getAppContentById({ id, type })}
         </div>
       </div>
