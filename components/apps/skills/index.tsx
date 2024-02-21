@@ -18,7 +18,7 @@ export const Skills = () => {
             draggable={false}
             className="aspect-square object-contain"
           />
-          <span className="font-semibold text-center">{skill.title}</span>
+          <span className="text-center font-semibold">{skill.title}</span>
         </div>
       ))}
     </div>

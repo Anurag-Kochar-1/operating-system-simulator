@@ -2,12 +2,7 @@ import { AppsIcon } from "@/components/apps-icon";
 import { Dock } from "@/components/dock";
 import { Header } from "@/components/header";
 import { Windows } from "@/components/windows";
-import {
-  ContextMenu,
-  ContextMenuContent,
-  ContextMenuItem,
-  ContextMenuTrigger,
-} from "@/components/ui/context-menu";
+import { ContextMenu, ContextMenuTrigger } from "@/components/ui/context-menu";
 import { ContextMenuContentOptions } from "@/components/context-menu-content";
 
 export default function Home() {

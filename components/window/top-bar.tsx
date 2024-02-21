@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "../ui/button";
-import { useApp } from "@/hooks/store";
+import { useApp } from "@/hooks/use-app";
 import { Maximize, Minimize, X } from "lucide-react";
 
 type TopbarProps = {

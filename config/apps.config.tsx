@@ -8,12 +8,6 @@ import { App } from "@/types";
 
 export const APPS: App[] = [
   {
-    id: "0x",
-    title: "About",
-    icon: "😎",
-    content: <AboutMe />,
-  },
-  {
     id: "1x",
     title: "Skills",
     icon: "🍔",
@@ -32,6 +26,12 @@ export const APPS: App[] = [
     content: <Contact />,
   },
   {
+    id: "0x",
+    title: "About",
+    icon: "😎",
+    content: <AboutMe />,
+  },
+  {
     id: "4x",
     title: "Games",
     icon: "🎮",
@@ -39,7 +39,7 @@ export const APPS: App[] = [
   },
   {
     id: "5x",
-    title: "Study material",
+    title: "Homework",
     icon: "🌝",
     content: <StudyMaterial />,
   },

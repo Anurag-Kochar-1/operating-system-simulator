@@ -1,7 +1,7 @@
 "use client";
 
 import { APPS } from "@/config/apps.config";
-import { useApp } from "@/hooks/store";
+import { useApp } from "@/hooks/use-app";
 import { App } from "@/types";
 import {
   MotionValue,
@@ -25,7 +25,7 @@ export function Dock() {
     <motion.div
       onMouseMove={(e) => mouseX.set(e.pageX)}
       onMouseLeave={() => mouseX.set(Infinity)}
-      className="fixed bottom-5 left-0 right-0 mx-auto flex h-16 max-w-min items-center justify-center gap-4 rounded-2xl border-2 bg-secondary px-2"
+      className="scrollbar-hide fixed bottom-5 left-0 right-0 mx-auto flex h-16 w-full max-w-[85%] items-center justify-start gap-4 overflow-y-auto rounded-2xl border-2 bg-secondary px-4 lg:max-w-min"
     >
       <TooltipProvider delayDuration={0}>
         {APPS?.map((app, idx) => (
