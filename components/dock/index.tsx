@@ -25,7 +25,7 @@ export function Dock() {
     <motion.div
       onMouseMove={(e) => mouseX.set(e.pageX)}
       onMouseLeave={() => mouseX.set(Infinity)}
-      className="scrollbar-hide fixed bottom-5 left-0 right-0 mx-auto flex h-16 w-full max-w-[85%] items-center justify-start gap-4 overflow-y-auto rounded-2xl border-2 bg-secondary px-4 lg:max-w-min"
+      className="scrollbar-hide fixed bottom-5 left-0 right-0 mx-auto flex h-16 w-full max-w-[85%] items-center justify-start gap-4 overflow-x-auto lg:overflow-x-visible rounded-2xl border-2 bg-secondary px-4 lg:max-w-min"
     >
       <TooltipProvider delayDuration={0}>
         {APPS?.map((app, idx) => (
