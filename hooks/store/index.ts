@@ -25,6 +25,7 @@ export const useApp = create<State>()((set, get) => ({
       return;
     }
     set((state) => ({ windows: [...state.windows, data] }));
+    set({ focusedWindow: data });
   },
   removeWindow: (id) =>
     set((state) => ({

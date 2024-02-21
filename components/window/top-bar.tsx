@@ -31,7 +31,7 @@ export const Topbar = ({
   return (
     <div
       className={
-        "window-top-bar relative flex h-14 w-full select-none items-center justify-between rounded-b-none border-b-4 border-b-black border-opacity-5 px-3 py-1.5 text-foreground hover:cursor-move"
+        "window-top-bar relative flex h-14 w-full select-none items-center justify-between rounded-b-none border-b-2 border-opacity-5 px-3 py-1.5 text-foreground hover:cursor-move"
       }
     >
       <h2 className="mx-auto text-sm font-bold">{title}</h2>
@@ -41,18 +41,18 @@ export const Topbar = ({
           onClick={() => removeWindow(id)}
           size={"icon"}
           variant={"destructive"}
-          className="btn-cancel"
+          className="btn-cancel w-7 h-7 rounded-sm"
         >
-          <X size={15} />
+          <X size={12} />
         </Button>
-        <Button
+        {/* <Button
           className="hidden lg:flex"
           onClick={handleMinimizeMaximize}
           size={"icon"}
           variant={"outline"}
         >
           {width === 100 ? <Minimize size={15} /> : <Maximize size={15} />}
-        </Button>
+        </Button> */}
       </div>
     </div>
   );

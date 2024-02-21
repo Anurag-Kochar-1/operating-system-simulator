@@ -13,6 +13,7 @@ interface WindowProps {
 }
 
 const Window: React.FC<WindowProps> = ({ id, title, type }) => {
+  // console.log(`🍎 Window id ${id} rendered`)
   const { focusedWindow, setFocusedWindow, getAppContentById } = useApp();
   const isDesktop = useMediaQuery("(min-width: 1024px)");
   const [width, setWidth] = useState(60);
@@ -62,4 +63,4 @@ const Window: React.FC<WindowProps> = ({ id, title, type }) => {
   );
 };
 
-export default Window;
+export default React.memo(Window);

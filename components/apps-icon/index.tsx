@@ -1,12 +1,18 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import { useApp } from "@/hooks/store";
 import { Folder } from "lucide-react";
 
 export const AppsIcon = () => {
-  const { apps, addWindow } = useApp();
+  const { apps, windows, addWindow, setFocusedWindow } = useApp();
+
+  useEffect(() => {
+    const recentlyAddedWindow = windows[windows?.length - 1];
+    setFocusedWindow(recentlyAddedWindow);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [windows]);
   return (
-    <div className="flex h-[93vh] flex-col flex-wrap items-start justify-start gap-10 p-4">
+    <div className="flex h-[75vh] flex-col flex-wrap items-start justify-start gap-10 p-4 lg:h-[93vh]">
       {apps?.map((app) => {
         return (
           <div

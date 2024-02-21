@@ -1,108 +1,80 @@
 import {
-    Menubar,
-    MenubarCheckboxItem,
-    MenubarContent,
-    MenubarItem,
-    MenubarMenu,
-    MenubarRadioGroup,
-    MenubarRadioItem,
-    MenubarSeparator,
-    MenubarShortcut,
-    MenubarSub,
-    MenubarSubContent,
-    MenubarSubTrigger,
-    MenubarTrigger,
-  } from "@/components/ui/menubar"
-  
-  export function Menu() {
-    return (
-      <Menubar className="border-none">
-        <MenubarMenu>
-          <MenubarTrigger>File</MenubarTrigger>
-          <MenubarContent>
-            <MenubarItem>
-              New Tab <MenubarShortcut>⌘T</MenubarShortcut>
-            </MenubarItem>
-            <MenubarItem>
-              New Window <MenubarShortcut>⌘N</MenubarShortcut>
-            </MenubarItem>
-            <MenubarItem disabled>New Incognito Window</MenubarItem>
-            <MenubarSeparator />
-            <MenubarSub>
-              <MenubarSubTrigger>Share</MenubarSubTrigger>
-              <MenubarSubContent>
-                <MenubarItem>Email link</MenubarItem>
-                <MenubarItem>Messages</MenubarItem>
-                <MenubarItem>Notes</MenubarItem>
-              </MenubarSubContent>
-            </MenubarSub>
-            <MenubarSeparator />
-            <MenubarItem>
-              Print... <MenubarShortcut>⌘P</MenubarShortcut>
-            </MenubarItem>
-          </MenubarContent>
-        </MenubarMenu>
-        <MenubarMenu>
-          <MenubarTrigger>Edit</MenubarTrigger>
-          <MenubarContent>
-            <MenubarItem>
-              Undo <MenubarShortcut>⌘Z</MenubarShortcut>
-            </MenubarItem>
-            <MenubarItem>
-              Redo <MenubarShortcut>⇧⌘Z</MenubarShortcut>
-            </MenubarItem>
-            <MenubarSeparator />
-            <MenubarSub>
-              <MenubarSubTrigger>Find</MenubarSubTrigger>
-              <MenubarSubContent>
-                <MenubarItem>Search the web</MenubarItem>
-                <MenubarSeparator />
-                <MenubarItem>Find...</MenubarItem>
-                <MenubarItem>Find Next</MenubarItem>
-                <MenubarItem>Find Previous</MenubarItem>
-              </MenubarSubContent>
-            </MenubarSub>
-            <MenubarSeparator />
-            <MenubarItem>Cut</MenubarItem>
-            <MenubarItem>Copy</MenubarItem>
-            <MenubarItem>Paste</MenubarItem>
-          </MenubarContent>
-        </MenubarMenu>
-        <MenubarMenu>
-          <MenubarTrigger>View</MenubarTrigger>
-          <MenubarContent>
-            <MenubarCheckboxItem>Always Show Bookmarks Bar</MenubarCheckboxItem>
-            <MenubarCheckboxItem checked>
-              Always Show Full URLs
-            </MenubarCheckboxItem>
-            <MenubarSeparator />
-            <MenubarItem inset>
-              Reload <MenubarShortcut>⌘R</MenubarShortcut>
-            </MenubarItem>
-            <MenubarItem disabled inset>
-              Force Reload <MenubarShortcut>⇧⌘R</MenubarShortcut>
-            </MenubarItem>
-            <MenubarSeparator />
-            <MenubarItem inset>Toggle Fullscreen</MenubarItem>
-            <MenubarSeparator />
-            <MenubarItem inset>Hide Sidebar</MenubarItem>
-          </MenubarContent>
-        </MenubarMenu>
-        <MenubarMenu>
-          <MenubarTrigger>Profiles</MenubarTrigger>
-          <MenubarContent>
-            <MenubarRadioGroup value="benoit">
-              <MenubarRadioItem value="andy">Andy</MenubarRadioItem>
-              <MenubarRadioItem value="benoit">Benoit</MenubarRadioItem>
-              <MenubarRadioItem value="Luis">Luis</MenubarRadioItem>
-            </MenubarRadioGroup>
-            <MenubarSeparator />
-            <MenubarItem inset>Edit...</MenubarItem>
-            <MenubarSeparator />
-            <MenubarItem inset>Add Profile...</MenubarItem>
-          </MenubarContent>
-        </MenubarMenu>
-      </Menubar>
-    )
-  }
-  
+  Menubar,
+  MenubarCheckboxItem,
+  MenubarContent,
+  MenubarItem,
+  MenubarMenu,
+  MenubarRadioGroup,
+  MenubarRadioItem,
+  MenubarSeparator,
+  MenubarShortcut,
+  MenubarSub,
+  MenubarSubContent,
+  MenubarSubTrigger,
+  MenubarTrigger,
+} from "@/components/ui/menubar";
+
+export function Menu() {
+  return (
+    <Menubar className="border-none">
+      {/* ========== Finder ========== */}
+      <MenubarMenu>
+        <MenubarTrigger>Finder</MenubarTrigger>
+        <MenubarContent>
+          <MenubarItem>About Finder</MenubarItem>
+          <MenubarItem>Preferences</MenubarItem>
+          <MenubarItem>Empty Trash</MenubarItem>
+          <MenubarItem>Hide Finder</MenubarItem>
+          <MenubarItem>Hide Others</MenubarItem>
+          <MenubarItem>Show All</MenubarItem>
+        </MenubarContent>
+      </MenubarMenu>
+      {/* ========== File ========== */}
+      <MenubarMenu>
+        <MenubarTrigger>File</MenubarTrigger>
+        <MenubarContent>
+          <MenubarItem>New File Window</MenubarItem>
+          <MenubarItem>New Window</MenubarItem>
+          <MenubarItem disabled>New Folder with Selection</MenubarItem>
+          <MenubarItem>New Smart Folder</MenubarItem>
+          <MenubarItem>New tab</MenubarItem>
+          <MenubarItem disabled>Open</MenubarItem>
+          <MenubarItem disabled>Open With</MenubarItem>
+          <MenubarItem disabled>Print</MenubarItem>
+          <MenubarItem disabled>Close Window</MenubarItem>
+        </MenubarContent>
+      </MenubarMenu>
+      {/* ========== Edit ========== */}
+      <MenubarMenu>
+        <MenubarTrigger>Edit</MenubarTrigger>
+        <MenubarContent>
+          <MenubarItem disabled>Undo</MenubarItem>
+          <MenubarItem disabled>Redo</MenubarItem>
+          <MenubarItem disabled>Cut</MenubarItem>
+          <MenubarItem disabled>Copy</MenubarItem>
+          <MenubarItem disabled>Paste</MenubarItem>
+          <MenubarItem disabled>Paste All</MenubarItem>
+          <MenubarItem>Show Clipboard</MenubarItem>
+          <MenubarItem>Start Clipboard</MenubarItem>
+          <MenubarItem>Emojis & Symbols</MenubarItem>
+        </MenubarContent>
+      </MenubarMenu>
+      {/* ========== View ========== */}
+      <MenubarMenu>
+        <MenubarTrigger>View</MenubarTrigger>
+        <MenubarContent>
+          <MenubarItem disabled>As Icons</MenubarItem>
+          <MenubarItem disabled>As List</MenubarItem>
+          <MenubarItem disabled>As Columns</MenubarItem>
+          <MenubarItem disabled>As Gallery</MenubarItem>
+          <MenubarItem>Use Stacks</MenubarItem>
+          <MenubarItem>Sort by</MenubarItem>
+          <MenubarItem>Clean Up</MenubarItem>
+          <MenubarItem>Clean Up By</MenubarItem>
+          <MenubarItem disabled>Hide Sidebar</MenubarItem>
+          <MenubarItem disabled>Hide Preview</MenubarItem>
+        </MenubarContent>
+      </MenubarMenu>
+    </Menubar>
+  );
+}
