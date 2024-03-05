@@ -8,7 +8,7 @@ export const Skills = () => {
       {SKILLS?.map((skill) => (
         <div
           key={skill.title}
-          className="col-span-full flex flex-col items-center justify-center gap-2 sm:col-span-6 md:col-span-4 xl:col-span-2"
+          className="col-span-full sm:col-span-6 flex flex-col items-center justify-center gap-2 md:col-span-4 xl:col-span-2"
         >
           <Image
             src={skill.icon}

@@ -1,6 +1,6 @@
 import { APP_TYPES } from "@/components/constants/app-types.enum";
 import { APPS } from "@/config/apps.config";
-import { PROJECTS } from "@/config/projects.config";
+import { PROJECTS_BY_GROUPS } from "@/config/projects.config";
 import { App, Window } from "@/types";
 import { create } from "zustand";
 
@@ -11,7 +11,10 @@ type State = {
   focusedWindow: Window | null;
   setFocusedWindow: (data: Window) => void;
   apps: Omit<App, "content">[];
-  getAppContentById: (data: { id: string; type: APP_TYPES }) => JSX.Element;
+  getAppContentById: (data: {
+    id: string;
+    type: APP_TYPES;
+  }) => JSX.Element | null;
 };
 
 export const useApp = create<State>()((set, get) => ({
@@ -35,18 +38,20 @@ export const useApp = create<State>()((set, get) => ({
   setFocusedWindow: (data) => set({ focusedWindow: data }),
   apps: APPS.map(({ content, ...rest }) => rest),
   getAppContentById({ id, type }) {
-    const getDataByType = () => {
-      switch (type) {
-        case APP_TYPES.APP:
-          return APPS;
-        case APP_TYPES.PROJECT:
-          return PROJECTS;
-        default:
-          return APPS;
-      }
-    };
-    const content = getDataByType()?.filter((item) => item?.id === id)[0]
-      ?.content;
-    return content;
+    switch (type) {
+      case APP_TYPES.APP:
+        return APPS?.filter((item) => item?.id === id)[0]?.content;
+      case APP_TYPES.PROJECT:
+        for (const group of PROJECTS_BY_GROUPS) {
+          for (const project of group.projects) {
+            if (project.id === id) {
+              return project.content;
+            }
+          }
+        }
+        return null;
+      default:
+        return null;
+    }
   },
 }));

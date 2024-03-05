@@ -10,6 +10,11 @@ export interface App {
   icon: string;
   content: JSX.Element;
 }
+export interface ProjectGroup {
+  id: string
+  title: string;
+  projects: Project[];
+}
 
 export interface Project {
   title: string;

@@ -1,12 +1,6 @@
 "use client";
 import { useApp } from "@/hooks/use-app";
-import React, {
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from "react";
+import React, { useEffect, useState } from "react";
 import Draggable from "react-draggable";
 import { APP_TYPES } from "../constants/app-types.enum";
 import useMediaQuery from "@/hooks/use-media-query";
@@ -19,7 +13,6 @@ interface WindowProps {
 }
 
 const Window: React.FC<WindowProps> = ({ id, title, type }) => {
-  // console.log(`🍎 Window id ${id} rendered`)
   const { focusedWindow, setFocusedWindow, getAppContentById, windows } =
     useApp();
   const isDesktop = useMediaQuery("(min-width: 1024px)");
@@ -51,9 +44,6 @@ const Window: React.FC<WindowProps> = ({ id, title, type }) => {
       disabled={!isDesktop}
       onDrag={(e, data) => trackPos(data)}
       position={position}
-      // defaultPosition={isDesktop ? { x: 150, y: 75 } : { x: 0, y: 0 }}
-      // defaultPosition={defaultPosition}
-      // positionOffset={isDesktop ? { x: 150, y: 75 } : { x: 0, y: 0 }}
     >
       <div
         onClick={() =>
@@ -80,7 +70,7 @@ const Window: React.FC<WindowProps> = ({ id, title, type }) => {
         />
 
         {/* ========== Content ========== */}
-        <div className="flex h-full w-full items-start justify-start overflow-y-auto overflow-x-hidden p-4">
+        <div className="flex h-full w-full items-start justify-start overflow-y-auto overflow-x-hidden p-2 md:p-4 lg:p-6 xl:p-8">
           {getAppContentById({ id, type })}
         </div>
       </div>
