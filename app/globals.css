@@ -74,3 +74,190 @@
     @apply bg-background text-foreground;
   }
 }
+
+body {
+  /* cursor: url(../public/images/cursors/white.png), auto */
+  cursor: url(http://www.rw-designer.com/cursor-extern.php?id=6982), auto;
+}
+.hover\:cursor-pointer:hover {
+  cursor: url(http://www.rw-designer.com/cursor-extern.php?id=6982), auto !important;
+}
+.hover\:cursor-move:hover {
+  cursor: url(http://www.rw-designer.com/cursor-extern.php?id=6982), auto !important;
+}
+
+/* CSS */
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+/* .music-player-container */
+.music-player-container {
+  display: inline-block;
+  height: 370px;
+  position: absolute;
+  min-width: 460px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.music-player-container:after {
+  filter: blur(8px);
+  background-color: rgba(0, 0, 0, 0.8);
+  bottom: -2px;
+  content: " ";
+  display: block;
+  height: 10px;
+  left: 19px;
+  position: absolute;
+  transform: rotate(-3deg);
+  width: 70%;
+  z-index: 0;
+}
+
+/* .music-player */
+.music-player {
+  background-color: #fff;
+  height: 370px;
+  padding: 40px 250px 40px 40px;
+  position: absolute;
+  text-align: right;
+  width: 460px;
+  z-index: 3;
+}
+
+/* .player-content-container */
+.player-content-container {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* .artist-name */
+.artist-name {
+  font-size: 28px;
+  font-weight: normal;
+  margin: 0 0 0.75em 0;
+}
+
+/* .album-title */
+.album-title {
+  font-weight: 200;
+  font-size: 24px;
+  margin: 0 0 1.75em 0;
+}
+
+/* .song-title */
+.song-title {
+  font-size: 18px;
+  font-weight: 200;
+  margin: 0 0 1.5em 0;
+}
+
+/* .album */
+.album {
+  box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.65);
+  height: 315px;
+  margin-left: 250px;
+  margin-top: 27px;
+  position: relative;
+  width: 315px;
+  z-index: 10;
+}
+
+/* .album-art */
+.album-art {
+  background: #fff
+    url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/83141/incubus-make-yourself.jpg")
+    center / cover no-repeat;
+  height: 315px;
+  position: relative;
+  width: 315px;
+  z-index: 10;
+}
+
+/* .vinyl */
+.vinyl {
+  animation: spin 2s linear infinite;
+  transition: all 500ms;
+  background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/83141/vinyl.png"),
+    url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/83141/incubus-make-yourself.jpg");
+  background-position: center, center;
+  background-size:
+    cover,
+    40% auto;
+  background-repeat: no-repeat;
+  border-radius: 100%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+  height: 300px;
+  left:  52%;
+  position: absolute;
+  top: 5px;
+  width: 300px;
+  z-index: 5;
+  will-change: transform, left;
+}
+
+.vinyl.is-playing {
+  left: 52%;
+}
+
+/* .music-player-controls */
+.music-player-controls {
+  text-align: center;
+}
+
+/* [class^="control-"] */
+[class^="control-"] {
+  filter: brightness(95%);
+  border-radius: 100%;
+  display: inline-block;
+  height: 44px;
+  margin: 0 3px;
+  width: 44px;
+}
+
+[class^="control-"]:hover {
+  filter: brightness(85%);
+  cursor: pointer;
+}
+
+/* .control-play */
+.control-play {
+  background: transparent
+    url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/83141/play.svg") center /
+    cover no-repeat;
+}
+
+.control-play.is-playing {
+  background: transparent
+    url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/83141/pause.svg") center /
+    cover no-repeat;
+}
+
+/* .control-forwards */
+.control-forwards {
+  background: transparent
+    url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/83141/forwards.svg")
+    center / cover no-repeat;
+}
+
+/* .control-back */
+.control-back {
+  background: transparent
+    url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/83141/backwards.svg")
+    center / cover no-repeat;
+}
+
+/* @keyframes spin */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

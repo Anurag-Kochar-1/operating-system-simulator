@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect } from "react";
 import { useApp } from "@/hooks/use-app";
-import { Folder } from "lucide-react";
+import { TestMusicPlayer } from "../test-music-player";
 
 export const AppsIcon = () => {
   const { apps, windows, addWindow, setFocusedWindow } = useApp();
@@ -12,23 +12,22 @@ export const AppsIcon = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [windows]);
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      addWindow({ id: "0x", title: "About me", type: "APP" });
-    }, 1000);
-
-    return () => {
-      clearTimeout(timer);
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  // useEffect(() => {
+  //   const timer = setTimeout(() => {
+  //     addWindow({ id: "about", title: "About me", type: "APP" });
+  //   }, 1000);
+  //   return () => {
+  //     clearTimeout(timer);
+  //   };
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, []);
   return (
     <div className="flex h-[75vh] flex-col flex-wrap items-start justify-start gap-10 p-4 lg:h-[93vh]">
       {apps?.map((app) => {
         return (
           <div
             key={app.id}
-            className="w-min flex flex-col items-start justify-start gap-1 text-left hover:cursor-pointer"
+            className="flex w-min flex-col items-start justify-start gap-1 text-left hover:cursor-pointer"
             onClick={() => {
               addWindow({
                 id: app.id,
@@ -37,11 +36,13 @@ export const AppsIcon = () => {
               });
             }}
           >
-            <Folder size={50} />
+            {app.icon}
             <span className="text-sm"> {app.title} </span>
           </div>
         );
       })}
+
+      {/* <TestMusicPlayer /> */}
     </div>
   );
 };

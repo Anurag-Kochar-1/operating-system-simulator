@@ -1,3 +1,5 @@
+import { ReactNode } from "react";
+
 export interface Window {
   id: string;
   title: string;
@@ -7,8 +9,15 @@ export interface Window {
 export interface App {
   id: string;
   title: string;
-  icon: string;
+  icon: ReactNode;
   content: JSX.Element;
+}
+export interface Social {
+  id: string;
+  title: string;
+  userName: string;
+  url: string;
+  icon: string;
 }
 export interface ProjectGroup {
   id: string;
@@ -37,3 +46,13 @@ export interface Skill {
   id: string;
   icon: string;
 }
+
+export type Song = {
+  id?: string;
+  title?: string;
+  songBy?: string;
+  audioSrc?: string;
+  thumbnail?: string;
+  progress?: number;
+  length?: number;
+};

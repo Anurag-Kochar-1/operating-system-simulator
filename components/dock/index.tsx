@@ -1,8 +1,6 @@
 "use client";
 
-import { APPS } from "@/config/apps.config";
-import { useApp } from "@/hooks/use-app";
-import { App } from "@/types";
+import { Social } from "@/types";
 import {
   MotionValue,
   motion,
@@ -17,6 +15,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "../ui/tooltip";
+import { SOCIALS } from "@/config/socials.config";
 
 export function Dock() {
   let mouseX = useMotionValue(Infinity);
@@ -25,19 +24,18 @@ export function Dock() {
     <motion.div
       onMouseMove={(e) => mouseX.set(e.pageX)}
       onMouseLeave={() => mouseX.set(Infinity)}
-      className="scrollbar-hide fixed bottom-5 left-0 right-0 mx-auto flex h-16 w-full max-w-[85%] items-center justify-start gap-4 overflow-x-auto lg:overflow-x-visible rounded-2xl border-2 bg-secondary px-4 lg:max-w-min"
+      className="fixed bottom-5 left-0 right-0 mx-auto flex h-16 w-min max-w-[85%] items-center justify-start gap-4 overflow-x-auto rounded-2xl border-2 bg-secondary px-4 scrollbar-hide lg:max-w-min lg:overflow-x-visible"
     >
       <TooltipProvider delayDuration={0}>
-        {APPS?.map((app, idx) => (
-          <AppIcon mouseX={mouseX} key={idx} app={app} />
+        {SOCIALS?.map((social, idx) => (
+          <AppIcon mouseX={mouseX} key={idx} item={social} />
         ))}
       </TooltipProvider>
     </motion.div>
   );
 }
 
-function AppIcon({ mouseX, app }: { mouseX: MotionValue; app: App }) {
-  const { addWindow } = useApp();
+function AppIcon({ mouseX, item }: { mouseX: MotionValue; item: Social }) {
   let ref = useRef<HTMLDivElement>(null);
   let distance = useTransform(mouseX, (val) => {
     let bounds = ref.current?.getBoundingClientRect() ?? { x: 0, width: 0 };
@@ -55,21 +53,13 @@ function AppIcon({ mouseX, app }: { mouseX: MotionValue; app: App }) {
           ref={ref}
           style={{ width }}
           className="flex aspect-square w-10 items-center justify-center rounded-full border-2 bg-background hover:cursor-pointer"
-          onClick={() => {
-            addWindow({
-              id: app.id,
-              title: app.title,
-              type: "APP",
-            });
-          }}
+          onClick={() => window.open(item.url, "_blank")}
         >
-          <span className="text-xl font-bold text-secondary-foreground">
-            {app.icon}
-          </span>
+          <span className="text-sm">{item.icon}</span>
         </motion.div>
       </TooltipTrigger>
       <TooltipContent>
-        <p>{app.title}</p>
+        <p>{item.title}</p>
       </TooltipContent>
     </Tooltip>
   );

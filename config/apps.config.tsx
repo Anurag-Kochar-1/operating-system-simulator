@@ -6,48 +6,49 @@ import { Resume } from "@/components/apps/resume";
 import { Skills } from "@/components/apps/skills";
 import { StudyMaterial } from "@/components/apps/study-material";
 import { App } from "@/types";
+import { Folder } from "lucide-react";
 
 export const APPS: App[] = [
   {
     id: "skills",
     title: "Skills",
-    icon: "🍔",
+    icon: <Folder size={50} />,
     content: <Skills />,
   },
   {
     id: "projects",
     title: "Projects",
-    icon: "🏭",
+    icon: <Folder size={50} />,
     content: <Projects />,
   },
   {
     id: "contact",
     title: "Contact",
-    icon: "📪",
+    icon: <Folder size={50} />,
     content: <Contact />,
   },
   {
     id: "about",
     title: "About",
-    icon: "😎",
+    icon: <Folder size={50} />,
     content: <AboutMe />,
   },
   {
     id: "resume",
     title: "Resume",
-    icon: "📃",
+    icon: <Folder size={50} />,
     content: <Resume />,
   },
   {
     id: "games",
     title: "Games",
-    icon: "🎮",
+    icon: <Folder size={50} />,
     content: <Games />,
   },
   {
     id: "studyMateral",
     title: "Study Materal",
-    icon: "🌝",
+    icon: <Folder size={50} />,
     content: <StudyMaterial />,
   },
 ];
