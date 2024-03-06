@@ -28,7 +28,7 @@ export const AppsIcon = () => {
         return (
           <div
             key={app.id}
-            className=" flex flex-col items-start justify-start gap-1 text-left hover:cursor-pointer"
+            className="w-min flex flex-col items-start justify-start gap-1 text-left hover:cursor-pointer"
             onClick={() => {
               addWindow({
                 id: app.id,

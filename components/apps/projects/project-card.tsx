@@ -2,6 +2,7 @@
 import { useApp } from "@/hooks/use-app";
 import React from "react";
 import { Project } from "@/types";
+import Image from "next/image";
 
 export const ProjectCard = ({ project }: { project: Project }) => {
   const { addWindow } = useApp();
@@ -17,13 +18,18 @@ export const ProjectCard = ({ project }: { project: Project }) => {
         });
       }}
     >
-      <div className="aspect-video w-full animate-pulse bg-muted"></div>{" "}
+      <Image
+        src={project.thumbnail}
+        alt={`${project.title} thumbnail`}
+        width={700}
+        height={700}
+        className="aspect-video h-full w-full border-b-2 object-contain"
+        draggable={false}
+      />
       <div className="flex flex-col items-start justify-start gap-4 p-2 lg:p-4">
-        <h4 className="text-lg font-bold text-foreground">
-          {project.title}
-        </h4>
+        <h4 className="text-lg font-bold text-foreground">{project.title}</h4>
         <p className="text-sm text-muted-foreground">{project.tagline}</p>
-        <div className="flex flex-wrap gap-2 lg:gap-4 pt-4">
+        <div className="flex flex-wrap gap-2 pt-4 lg:gap-4">
           {project?.techStack?.map((item, idx: number) => {
             return (
               <div

@@ -12,7 +12,7 @@ type Props = {
   images: {
     src: string;
     title: string;
-    description: string;
+    description?: string;
   }[];
 };
 
@@ -36,15 +36,15 @@ export const ProjectImagesCarousel = ({ images }: Props) => {
               alt={`project-image - ${item.title}`}
               width={800}
               height={800}
-              className="h-full w-full border-2 object-cover"
+              className="h-full w-full border-2 object-contain aspect-video"
             />
-            <div className="absolute bottom-0 flex w-full flex-col items-start justify-start bg-gradient-to-b from-transparent to-foreground dark:to-background p-6">
-              <span className="text-lg font-semibold text-secondary dark:text-secondary-foreground">
+            <div className="absolute bottom-0 flex w-full flex-col items-start justify-start bg-gradient-to-b from-transparent to-foreground dark:to-background p-4 md:p-6">
+              <span className="md:text-lg font-semibold text-secondary dark:text-secondary-foreground">
                 {item.title}
               </span>
-              <p className="text-sm text-secondary/80 dark:text-secondary-foreground/80 w-full md:w-[80%]">
+              {item.description ? <p className="hidden md:flex text-sm text-secondary/80 dark:text-secondary-foreground/80 w-full md:w-[80%]">
                 {item.description}{" "}
-              </p>
+              </p> : null} 
             </div>
           </CarouselItem>
         ))}
