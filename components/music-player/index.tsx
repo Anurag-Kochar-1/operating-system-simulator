@@ -41,7 +41,6 @@ export const MusicPlayer = () => {
         onTimeUpdate={onPlaying}
         preload="none"
         src={currentSong?.audioSrc}
-        type="audio/mp3"
       />
       <Player audioRef={audioRef} />
     </>
