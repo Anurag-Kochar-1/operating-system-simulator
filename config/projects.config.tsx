@@ -35,12 +35,14 @@ export const PROJECTS_BY_GROUPS: ProjectGroup[] = [
           {
             src: "/images/project-images/system-design-puzzles/coming-soon.png",
             title: "Brainstorming (coming soon)",
-            description: "Don't want to solve puzzles? Create an empty board for yourself."
+            description:
+              "Don't want to solve puzzles? Create an empty board for yourself.",
           },
           {
             src: "/images/project-images/system-design-puzzles/coming-soon.png",
             title: "Leaderboard (coming soon)",
-            description: "Compete with others and boost your interview confidence."
+            description:
+              "Compete with others and boost your interview confidence.",
           },
         ],
         techStack: [
@@ -57,6 +59,81 @@ export const PROJECTS_BY_GROUPS: ProjectGroup[] = [
           "Powered by AI - Get suggestions and help from our AI (coming soon).",
           "Brainstorming - Don't want to solve puzzles? Create an empty board for yourself.",
           "Leaderboard - Compete with others and boost your interview confidence.",
+        ],
+      },
+      {
+        id: "offsta",
+        title: "Offsta (1st startup :)",
+        content: <Project id="offsta" />,
+        tagline:
+          "Clash of Clans + Discord + Reddit = Offsta, a platform where you can build Discoverable, Monetizable, Gamified Communities, and much more",
+        thumbnail: "/images/project-images/offsta/thumbnail.png",
+        images: [
+          {
+            src: "/images/project-images/offsta/thumbnail.png",
+            title: "A Community",
+            description:
+              "Clash of Clans + Discord + Reddit = Offsta, a platform where you can build Discoverable, Monetizable, Gamified Communities, and much more.",
+          },
+          {
+            src: "/images/project-images/offsta/explore-page.png",
+            title: "Explore content - just like reddit but better",
+          },
+          {
+            src: "/images/project-images/offsta/town-hall.png",
+            title: "Town hall",
+            description: "Command center for your community",
+          },
+          {
+            src: "/images/project-images/offsta/bank.png",
+            title: "Currency",
+            description:
+              "Manage your community's finances by adding a bank, currency, and rewards.",
+          },
+          {
+            src: "/images/project-images/offsta/event-stage.png",
+            title: "Events",
+            description: "Host events within your community.",
+          },
+          {
+            src: "/images/project-images/offsta/content-channel.png",
+            title: "Content",
+            description: "Create content in a community.",
+          },
+          {
+            src: "/images/project-images/offsta/shop.png",
+            title: "Shop",
+            description: "List your affiliate products in a community's shop.",
+          },
+          {
+            src: "/images/project-images/offsta/billboard.png",
+            title: "Billboard",
+            description: "Place ads on community's billboards and earn money.",
+          },
+          {
+            src: "/images/project-images/offsta/networking-channel.png",
+            title: "Networking",
+            description: "Mini linkedin.",
+          },
+          {
+            src: "/images/project-images/offsta/voice-channel.png",
+            title: "Voice channel",
+          },
+          {
+            src: "/images/project-images/offsta/text-channel.png",
+            title: "Text channel",
+          },
+        ],
+        techStack: [{ title: "Bubble" }],
+        liveSiteUrl:
+          "https://offsta-mvp-v2-ak-1.bubbleapps.io/version-test/place_entrance_screen/1655294587384x550707056462528500",
+        sourceCodeUrl:
+          "https://offsta-mvp-v2-ak-1.bubbleapps.io/version-test/place_entrance_screen/1655294587384x550707056462528500",
+        features: [
+          "Clash of Clans + Discord + Reddit = Offsta, a platform where you can build Discoverable, Monetizable, Gamified Communities, and much more.",
+          "Build a community akin to your own city, with multiple buildings catering to specific needs.",
+          "Explore content - just like reddit but better.",
+          "Earn money - place billboards in your city (community).",
         ],
       },
     ],

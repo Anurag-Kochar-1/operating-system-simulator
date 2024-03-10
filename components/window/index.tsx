@@ -2,7 +2,7 @@
 import { useApp } from "@/hooks/use-app";
 import React, { useEffect, useState } from "react";
 import Draggable from "react-draggable";
-import { APP_TYPES } from "../constants/app-types.enum";
+import { APP_TYPES } from "../../constants/app-types.enum";
 import useMediaQuery from "@/hooks/use-media-query";
 import { Topbar } from "./top-bar";
 
@@ -57,7 +57,7 @@ const Window: React.FC<WindowProps> = ({ id, title, type }) => {
           width: `${!isDesktop ? 100 : width}%`,
           height: `${!isDesktop ? 100 : height}%`,
         }}
-        className={`flex-col bg-background 
+        className={`flex-col bg-background
          ${focusedWindow?.id === id ? "z-30" : "z-20"} 
         opened-window min-w-1/4 min-h-1/4 absolute flex overflow-hidden rounded-lg border-2 shadow-lg`}
       >

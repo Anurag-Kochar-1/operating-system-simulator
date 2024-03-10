@@ -1,4 +1,4 @@
-import { APP_TYPES } from "@/components/constants/app-types.enum";
+import { APP_TYPES } from "@/constants/app-types.enum";
 import { APPS } from "@/config/apps.config";
 import { PROJECTS_BY_GROUPS } from "@/config/projects.config";
 import { App, Window } from "@/types";

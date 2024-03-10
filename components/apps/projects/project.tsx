@@ -38,7 +38,7 @@ export function Project({ id }: Props) {
       {/* ========== Tech stack ========== */}
       <div className="flex flex-col items-start justify-start gap-2">
         <h3 className="text-2xl font-semibold"> Tech stack used </h3>
-        <div className="flex flex-wrap justify-start items-center gap-4">
+        <div className="flex flex-wrap items-center justify-start gap-4">
           {project?.techStack?.map((tech) => {
             return (
               <Badge key={tech.title} variant={"secondary"}>

@@ -23,7 +23,7 @@ export const ProjectCard = ({ project }: { project: Project }) => {
         alt={`${project.title} thumbnail`}
         width={700}
         height={700}
-        className="aspect-video h-full w-full border-b-2 object-contain"
+        className="aspect-video h-full w-full border-b-2"
         draggable={false}
       />
       <div className="flex flex-col items-start justify-start gap-4 p-2 lg:p-4">

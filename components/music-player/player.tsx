@@ -34,6 +34,7 @@ const Player = ({ audioRef }: IProps) => {
         }
       }
     }
+    setIsSongPlaying(true);
   };
 
   const previousSong = () => {
@@ -59,94 +60,102 @@ const Player = ({ audioRef }: IProps) => {
   };
 
   return (
-    <div className="mb-12 ml-auto mr-12 mt-auto flex h-36 w-full select-none flex-col items-center justify-center border-2 border-background bg-foreground sm:w-96">
-      <div className="-ml-3 -mt-3 flex h-full w-full flex-col items-center justify-start border-2 border-foreground bg-secondary">
-        {/* ========== Header ========== */}
-        <div
-          ref={headerRef}
-          className={`flex h-10 w-full items-center justify-between bg-foreground px-2 hover:cursor-pointer`}
-        >
-          {/* ========== Dots ========== */}
-          <div className="flex items-center justify-center space-x-2">
-            <span className="h-3 w-3 rounded-full bg-[#269B4E] hover:cursor-pointer"></span>
-            <span className="h-3 w-3 rounded-full bg-[#E9493D] hover:cursor-pointer"></span>
-            <span className="h-3 w-3 rounded-full bg-[#FFF052] hover:cursor-pointer"></span>
-          </div>
+    <>
+      <div
+        className={`mx-auto flex h-40 w-[90%] max-w-md select-none flex-col items-center justify-center bg-foreground md:mx-0 md:ml-auto md:mr-12 md:mt-12 xl:mb-12 xl:mt-auto ${isSongPlaying ? " animate-flicker border" : "border-2 border-foreground"}`}
+      >
+        <div className="flex h-full w-full flex-col items-center justify-start bg-secondary">
+          {/* ========== Header ========== */}
+          <div
+            ref={headerRef}
+            className={`flex h-10 w-full items-center justify-between bg-foreground px-2 hover:cursor-pointer`}
+          >
+            {/* ========== Dots ========== */}
+            <div className="xs:flex hidden items-center justify-center space-x-2">
+              <span className="h-3 w-3 rounded-full bg-[#269B4E] hover:cursor-pointer"></span>
+              <span className="h-3 w-3 rounded-full bg-[#E9493D] hover:cursor-pointer"></span>
+              <span className="h-3 w-3 rounded-full bg-[#FFF052] hover:cursor-pointer"></span>
+            </div>
 
-          <span className="text-xs font-semibold text-background sm:text-sm ">
-            {" "}
-            SONGS I HEAR ALL THE TIME{" "}
-          </span>
-          <Play size={20} className="hidden text-background sm:inline-block" />
-        </div>
-
-        {/* ========== Container ========== */}
-        <div className="flex h-full w-full items-center justify-start">
-          <div className="flex items-center justify-center px-1 py-1 sm:px-2">
-            <Image
-              src={currentSong?.thumbnail as string}
-              alt={"Thumbnail"}
-              width={150}
-              height={150}
-              className={`aspect-square w-20 rounded-full  ${isSongPlaying && "animate-spin"}`}
-              draggable={false}
+            <span className="text-xs font-semibold text-background sm:text-sm">
+              {" "}
+              SONGS I HEAR ALL THE TIME{" "}
+            </span>
+            <Play
+              size={20}
+              className="hidden text-background sm:inline-block"
             />
           </div>
 
-          {/* ========== Sub container ========== */}
-          <div className="flex w-full flex-col items-start justify-start">
-            <h5 className="text-base font-medium text-foreground">
-              {" "}
-              {currentSong?.title}{" "}
-            </h5>
-            <h6 className="text-sm font-normal text-foreground">
-              {" "}
-              {currentSong?.songBy}{" "}
-            </h6>
-
-            {/* ========== Bar ========== */}
-            <div
-              ref={progressBarContainerRef}
-              onClick={checkWidth}
-              className="justify-star my-1 flex h-3 w-[95%] items-center bg-foreground hover:cursor-pointer"
-            >
-              <div
-                style={{ width: `${currentSong?.progress + "%"}` }}
-                className={`h-full bg-[#7FFF5B]`}
-              ></div>
+          {/* ========== Container ========== */}
+          <div className="xs:py-0 xs:pl-0 flex h-full w-full items-center justify-start py-1 pl-2">
+            <div className="xs:flex hidden items-center justify-center px-1 py-1 sm:px-2">
+              <Image
+                src={currentSong?.thumbnail as string}
+                alt={"Thumbnail"}
+                width={100}
+                height={100}
+                className={`aspect-square w-20 rounded-full  ${isSongPlaying && "animate-spin"}`}
+                draggable={false}
+              />
             </div>
 
-            {/* ========== Controls ========== */}
-            <div className="flex items-center justify-center space-x-2">
-              <SkipBack
-                size={20}
-                onClick={previousSong}
-                className="hover:cursor-pointer"
-              />
-              {!isSongPlaying && (
-                <Play
+            {/* ========== Sub container ========== */}
+            <div className="flex w-full flex-col items-start justify-start">
+              <h5 className="xs:text-base text-sm font-medium text-foreground">
+                {" "}
+                {currentSong?.title}{" "}
+              </h5>
+              <h6 className="xs:text-sm text-xs font-normal text-foreground">
+                {" "}
+                {currentSong?.songBy}{" "}
+              </h6>
+
+              {/* ========== Bar ========== */}
+              <div
+                ref={progressBarContainerRef}
+                onClick={checkWidth}
+                className="justify-star my-1 flex h-3 w-[95%] items-center bg-foreground hover:cursor-pointer"
+              >
+                <div
+                  style={{ width: `${currentSong?.progress + "%"}` }}
+                  className={`h-full bg-[#08f]`}
+                ></div>
+                {/* [#7FFF5B] */}
+              </div>
+
+              {/* ========== Controls ========== */}
+              <div className="flex items-center justify-center space-x-2">
+                <SkipBack
                   size={20}
-                  onClick={playPause}
+                  onClick={previousSong}
                   className="hover:cursor-pointer"
                 />
-              )}
-              {isSongPlaying && (
-                <Pause
+                {!isSongPlaying && (
+                  <Play
+                    size={20}
+                    onClick={playPause}
+                    className="hover:cursor-pointer"
+                  />
+                )}
+                {isSongPlaying && (
+                  <Pause
+                    size={20}
+                    onClick={playPause}
+                    className="hover:cursor-pointer"
+                  />
+                )}
+                <SkipForward
                   size={20}
-                  onClick={playPause}
+                  onClick={nextSong}
                   className="hover:cursor-pointer"
                 />
-              )}
-              <SkipForward
-                size={20}
-                onClick={nextSong}
-                className="hover:cursor-pointer"
-              />
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

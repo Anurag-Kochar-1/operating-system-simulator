@@ -66,7 +66,6 @@ export const SKILLS: Skill[] = [
     title: "Nest JS",
     icon: "/images/skill-icons/nestjs.png",
   },
-
   {
     id: "mongoDb",
     title: "MongoDB",

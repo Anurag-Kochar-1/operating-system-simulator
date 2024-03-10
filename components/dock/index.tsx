@@ -1,5 +1,4 @@
 "use client";
-
 import { Social } from "@/types";
 import {
   MotionValue,

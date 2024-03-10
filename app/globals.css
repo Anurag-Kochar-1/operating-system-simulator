@@ -33,6 +33,9 @@
     --ring: 0 0% 3.9%;
 
     --radius: 0.5rem;
+
+    --neon-red: #f40;
+    --neon-blue: #08f;
   }
 
   .dark {
@@ -75,8 +78,7 @@
   }
 }
 
-body {
-  /* cursor: url(../public/images/cursors/white.png), auto */
+/* body {
   cursor: url(http://www.rw-designer.com/cursor-extern.php?id=6982), auto;
 }
 .hover\:cursor-pointer:hover {
@@ -84,7 +86,7 @@ body {
 }
 .hover\:cursor-move:hover {
   cursor: url(http://www.rw-designer.com/cursor-extern.php?id=6982), auto !important;
-}
+} */
 
 /* CSS */
 *,
@@ -193,7 +195,7 @@ body {
   border-radius: 100%;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
   height: 300px;
-  left:  52%;
+  left: 52%;
   position: absolute;
   top: 5px;
   width: 300px;
@@ -261,3 +263,4 @@ body {
     transform: rotate(360deg);
   }
 }
+

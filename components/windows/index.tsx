@@ -2,7 +2,7 @@
 import { useApp } from "@/hooks/use-app";
 import React from "react";
 import Window from "../window";
-import { APP_TYPES } from "../constants/app-types.enum";
+import { APP_TYPES } from "../../constants/app-types.enum";
 
 export const Windows = () => {
   const { windows } = useApp();

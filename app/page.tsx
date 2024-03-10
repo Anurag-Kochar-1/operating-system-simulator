@@ -11,15 +11,13 @@ export default function Home() {
     <ContextMenu>
       <ContextMenuTrigger>
         <ContextMenuContentOptions />
-        <main className="flex h-screen w-full flex-col overflow-hidden">
-          {/* <div className="absolute inset-0 bg-purple-600 -z-40"></div> */}
-
+        <main className="dark:bg-dot-white/[0.2] bg-dot-black/[0.2] relative flex h-screen w-full flex-col overflow-y-auto md:overflow-hidden">
           <Windows />
           <Header />
-          <section className="flex h-full max-h-[calc(100vh-40px)] w-full flex-row items-start justify-between overflow-y-hidden ">
+          <section className="flex h-full w-full flex-col items-start justify-between gap-10  overflow-y-auto pb-72 md:max-h-[calc(100vh-40px)] md:flex-row md:overflow-y-hidden md:pb-0">
             <AppsIcon />
-            <Dock />
             <MusicPlayer />
+            <Dock />
           </section>
         </main>
       </ContextMenuTrigger>
