@@ -1,12 +1,11 @@
 "use client";
 import React from "react";
-
 import {
   ContextMenuContent,
   ContextMenuItem,
 } from "@/components/ui/context-menu";
 import { useTheme } from "next-themes";
-import { Moon, Sun } from "lucide-react";
+import { Image, Moon, RefreshCcw, Sun } from "lucide-react";
 export const ContextMenuContentOptions = () => {
   const { theme, setTheme } = useTheme();
   const toggleTheme = () => {
@@ -19,8 +18,20 @@ export const ContextMenuContentOptions = () => {
   return (
     <ContextMenuContent>
       <ContextMenuItem onClick={toggleTheme} className="gap-2">
-        {theme === "light" ? <Moon  size={15}/> : <Sun size={15} />}
+        {theme === "light" ? <Moon size={15} /> : <Sun size={15} />}
         Use {theme === "light" ? "dark" : "light"} mode
+      </ContextMenuItem>
+      <ContextMenuItem
+        onClick={() => alert("Feature in progress")}
+        className="gap-2"
+      >
+        {/* eslint-disable-next-line jsx-a11y/alt-text */}
+        <Image size={15} />
+        Change wallpaper
+      </ContextMenuItem>
+      <ContextMenuItem className="gap-2">
+        <RefreshCcw size={15} />
+        Refresh
       </ContextMenuItem>
     </ContextMenuContent>
   );

@@ -25,10 +25,22 @@ const Window: React.FC<WindowProps> = ({ id, title, type }) => {
   const trackPos = (data: any) => {
     setPosition({ x: data.x, y: data.y });
   };
+  function getRandomPair(): { x: number; y: number } {
+    const minX = 75;
+    const maxX = 150;
+    const minY = 25;
+    const maxY = 100;
+
+    const randomX = Math.floor(Math.random() * (maxX - minX + 1)) + minX;
+    const randomY = Math.floor(Math.random() * (maxY - minY + 1)) + minY;
+
+    return { x: randomX, y: randomY };
+  }
 
   useEffect(() => {
     if (isDesktop) {
-      setPosition({ x: 150, y: 75 });
+      // setPosition({ x: 150, y: 75 });
+      setPosition(getRandomPair());
     }
   }, [isDesktop]);
 

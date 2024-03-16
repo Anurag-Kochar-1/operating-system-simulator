@@ -9,7 +9,7 @@ export const Skills = () => {
         return (
           <div
             key={skill.title}
-            className="col-span-full flex flex-col items-center justify-center gap-2 sm:col-span-6 md:col-span-4 xl:col-span-2"
+            className="col-span-6 flex flex-col items-center justify-center gap-2 sm:col-span-6 md:col-span-4 xl:col-span-2"
           >
             <Image
               src={skill.icon}
@@ -17,9 +17,9 @@ export const Skills = () => {
               width={100}
               height={100}
               draggable={false}
-              className="aspect-square object-contain"
+              className="aspect-square object-contain max-w-12 sm:max-w-max"
             />
-            <span className="text-center font-semibold">{skill.title}</span>
+            <span className="text-center text-sm sm:text-base font-semibold">{skill.title}</span>
           </div>
         );
       })}

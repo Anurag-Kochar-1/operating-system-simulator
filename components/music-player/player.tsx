@@ -1,12 +1,13 @@
 import React, { useRef } from "react";
 import Image from "next/image";
 import { useMusicPlayer } from "@/hooks/use-music-player";
-import { Pause, Play, SkipBack, SkipForward } from "lucide-react";
+import { Loader2, Pause, Play, SkipBack, SkipForward } from "lucide-react";
 
 interface IProps {
   audioRef: React.RefObject<HTMLAudioElement>;
+  isLoading: boolean;
 }
-const Player = ({ audioRef }: IProps) => {
+const Player = ({ audioRef, isLoading }: IProps) => {
   const {
     songs,
     currentSong,
@@ -71,7 +72,7 @@ const Player = ({ audioRef }: IProps) => {
             className={`flex h-10 w-full items-center justify-between bg-foreground px-2 hover:cursor-pointer`}
           >
             {/* ========== Dots ========== */}
-            <div className="xs:flex hidden items-center justify-center space-x-2">
+            <div className="hidden items-center justify-center space-x-2 xs:flex">
               <span className="h-3 w-3 rounded-full bg-[#269B4E] hover:cursor-pointer"></span>
               <span className="h-3 w-3 rounded-full bg-[#E9493D] hover:cursor-pointer"></span>
               <span className="h-3 w-3 rounded-full bg-[#FFF052] hover:cursor-pointer"></span>
@@ -88,8 +89,8 @@ const Player = ({ audioRef }: IProps) => {
           </div>
 
           {/* ========== Container ========== */}
-          <div className="xs:py-0 xs:pl-0 flex h-full w-full items-center justify-start py-1 pl-2">
-            <div className="xs:flex hidden items-center justify-center px-1 py-1 sm:px-2">
+          <div className="flex h-full w-full items-center justify-start py-1 pl-2 xs:py-0 xs:pl-0">
+            <div className="hidden items-center justify-center px-1 py-1 xs:flex sm:px-2">
               <Image
                 src={currentSong?.thumbnail as string}
                 alt={"Thumbnail"}
@@ -102,11 +103,11 @@ const Player = ({ audioRef }: IProps) => {
 
             {/* ========== Sub container ========== */}
             <div className="flex w-full flex-col items-start justify-start">
-              <h5 className="xs:text-base text-sm font-medium text-foreground">
+              <h5 className="text-sm font-medium text-foreground xs:text-base">
                 {" "}
                 {currentSong?.title}{" "}
               </h5>
-              <h6 className="xs:text-sm text-xs font-normal text-foreground">
+              <h6 className="text-xs font-normal text-foreground xs:text-sm">
                 {" "}
                 {currentSong?.songBy}{" "}
               </h6>
@@ -131,20 +132,26 @@ const Player = ({ audioRef }: IProps) => {
                   onClick={previousSong}
                   className="hover:cursor-pointer"
                 />
-                {!isSongPlaying && (
-                  <Play
-                    size={20}
-                    onClick={playPause}
-                    className="hover:cursor-pointer"
-                  />
+                {isLoading ? (
+                  <Loader2 size={20} className="animate-spin" />
+                ) : (
+                  <>
+                    {!isSongPlaying ? (
+                      <Play
+                        size={20}
+                        onClick={playPause}
+                        className="hover:cursor-pointer"
+                      />
+                    ) : (
+                      <Pause
+                        size={20}
+                        onClick={playPause}
+                        className="hover:cursor-pointer"
+                      />
+                    )}
+                  </>
                 )}
-                {isSongPlaying && (
-                  <Pause
-                    size={20}
-                    onClick={playPause}
-                    className="hover:cursor-pointer"
-                  />
-                )}
+
                 <SkipForward
                   size={20}
                   onClick={nextSong}
