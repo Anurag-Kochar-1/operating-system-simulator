@@ -7,12 +7,12 @@ A web-based operating system simulator.
 
 ## Table of contents:
 
-- [Introduction](#introduction)
 - [Features](#features)
 - [Technologies](#technologies)
+- [Socials](#socials)
 - [Copyright](#copyright)
 
-## Key Features:
+## Features:
 
 - 📂 Interactable multiple different types of folders
 - 🎵 Music player
