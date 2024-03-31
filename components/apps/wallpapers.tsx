@@ -12,7 +12,7 @@ export const WallpapersAppContent = () => {
         <Image
           src={item.thumbnail}
           key={item.name}
-          onClick={() => setWallpaper(item)}
+          onClick={() => alert("Feature in progress :)")}
           className="col-span-full flex aspect-video h-full w-full flex-col items-start justify-start gap-2 overflow-hidden rounded-lg border-2 object-cover hover:cursor-pointer lg:col-span-6"
           width={450}
           height={450}

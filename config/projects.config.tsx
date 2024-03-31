@@ -136,11 +136,34 @@ export const PROJECTS_BY_GROUPS: ProjectGroup[] = [
           "Earn money - place billboards in your city (community).",
         ],
       },
+      {
+        id: "gta-6-vs-code-theme",
+        title: "GTA 6 VS Code Theme",
+        content: <Project id="gta-6-vs-code-theme" />,
+        tagline:
+          "unofficial, fan-made vscode theme based on gta 6 color palette.",
+        thumbnail: "/images/project-images/gta-6-vs-code-theme/1.jfif",
+        images: [
+          {
+            src: "/images/project-images/gta-6-vs-code-theme/1.jfif",
+            title: "",
+          },
+          {
+            src: "/images/project-images/gta-6-vs-code-theme/1.jfif",
+            title: "",
+          },
+        ],
+        techStack: [{ title: "JSON (lmao)" }],
+        liveSiteUrl:
+          "https://marketplace.visualstudio.com/items?itemName=GTA-6-theme.gta-6-theme",
+        sourceCodeUrl: "https://github.com/Anurag-Kochar-1/GTA-6-theme",
+        features: ["Its a theme bro"],
+      },
     ],
   },
   {
-    id: "other-projects",
-    title: "Not so top projects 😁",
+    id: "old-top-projects",
+    title: "Old top projects 😁",
     projects: [
       {
         id: "comm-comm",
