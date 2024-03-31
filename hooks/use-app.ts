@@ -1,8 +1,9 @@
 import { APP_TYPES } from "@/constants/app-types.enum";
 import { APPS } from "@/config/apps.config";
 import { PROJECTS_BY_GROUPS } from "@/config/projects.config";
-import { App, Window } from "@/types";
+import { App, Wallpaper, Window } from "@/types";
 import { create } from "zustand";
+import { WALLPAPERS } from "@/config/wallpapers.config";
 
 type State = {
   windows: Window[];
@@ -15,6 +16,8 @@ type State = {
     id: string;
     type: APP_TYPES;
   }) => JSX.Element | null;
+  currentWallpaper: Wallpaper;
+  setWallpaper: (data: Wallpaper) => void;
 };
 
 export const useApp = create<State>()((set, get) => ({
@@ -53,5 +56,9 @@ export const useApp = create<State>()((set, get) => ({
       default:
         return null;
     }
+  },
+  currentWallpaper: WALLPAPERS[0],
+  setWallpaper(data) {
+    set({ currentWallpaper: data });
   },
 }));

@@ -1,14 +1,21 @@
 "use client";
 import React, { useEffect } from "react";
 import { useApp } from "@/hooks/use-app";
+import { useTheme } from "next-themes";
 
 export const AllApps = () => {
+  const { setTheme } = useTheme();
   const { apps, windows, addWindow, setFocusedWindow } = useApp();
   useEffect(() => {
     const recentlyAddedWindow = windows[windows?.length - 1];
     setFocusedWindow(recentlyAddedWindow);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [windows]);
+
+  useEffect(() => {
+    setTheme("dark");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   // useEffect(() => {
   //   const timer = setTimeout(() => {

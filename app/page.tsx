@@ -5,6 +5,8 @@ import { Windows } from "@/components/windows";
 import { ContextMenu, ContextMenuTrigger } from "@/components/ui/context-menu";
 import { ContextMenuContentOptions } from "@/components/context-menu-content";
 import { MusicPlayer } from "@/components/music-player";
+import { Wallpaper } from "@/components/wallpaper";
+
 // import { PromotionWidget } from "@/components/promotion-widget";
 
 export default function Home() {
@@ -12,10 +14,9 @@ export default function Home() {
     <ContextMenu>
       <ContextMenuTrigger>
         <ContextMenuContentOptions />
-        {/*  */}
-        {/* <AuroraBackground>
-        </AuroraBackground> */}
-        <main className="relative flex h-screen w-full flex-col overflow-y-auto bg-dot-black/[0.2] dark:bg-dot-white/[0.2] md:overflow-hidden">
+        {/* bg-dot-black/[0.2] dark:bg-dot-white/[0.2] */}
+        <main className="relative flex h-screen w-full flex-col overflow-y-auto md:overflow-hidden">
+          <Wallpaper />
           <Windows />
           <Header />
           <section className="flex h-full w-full flex-col items-start justify-between gap-10 overflow-y-auto pb-72 md:max-h-[calc(100vh-40px)] md:flex-row md:overflow-y-hidden md:pb-0">

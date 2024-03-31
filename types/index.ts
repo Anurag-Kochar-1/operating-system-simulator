@@ -72,3 +72,10 @@ export type Draw = {
 };
 
 export type Point = { x: number; y: number };
+
+export type Wallpaper = {
+  name: string;
+  url: ReactNode;
+  thumbnail: string
+  compatibleTheme: "light" | "dark";
+};
