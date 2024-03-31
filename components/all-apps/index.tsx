@@ -12,11 +12,6 @@ export const AllApps = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [windows]);
 
-  useEffect(() => {
-    setTheme("dark");
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
   // useEffect(() => {
   //   const timer = setTimeout(() => {
   //     addWindow({ id: "about", title: "About me", type: "APP" });

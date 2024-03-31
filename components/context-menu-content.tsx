@@ -19,10 +19,10 @@ export const ContextMenuContentOptions = () => {
   };
   return (
     <ContextMenuContent>
-      {/* <ContextMenuItem onClick={toggleTheme} className="gap-2">
+      <ContextMenuItem onClick={toggleTheme} className="gap-2">
         {theme === "light" ? <Moon size={15} /> : <Sun size={15} />}
         Use {theme === "light" ? "dark" : "light"} mode
-      </ContextMenuItem> */}
+      </ContextMenuItem>
       <ContextMenuItem
         onClick={() =>
           addWindow({ id: "wallpapers", title: "Wallpapers", type: "APP" })
