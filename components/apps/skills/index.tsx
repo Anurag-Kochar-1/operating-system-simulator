@@ -2,7 +2,7 @@ import React from "react";
 import { SKILLS } from "@/config/skills.config";
 import Image from "next/image";
 
-export const Skills = () => {
+export const SkillsAppContent = () => {
   return (
     <div className="grid w-full auto-rows-auto grid-cols-12 gap-6 md:gap-10 xl:gap-12">
       {SKILLS?.map((skill) => {

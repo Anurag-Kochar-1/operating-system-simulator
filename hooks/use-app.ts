@@ -24,7 +24,6 @@ export const useApp = create<State>()((set, get) => ({
   addWindow: (data) => {
     const isAlreadyAdded = get().windows.some((win) => win.id === data.id);
     if (isAlreadyAdded) {
-      // alert("Already added");
       set({ focusedWindow: data });
       return;
     }

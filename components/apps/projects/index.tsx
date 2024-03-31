@@ -1,7 +1,7 @@
 import { PROJECTS_BY_GROUPS } from "@/config/projects.config";
 import { ProjectCard } from "./project-card";
 
-export const Projects = () => {
+export const ProjectsAppContent = () => {
   return (
     <div className="flex flex-col justify-start items-start w-full gap-32">
       {PROJECTS_BY_GROUPS?.map((group) => (

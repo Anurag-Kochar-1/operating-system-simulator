@@ -56,3 +56,18 @@ export type Song = {
   progress?: number;
   length?: number;
 };
+export type Blog = {
+  id: string;
+  title: string;
+  thumbnail?: string;
+  url: string;
+  publishedOn: string;
+};
+
+export type Draw = {
+  ctx: CanvasRenderingContext2D;
+  currentPoint: Point;
+  prevPoint: Point | null;
+};
+
+export type Point = { x: number; y: number };

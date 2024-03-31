@@ -2,7 +2,7 @@
 import React, { useEffect } from "react";
 import { useApp } from "@/hooks/use-app";
 
-export const AppsIcon = () => {
+export const AllApps = () => {
   const { apps, windows, addWindow, setFocusedWindow } = useApp();
   useEffect(() => {
     const recentlyAddedWindow = windows[windows?.length - 1];
@@ -27,6 +27,10 @@ export const AppsIcon = () => {
             key={app.id}
             className="flex w-min flex-col items-start justify-start gap-1 text-left hover:cursor-pointer"
             onClick={() => {
+              if (app.id === "browser") {
+                alert("Coming soon, Follow me on twitter for updates 😉");
+                return;
+              }
               addWindow({
                 id: app.id,
                 title: app.title,

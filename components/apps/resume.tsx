@@ -1,7 +1,7 @@
 import { Loader2 } from "lucide-react";
 import React, { useState } from "react";
 
-export const Resume = () => {
+export const ResumeAppContent = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   const handleLoad = () => {

@@ -62,8 +62,9 @@ const Player = ({ audioRef, isLoading }: IProps) => {
 
   return (
     <>
+    {/* w-[90%] max-w-md */}
       <div
-        className={`mx-auto flex h-40 w-[90%] max-w-md select-none flex-col items-center justify-center bg-foreground md:mx-0 md:ml-auto md:mr-12 md:mt-12 xl:mb-12 xl:mt-auto ${isSongPlaying ? " animate-flicker border" : "border-2 border-foreground"}`}
+        className={`mx-auto flex h-40 w-full select-none flex-col items-center justify-center bg-foreground md:mx-0 md:ml-auto md:mr-12 md:mt-12 xl:mb-12 xl:mt-auto ${isSongPlaying ? " animate-flicker border" : "border-2 border-foreground"}`}
       >
         <div className="flex h-full w-full flex-col items-center justify-start bg-secondary">
           {/* ========== Header ========== */}

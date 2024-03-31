@@ -1,54 +1,95 @@
-import { AboutMe } from "@/components/apps/about-me";
-import { Contact } from "@/components/apps/contact";
-import { Games } from "@/components/apps/games";
-import { Projects } from "@/components/apps/projects";
-import { Resume } from "@/components/apps/resume";
-import { Skills } from "@/components/apps/skills";
-import { StudyMaterial } from "@/components/apps/study-material";
+import { AboutMeAppContent } from "@/components/apps/about-me";
+import { BlogsAppContent } from "@/components/apps/blogs";
+import { CameraAppContent } from "@/components/apps/camera";
+import { ContactAppContent } from "@/components/apps/contact";
+import { GameAppContent } from "@/components/apps/game";
+import { PaintAppContent } from "@/components/apps/paint";
+import { ProjectsAppContent } from "@/components/apps/projects";
+import { ResumeAppContent } from "@/components/apps/resume";
+import { SkillsAppContent } from "@/components/apps/skills";
+import { StudyMaterialAppContent } from "@/components/apps/study-material";
 import { App } from "@/types";
-import { Folder } from "lucide-react";
+import { Camera, Folder, Gamepad2, PaintBucket } from "lucide-react";
 
 export const APPS: App[] = [
   {
     id: "skills",
     title: "Skills",
     icon: <Folder size={50} />,
-    content: <Skills />,
+    content: <SkillsAppContent />,
   },
   {
     id: "projects",
     title: "Projects",
     icon: <Folder size={50} />,
-    content: <Projects />,
+    content: <ProjectsAppContent />,
   },
   {
     id: "contact",
     title: "Contact",
     icon: <Folder size={50} />,
-    content: <Contact />,
+    content: <ContactAppContent />,
   },
   {
     id: "about",
     title: "About",
     icon: <Folder size={50} />,
-    content: <AboutMe />,
+    content: <AboutMeAppContent />,
   },
   {
     id: "resume",
     title: "Resume",
     icon: <Folder size={50} />,
-    content: <Resume />,
+    content: <ResumeAppContent />,
+  },
+  // {
+  //   id: "games",
+  //   title: "Games",
+  //   icon: <Folder size={50} />,
+  //   content: <GamesAppContent />,
+  // },
+  {
+    id: "blogs",
+    title: "Blogs",
+    icon: <Folder size={50} />,
+    content: <BlogsAppContent />,
   },
   {
-    id: "games",
-    title: "Games",
+    id: "camera",
+    title: "Camera",
+    icon: <Camera size={50} />,
+    content: <CameraAppContent />,
+  },
+  {
+    id: "browser",
+    title: "Browser",
     icon: <Folder size={50} />,
-    content: <Games />,
+    content: (
+      // <iframe
+      //   src={"https://www.google.com/webhp?igu=1"}
+      //   className="h-full w-full"
+      //   id="chrome-screen"
+      //   title="chrome-url"
+      // ></iframe>
+      <></>
+    ),
+  },
+  {
+    id: "paint",
+    title: "Paint",
+    icon: <PaintBucket size={50} />,
+    content: <PaintAppContent />,
+  },
+  {
+    id: "car-game",
+    title: "Game",
+    icon: <Gamepad2 size={50} />,
+    content: <GameAppContent />,
   },
   {
     id: "studyMateral",
     title: "Study Materal",
     icon: <Folder size={50} />,
-    content: <StudyMaterial />,
+    content: <StudyMaterialAppContent />,
   },
 ];

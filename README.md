@@ -16,11 +16,11 @@ A web-based operating system simulator.
 
 - 📂 Interactable multiple different types of folders
 - 🎵 Music player
-- 🎮 Video games (coming on March 30, 2024)
-- 🎨 Paint (coming on March 30, 2024)
-- 🔊 Sound effects (coming on March 30, 2024)
+- 🎮 Video game
+- 🎨 Paint
+- 🔊 Sound effects
 - 📷 Camera
-- 🖼 Change wallpaper (coming on March 30, 2024)
+- 🖼 Change wallpaper
 - 📱 Mobile responsiveness
 - 🌗 Dark / Light mode
 
