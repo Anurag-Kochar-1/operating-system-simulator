@@ -8,6 +8,7 @@ import { ProjectsAppContent } from "@/components/apps/projects";
 import { ResumeAppContent } from "@/components/apps/resume";
 import { SkillsAppContent } from "@/components/apps/skills";
 import { StudyMaterialAppContent } from "@/components/apps/study-material";
+import { WallpapersAppContent } from "@/components/apps/wallpapers";
 import { App } from "@/types";
 import { Camera, Folder, Gamepad2, PaintBucket } from "lucide-react";
 
@@ -91,5 +92,12 @@ export const APPS: App[] = [
     title: "Study Materal",
     icon: <Folder size={50} />,
     content: <StudyMaterialAppContent />,
+  },
+  {
+    id: "wallpapers",
+    title: "Wallpapers",
+    icon: <Folder size={50} />,
+    content: <WallpapersAppContent />,
+    isOnDesktop: false,
   },
 ];

@@ -11,6 +11,7 @@ export interface App {
   title: string;
   icon: ReactNode;
   content: JSX.Element;
+  isOnDesktop?: boolean;
 }
 export interface Social {
   id: string;

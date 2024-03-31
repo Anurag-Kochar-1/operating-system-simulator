@@ -6,7 +6,9 @@ import {
 } from "@/components/ui/context-menu";
 import { useTheme } from "next-themes";
 import { Image, Moon, RefreshCcw, Sun } from "lucide-react";
+import { useApp } from "@/hooks/use-app";
 export const ContextMenuContentOptions = () => {
+  const { addWindow } = useApp();
   const { theme, setTheme } = useTheme();
   const toggleTheme = () => {
     if (theme === "light") {
@@ -22,7 +24,9 @@ export const ContextMenuContentOptions = () => {
         Use {theme === "light" ? "dark" : "light"} mode
       </ContextMenuItem>
       <ContextMenuItem
-        onClick={() => alert("Feature in progress")}
+        onClick={() =>
+          addWindow({ id: "wallpapers", title: "Wallpapers", type: "APP" })
+        }
         className="gap-2"
       >
         {/* eslint-disable-next-line jsx-a11y/alt-text */}
