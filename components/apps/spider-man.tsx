@@ -6,7 +6,7 @@ export const SpiderManAppContent = () => {
 
   useEffect(() => {
     if (videoRef.current) {
-      videoRef.current.volume = 0.1;
+      videoRef.current.volume = 0.08;
     }
   }, []);
 

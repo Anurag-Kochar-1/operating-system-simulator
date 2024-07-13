@@ -34,11 +34,47 @@ export const PaintAppContent = ({}) => {
     ctx.fill();
   }
 
+  const setCanvasSize = () => {
+    const canvas = canvasRef.current;
+    const container = containerRef.current;
+    if (!canvas || !container) return;
+
+    const { width, height } = container.getBoundingClientRect();
+    const dpr = window.devicePixelRatio || 1;
+    canvas.width = width * dpr;
+    canvas.height = height * dpr;
+    canvas.style.width = `${width}px`;
+    canvas.style.height = `${height}px`;
+
+    const ctx = canvas.getContext("2d");
+    if (ctx) {
+      ctx.scale(dpr, dpr);
+    }
+  };
+
   useEffect(() => {
     setColor(theme === "light" ? "#000" : "#fff");
     clear();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [theme]);
+
+  useEffect(() => {
+    const drawDefaultState = () => {
+      const canvas = canvasRef.current;
+      if (!canvas) return;
+
+      const ctx = canvas.getContext("2d");
+      if (!ctx) return;
+
+      ctx.fillStyle = color;
+      ctx.font = 'bold 10px "Segoe UI", Arial, sans-serif';
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
+      ctx.fillText("🖌 Paint here :)", canvas.width / 2, canvas.height / 2);
+    };
+    drawDefaultState();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div
