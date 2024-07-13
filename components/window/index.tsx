@@ -70,7 +70,7 @@ const Window: React.FC<WindowProps> = ({ id, title, type }) => {
           height: `${!isDesktop ? 100 : height}%`,
         }}
         className={`flex-col bg-background
-         ${focusedWindow?.id === id ? "z-30" : "z-20"} 
+         ${focusedWindow?.id === id ? "z-30 shadow-lg shadow-foreground/30" : "z-20"} 
         opened-window min-w-1/4 min-h-1/4 absolute flex overflow-hidden rounded-lg border-2 shadow-lg`}
       >
         <Topbar

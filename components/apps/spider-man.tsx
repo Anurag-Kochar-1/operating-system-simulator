@@ -26,6 +26,7 @@ export const SpiderManAppContent = () => {
         className={`h-full ${isLoading ? "hidden" : ""}`}
         autoPlay
         onLoadedData={handleVideoLoad}
+        controls
       >
         <source
           src="https://utfs.io/f/ffe2617c-957c-4761-8146-e4ce3bec2fb9-nb7uz5.mp4"
