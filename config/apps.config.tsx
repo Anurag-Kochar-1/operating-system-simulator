@@ -7,10 +7,11 @@ import { PaintAppContent } from "@/components/apps/paint";
 import { ProjectsAppContent } from "@/components/apps/projects";
 import { ResumeAppContent } from "@/components/apps/resume";
 import { SkillsAppContent } from "@/components/apps/skills";
+import { SpiderManAppContent } from "@/components/apps/spider-man";
 import { StudyMaterialAppContent } from "@/components/apps/study-material";
 import { WallpapersAppContent } from "@/components/apps/wallpapers";
 import { App } from "@/types";
-import { Camera, Folder, Gamepad2, PaintBucket } from "lucide-react";
+import { Camera, FileVideo, Folder, Gamepad2, PaintBucket } from "lucide-react";
 
 export const APPS: App[] = [
   {
@@ -99,5 +100,11 @@ export const APPS: App[] = [
     icon: <Folder size={50} />,
     content: <WallpapersAppContent />,
     isOnDesktop: false,
+  },
+  {
+    id: "spider-man",
+    title: "Spiderman movie",
+    icon: <FileVideo size={50} />,
+    content: <SpiderManAppContent />,
   },
 ];
