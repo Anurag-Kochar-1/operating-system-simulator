@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { Loader2 } from "lucide-react";
 
-export const CameraAppContent = () => {
+export const StudyMaterialAppContent = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   const handleLoad = () => {
@@ -22,11 +22,11 @@ export const CameraAppContent = () => {
         </div>
       )}
       <Image
-        src="https://wallpaperaccess.com/full/6999296.jpg"
-        alt="Dramatic portrait of a man"
+        src="https://media1.tenor.com/m/DfSs6KiP6-kAAAAC/akshay-kumar-smile.gif"
+        alt="Akshay Kumar smiling gif"
         width={500}
         height={500}
-        className={`h-full w-full ${isLoading ? "invisible" : ""}`}
+        className={`h-full w-full object-cover ${isLoading ? "invisible" : ""}`}
         onLoad={handleLoad}
         onError={handleError}
       />
