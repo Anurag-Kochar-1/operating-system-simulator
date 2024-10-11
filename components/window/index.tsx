@@ -5,6 +5,7 @@ import Draggable from "react-draggable";
 import { APP_TYPES } from "../../constants/app-types.enum";
 import useMediaQuery from "@/hooks/use-media-query";
 import { Topbar } from "./top-bar";
+import { motion } from "framer-motion";
 
 interface WindowProps {
   id: string;
@@ -12,19 +13,27 @@ interface WindowProps {
   type: APP_TYPES;
 }
 
+interface WindowState {
+  isMaximized: boolean;
+  previousPosition: { x: number; y: number };
+  previousSize: { width: number; height: number };
+}
+
 const Window: React.FC<WindowProps> = ({ id, title, type }) => {
-  const { focusedWindow, setFocusedWindow, getAppContentById, windows } =
-    useApp();
+  const { focusedWindow, setFocusedWindow, getAppContentById } = useApp();
   const isDesktop = useMediaQuery("(min-width: 1024px)");
   const [width, setWidth] = useState(80);
   const [height, setHeight] = useState(75);
+  const [windowState, setWindowState] = useState<WindowState>({
+    isMaximized: false,
+    previousPosition: { x: 0, y: 0 },
+    previousSize: { width: 80, height: 75 },
+  });
   const [position, setPosition] = useState<{ x: number; y: number }>({
     x: 0,
     y: 0,
   });
-  const trackPos = (data: any) => {
-    setPosition({ x: data.x, y: data.y });
-  };
+
   function getRandomPair(): { x: number; y: number } {
     const minX = 75;
     const maxX = 150;
@@ -39,39 +48,53 @@ const Window: React.FC<WindowProps> = ({ id, title, type }) => {
 
   useEffect(() => {
     if (isDesktop) {
-      // setPosition({ x: 150, y: 75 });
       setPosition(getRandomPair());
     }
   }, [isDesktop]);
 
+  const handleMaximizeToggle = () => {
+    if (!windowState.isMaximized) {
+      setWindowState((prev) => ({
+        ...prev,
+        isMaximized: true,
+        previousPosition: position,
+        previousSize: { width, height },
+      }));
+      setWidth(100);
+      setHeight(100);
+      setPosition({ x: 0, y: 0 });
+    } else {
+      setWidth(windowState.previousSize.width);
+      setHeight(windowState.previousSize.height);
+      setPosition(windowState.previousPosition);
+      setWindowState((prev) => ({
+        ...prev,
+        isMaximized: false,
+      }));
+    }
+  };
+
   return (
     <Draggable
-      axis="both"
       handle=".window-top-bar"
-      cancel=".btn-cancel"
-      grid={[1, 1]}
-      scale={1}
-      allowAnyClick={false}
       bounds="parent"
-      disabled={!isDesktop}
-      onDrag={(e, data) => trackPos(data)}
-      position={position}
+      position={windowState.isMaximized ? { x: 0, y: 0 } : position}
+      onStop={(_, data) => setPosition({ x: data.x, y: data.y })}
+      disabled={windowState.isMaximized}
     >
       <div
-        onClick={() =>
-          setFocusedWindow({
-            id,
-            title,
-            type,
-          })
-        }
         style={{
+          position: "absolute",
           width: `${!isDesktop ? 100 : width}%`,
           height: `${!isDesktop ? 100 : height}%`,
         }}
-        className={`flex-col bg-background
-         ${focusedWindow?.id === id ? "z-30 shadow-lg shadow-foreground/30" : "z-20"} 
-        opened-window min-w-1/4 min-h-1/4 absolute flex overflow-hidden rounded-lg border-2 shadow-lg`}
+        onClick={() => setFocusedWindow({ id, title, type })}
+        className={`
+          flex flex-col bg-background
+          ${focusedWindow?.id === id ? "z-30" : "z-20"} 
+          ${windowState.isMaximized ? "rounded-none" : "rounded-lg"}
+          border shadow-lg
+        `}
       >
         <Topbar
           id={id}
@@ -79,12 +102,24 @@ const Window: React.FC<WindowProps> = ({ id, title, type }) => {
           width={width}
           setWidth={setWidth}
           title={title}
+          onMaximizeToggle={handleMaximizeToggle}
+          isMaximized={windowState.isMaximized}
         />
 
-        {/* ========== Content ========== */}
-        <div className="flex h-full w-full items-start justify-start overflow-y-auto overflow-x-hidden p-2 md:p-4 lg:p-6 xl:p-8">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{
+            opacity: 1,
+            scale: 1,
+          }}
+          transition={{
+            opacity: { duration: 0.15 },
+            scale: { duration: 0.2, ease: [0.4, 0.0, 0.2, 1] }, // Smooth, no bounce
+          }}
+          className="flex h-full w-full items-start justify-start overflow-y-auto overflow-x-hidden p-4"
+        >
           {getAppContentById({ id, type })}
-        </div>
+        </motion.div>
       </div>
     </Draggable>
   );

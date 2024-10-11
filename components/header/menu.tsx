@@ -1,78 +1,93 @@
+"use client";
 import {
   Menubar,
-  MenubarCheckboxItem,
   MenubarContent,
   MenubarItem,
   MenubarMenu,
-  MenubarRadioGroup,
-  MenubarRadioItem,
-  MenubarSeparator,
-  MenubarShortcut,
-  MenubarSub,
-  MenubarSubContent,
-  MenubarSubTrigger,
   MenubarTrigger,
 } from "@/components/ui/menubar";
+import { useApp } from "@/hooks/use-app";
 
 export function Menu() {
+  const addWindow = useApp((state) => state.addWindow);
+  const apps = useApp((state) => state.apps);
+  const openWindow = (
+    type:
+      | "about"
+      | "projects"
+      | "skills"
+      | "education"
+      | "resume"
+      | "car-game"
+      | "settings",
+  ) => {
+    const window = apps.filter((app) => app.id === type)[0];
+    if (window) {
+      addWindow({
+        id: window.id,
+        title: window.title,
+        type: "APP",
+      });
+    } else {
+      alert("Error!");
+    }
+  };
+
   return (
     <Menubar className="border-none">
-      {/* ========== Finder ========== */}
+      {/* ========== Portfolio ========== */}
       <MenubarMenu>
-        <MenubarTrigger>Finder</MenubarTrigger>
+        <MenubarTrigger>Portfolio</MenubarTrigger>
         <MenubarContent>
-          <MenubarItem>About Finder</MenubarItem>
-          <MenubarItem>Preferences</MenubarItem>
-          <MenubarItem>Empty Trash</MenubarItem>
-          <MenubarItem>Hide Finder</MenubarItem>
-          <MenubarItem>Hide Others</MenubarItem>
-          <MenubarItem>Show All</MenubarItem>
+          <MenubarItem onClick={() => openWindow("about")}>About</MenubarItem>
+          {/* <MenubarItem>Experience</MenubarItem> */}
+          <MenubarItem onClick={() => openWindow("projects")}>
+            Projects
+          </MenubarItem>
+          <MenubarItem onClick={() => openWindow("skills")}>Skills</MenubarItem>
+          {/* <MenubarItem>Education</MenubarItem> */}
+          <MenubarItem onClick={() => openWindow("resume")}>Resume</MenubarItem>
         </MenubarContent>
       </MenubarMenu>
-      {/* ========== File ========== */}
+      {/* ========== Games ========== */}
       <MenubarMenu>
-        <MenubarTrigger>File</MenubarTrigger>
+        <MenubarTrigger>Games</MenubarTrigger>
         <MenubarContent>
-          <MenubarItem>New File Window</MenubarItem>
-          <MenubarItem>New Window</MenubarItem>
-          <MenubarItem disabled>New Folder with Selection</MenubarItem>
-          <MenubarItem>New Smart Folder</MenubarItem>
-          <MenubarItem>New tab</MenubarItem>
-          <MenubarItem disabled>Open</MenubarItem>
-          <MenubarItem disabled>Open With</MenubarItem>
-          <MenubarItem disabled>Print</MenubarItem>
-          <MenubarItem disabled>Close Window</MenubarItem>
+          <MenubarItem onClick={() => openWindow("car-game")}>
+            Car Racing
+          </MenubarItem>
+          <MenubarItem disabled>DOOM</MenubarItem>
+          <MenubarItem disabled>Chess</MenubarItem>
+          <MenubarItem disabled>GTA 6</MenubarItem>
         </MenubarContent>
       </MenubarMenu>
-      {/* ========== Edit ========== */}
+      {/* ========== Settings ========== */}
       <MenubarMenu>
-        <MenubarTrigger>Edit</MenubarTrigger>
+        <MenubarTrigger className="hidden sm:flex">Settings</MenubarTrigger>
         <MenubarContent>
-          <MenubarItem disabled>Undo</MenubarItem>
-          <MenubarItem disabled>Redo</MenubarItem>
-          <MenubarItem disabled>Cut</MenubarItem>
-          <MenubarItem disabled>Copy</MenubarItem>
-          <MenubarItem disabled>Paste</MenubarItem>
-          <MenubarItem disabled>Paste All</MenubarItem>
-          <MenubarItem>Show Clipboard</MenubarItem>
-          <MenubarItem>Start Clipboard</MenubarItem>
-          <MenubarItem>Emojis & Symbols</MenubarItem>
+          <MenubarItem disabled>Wallpapers</MenubarItem>
+          <MenubarItem disabled>Accounts</MenubarItem>
         </MenubarContent>
       </MenubarMenu>
-      {/* ========== View ========== */}
+      {/* ========== Contact ========== */}
       <MenubarMenu>
-        <MenubarTrigger>View</MenubarTrigger>
+        <MenubarTrigger>Contact</MenubarTrigger>
         <MenubarContent>
-          <MenubarItem disabled>As Icons</MenubarItem>
-          <MenubarItem disabled>As List</MenubarItem>
-          <MenubarItem disabled>As Columns</MenubarItem>
-          <MenubarItem disabled>As Gallery</MenubarItem>
-          <MenubarItem>Use Stacks</MenubarItem>
-          <MenubarItem>Sort by</MenubarItem>
-          <MenubarItem>Clean Up</MenubarItem>
-          <MenubarItem>Clean Up By</MenubarItem>
-          <MenubarItem disabled>Hide Sidebar</MenubarItem>
-          <MenubarItem disabled>Hide Preview</MenubarItem>
+          <MenubarItem
+            onClick={() => window.open("https://x.com/anurag__kochar")}
+          >
+            Twitter
+          </MenubarItem>
+          <MenubarItem
+            onClick={() =>
+              window.open(
+                "https://www.linkedin.com/in/anurag-kochar-527696242/",
+              )
+            }
+          >
+            LinkedIn
+          </MenubarItem>
+          {/* <MenubarItem onClick={() => window.open("")}>Email</MenubarItem> */}
         </MenubarContent>
       </MenubarMenu>
     </Menubar>

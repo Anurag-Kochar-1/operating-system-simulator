@@ -15,6 +15,12 @@ import { Camera, FileVideo, Folder, Gamepad2, PaintBucket } from "lucide-react";
 
 export const APPS: App[] = [
   {
+    id: "about",
+    title: "About",
+    icon: <Folder size={50} />,
+    content: <AboutMeAppContent />,
+  },
+  {
     id: "skills",
     title: "Skills",
     icon: <Folder size={50} />,
@@ -25,18 +31,6 @@ export const APPS: App[] = [
     title: "Projects",
     icon: <Folder size={50} />,
     content: <ProjectsAppContent />,
-  },
-  {
-    id: "contact",
-    title: "Contact",
-    icon: <Folder size={50} />,
-    content: <ContactAppContent />,
-  },
-  {
-    id: "about",
-    title: "About",
-    icon: <Folder size={50} />,
-    content: <AboutMeAppContent />,
   },
   {
     id: "resume",
@@ -56,24 +50,23 @@ export const APPS: App[] = [
     icon: <Folder size={50} />,
     content: <BlogsAppContent />,
   },
-  {
-    id: "camera",
-    title: "Camera",
-    icon: <Camera size={50} />,
-    content: <CameraAppContent />,
-  },
+  // {
+  //   id: "camera",
+  //   title: "Camera",
+  //   icon: <Camera size={50} />,
+  //   content: <CameraAppContent />,
+  // },
   {
     id: "browser",
     title: "Browser",
     icon: <Folder size={50} />,
     content: (
-      // <iframe
-      //   src={"https://www.google.com/webhp?igu=1"}
-      //   className="h-full w-full"
-      //   id="chrome-screen"
-      //   title="chrome-url"
-      // ></iframe>
-      <></>
+      <iframe
+        src={"https://www.google.com/webhp?igu=1"}
+        className="h-full w-full"
+        id="chrome-screen"
+        title="chrome-url"
+      ></iframe>
     ),
   },
   {
@@ -88,23 +81,17 @@ export const APPS: App[] = [
     icon: <Gamepad2 size={50} />,
     content: <GameAppContent />,
   },
-  {
-    id: "studyMateral",
-    title: "Study Materal",
-    icon: <Folder size={50} />,
-    content: <StudyMaterialAppContent />,
-  },
+  // {
+  //   id: "studyMateral",
+  //   title: "Study Materal",
+  //   icon: <Folder size={50} />,
+  //   content: <StudyMaterialAppContent />,
+  // },
   {
     id: "wallpapers",
     title: "Wallpapers",
     icon: <Folder size={50} />,
     content: <WallpapersAppContent />,
     isOnDesktop: false,
-  },
-  {
-    id: "spider-man",
-    title: "Spiderman movie",
-    icon: <FileVideo size={50} />,
-    content: <SpiderManAppContent />,
   },
 ];
