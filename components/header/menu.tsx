@@ -17,62 +17,43 @@ import {
 export function Menu() {
   return (
     <Menubar className="border-none">
-      {/* ========== Finder ========== */}
+      {/* ========== Portfolio ========== */}
       <MenubarMenu>
-        <MenubarTrigger>Finder</MenubarTrigger>
+        <MenubarTrigger>Portfolio</MenubarTrigger>
         <MenubarContent>
-          <MenubarItem>About Finder</MenubarItem>
-          <MenubarItem>Preferences</MenubarItem>
-          <MenubarItem>Empty Trash</MenubarItem>
-          <MenubarItem>Hide Finder</MenubarItem>
-          <MenubarItem>Hide Others</MenubarItem>
-          <MenubarItem>Show All</MenubarItem>
+          <MenubarItem>About</MenubarItem>
+          <MenubarItem>Experience</MenubarItem>
+          <MenubarItem>Projects</MenubarItem>
+          <MenubarItem>Skills</MenubarItem>
+          <MenubarItem>Eudcation</MenubarItem>
+          <MenubarItem>Resume</MenubarItem>
         </MenubarContent>
       </MenubarMenu>
-      {/* ========== File ========== */}
+      {/* ========== Games ========== */}
       <MenubarMenu>
-        <MenubarTrigger>File</MenubarTrigger>
+        <MenubarTrigger>Games</MenubarTrigger>
         <MenubarContent>
-          <MenubarItem>New File Window</MenubarItem>
-          <MenubarItem>New Window</MenubarItem>
-          <MenubarItem disabled>New Folder with Selection</MenubarItem>
-          <MenubarItem>New Smart Folder</MenubarItem>
-          <MenubarItem>New tab</MenubarItem>
-          <MenubarItem disabled>Open</MenubarItem>
-          <MenubarItem disabled>Open With</MenubarItem>
-          <MenubarItem disabled>Print</MenubarItem>
-          <MenubarItem disabled>Close Window</MenubarItem>
+          <MenubarItem>Car Racing</MenubarItem>
+          <MenubarItem>DOOM</MenubarItem>
+          <MenubarItem>Chess</MenubarItem>
+          <MenubarItem disabled>GTA 6</MenubarItem>
         </MenubarContent>
       </MenubarMenu>
-      {/* ========== Edit ========== */}
+      {/* ========== Settings ========== */}
       <MenubarMenu>
-        <MenubarTrigger>Edit</MenubarTrigger>
+        <MenubarTrigger>Settings</MenubarTrigger>
         <MenubarContent>
-          <MenubarItem disabled>Undo</MenubarItem>
-          <MenubarItem disabled>Redo</MenubarItem>
-          <MenubarItem disabled>Cut</MenubarItem>
-          <MenubarItem disabled>Copy</MenubarItem>
-          <MenubarItem disabled>Paste</MenubarItem>
-          <MenubarItem disabled>Paste All</MenubarItem>
-          <MenubarItem>Show Clipboard</MenubarItem>
-          <MenubarItem>Start Clipboard</MenubarItem>
-          <MenubarItem>Emojis & Symbols</MenubarItem>
+          <MenubarItem>Wallpapers</MenubarItem>
+          <MenubarItem disabled>Accounts</MenubarItem>
         </MenubarContent>
       </MenubarMenu>
-      {/* ========== View ========== */}
+      {/* ========== Contact ========== */}
       <MenubarMenu>
-        <MenubarTrigger>View</MenubarTrigger>
+        <MenubarTrigger>Contact</MenubarTrigger>
         <MenubarContent>
-          <MenubarItem disabled>As Icons</MenubarItem>
-          <MenubarItem disabled>As List</MenubarItem>
-          <MenubarItem disabled>As Columns</MenubarItem>
-          <MenubarItem disabled>As Gallery</MenubarItem>
-          <MenubarItem>Use Stacks</MenubarItem>
-          <MenubarItem>Sort by</MenubarItem>
-          <MenubarItem>Clean Up</MenubarItem>
-          <MenubarItem>Clean Up By</MenubarItem>
-          <MenubarItem disabled>Hide Sidebar</MenubarItem>
-          <MenubarItem disabled>Hide Preview</MenubarItem>
+          <MenubarItem>Twitter</MenubarItem>
+          <MenubarItem>LinkedIn</MenubarItem>
+          <MenubarItem>Email</MenubarItem>
         </MenubarContent>
       </MenubarMenu>
     </Menubar>

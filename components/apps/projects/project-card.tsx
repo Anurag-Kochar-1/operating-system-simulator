@@ -9,7 +9,7 @@ export const ProjectCard = ({ project }: { project: Project }) => {
   return (
     <div
       key={project.title}
-      className="col-span-full flex flex-col items-start justify-start gap-2 overflow-hidden rounded-lg border-2 hover:cursor-pointer lg:col-span-6"
+      className="col-span-full flex flex-col items-start justify-start gap-2 overflow-hidden rounded-lg border-2 hover:cursor-pointer lg:col-span-6 hover:bg-secondary transition-all duration-75 ease-in"
       onClick={() => {
         addWindow({
           id: project.id,

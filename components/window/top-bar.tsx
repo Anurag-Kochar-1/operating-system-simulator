@@ -22,23 +22,23 @@ export const Topbar = ({
   const { removeWindow } = useApp();
 
   return (
-    <div className="window-top-bar flex h-10 w-full items-center justify-between border-b bg-muted px-2 hover:cursor-grab">
+    <div className="window-top-bar flex h-12 w-full items-center justify-between border-b px-2 hover:cursor-grab bg-secondary rounded-t-lg">
       <h2 className="text-sm font-medium">{title}</h2>
 
       <div className="flex items-center gap-1">
         <Button
           onClick={onMaximizeToggle}
           size={"icon"}
-          variant={"ghost"}
-          className="h-7 w-7 rounded-none hover:bg-muted-foreground/20"
+          variant={"outline"}
+          className="h-7 w-7 rounded-sm hover:bg-muted-foreground/20 hidden lg:inline-flex transition-all duration-75 ease-in"
         >
           {isMaximized ? <Minimize2 size={12} /> : <Maximize2 size={12} />}
         </Button>
         <Button
           onClick={() => removeWindow(id)}
           size={"icon"}
-          variant={"ghost"}
-          className="h-7 w-7 rounded-none hover:bg-destructive hover:text-destructive-foreground"
+          variant={"destructive"}
+          className="h-7 w-7 rounded-sm hover:bg-destructive hover:text-destructive-foreground transition-all duration-75 ease-in"
         >
           <X size={12} />
         </Button>

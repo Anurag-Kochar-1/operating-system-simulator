@@ -19,10 +19,6 @@ export const AllApps = () => {
               key={app.id}
               className="flex w-min flex-col items-start justify-start gap-1 text-left hover:cursor-pointer"
               onClick={() => {
-                if (app.id === "browser") {
-                  alert("Coming soon, Follow me on twitter for updates 😉");
-                  return;
-                }
                 addWindow({
                   id: app.id,
                   title: app.title,
