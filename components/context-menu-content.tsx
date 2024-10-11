@@ -33,7 +33,7 @@ export const ContextMenuContentOptions = () => {
         <Image size={15} />
         Change wallpaper
       </ContextMenuItem>
-      <ContextMenuItem className="gap-2">
+      <ContextMenuItem className="gap-2" onClick={() => window.location.reload()}>
         <RefreshCcw size={15} />
         Refresh
       </ContextMenuItem>

@@ -23,7 +23,7 @@ export const AllApps = () => {
                   id: app.id,
                   title: app.title,
                   type: "APP",
-                });
+                }); 
               }}
             >
               {app.icon}

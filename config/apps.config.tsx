@@ -33,12 +33,6 @@ export const APPS: App[] = [
     content: <ProjectsAppContent />,
   },
   {
-    id: "contact",
-    title: "Contact",
-    icon: <Folder size={50} />,
-    content: <ContactAppContent />,
-  },
-  {
     id: "resume",
     title: "Resume",
     icon: <Folder size={50} />,
