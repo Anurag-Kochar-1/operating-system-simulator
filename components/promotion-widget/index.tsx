@@ -4,7 +4,7 @@ import React from "react";
 export const PromotionWidget = () => {
   return (
     <a
-      className={`hover:border2 flex h-min w-full select-none items-center justify-start gap-2 rounded-xl border bg-secondary p-4 shadow-lg transition-all duration-150 ease-in hover:shadow-xl md:mx-0`}
+      className={`flex h-min w-full select-none items-center justify-start gap-2 rounded-xl border bg-secondary p-4 shadow-lg transition-all duration-150 ease-in hover:shadow-xl md:mx-0`}
       href="https://twitter.com/anurag__kochar"
       target="_blank"
     >
@@ -19,7 +19,7 @@ export const PromotionWidget = () => {
       <div className="flex flex-col items-start justify-start">
         <span className="text-base   font-semibold text-foreground">
           {" "}
-          Crazy Project/Video Coming Soon 🌝{" "}
+          I create playful projects like this for you to explore/enjoy{" "}
         </span>
         <p className="text-sm text-secondary-foreground">
           {" "}
