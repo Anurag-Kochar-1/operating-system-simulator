@@ -12,14 +12,21 @@ export function Menu() {
   const addWindow = useApp((state) => state.addWindow);
   const apps = useApp((state) => state.apps);
   const openWindow = (
-    type: "about" | "projects" | "skills" | "education" | "resume" | "car-game" | "settings",
+    type:
+      | "about"
+      | "projects"
+      | "skills"
+      | "education"
+      | "resume"
+      | "car-game"
+      | "settings",
   ) => {
     const window = apps.filter((app) => app.id === type)[0];
     if (window) {
       addWindow({
         id: window.id,
         title: window.title,
-        type: "APP"
+        type: "APP",
       });
     } else {
       alert("Error!");
@@ -34,7 +41,9 @@ export function Menu() {
         <MenubarContent>
           <MenubarItem onClick={() => openWindow("about")}>About</MenubarItem>
           {/* <MenubarItem>Experience</MenubarItem> */}
-          <MenubarItem onClick={() => openWindow("projects")}>Projects</MenubarItem>
+          <MenubarItem onClick={() => openWindow("projects")}>
+            Projects
+          </MenubarItem>
           <MenubarItem onClick={() => openWindow("skills")}>Skills</MenubarItem>
           {/* <MenubarItem>Education</MenubarItem> */}
           <MenubarItem onClick={() => openWindow("resume")}>Resume</MenubarItem>
@@ -44,7 +53,9 @@ export function Menu() {
       <MenubarMenu>
         <MenubarTrigger>Games</MenubarTrigger>
         <MenubarContent>
-          <MenubarItem onClick={() => openWindow("car-game")}>Car Racing</MenubarItem>
+          <MenubarItem onClick={() => openWindow("car-game")}>
+            Car Racing
+          </MenubarItem>
           <MenubarItem disabled>DOOM</MenubarItem>
           <MenubarItem disabled>Chess</MenubarItem>
           <MenubarItem disabled>GTA 6</MenubarItem>
@@ -52,7 +63,7 @@ export function Menu() {
       </MenubarMenu>
       {/* ========== Settings ========== */}
       <MenubarMenu>
-        <MenubarTrigger>Settings</MenubarTrigger>
+        <MenubarTrigger className="hidden sm:flex">Settings</MenubarTrigger>
         <MenubarContent>
           <MenubarItem disabled>Wallpapers</MenubarItem>
           <MenubarItem disabled>Accounts</MenubarItem>
@@ -62,8 +73,20 @@ export function Menu() {
       <MenubarMenu>
         <MenubarTrigger>Contact</MenubarTrigger>
         <MenubarContent>
-          <MenubarItem onClick={() => window.open("https://x.com/anurag__kochar")}>Twitter</MenubarItem>
-          <MenubarItem onClick={() => window.open("https://www.linkedin.com/in/anurag-kochar-527696242/")}>LinkedIn</MenubarItem>
+          <MenubarItem
+            onClick={() => window.open("https://x.com/anurag__kochar")}
+          >
+            Twitter
+          </MenubarItem>
+          <MenubarItem
+            onClick={() =>
+              window.open(
+                "https://www.linkedin.com/in/anurag-kochar-527696242/",
+              )
+            }
+          >
+            LinkedIn
+          </MenubarItem>
           {/* <MenubarItem onClick={() => window.open("")}>Email</MenubarItem> */}
         </MenubarContent>
       </MenubarMenu>

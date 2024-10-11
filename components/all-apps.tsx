@@ -10,7 +10,7 @@ export const AllApps = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [windows]);
   return (
-    <div className="flex h-max w-[90%] flex-wrap items-start justify-start gap-10 p-4 md:h-[93vh] md:w-min md:flex-col">
+    <div className="flex h-max w-[90%] flex-wrap items-start justify-start gap-10 px-8 py-6 md:h-[93vh] md:w-min md:flex-col">
       {apps
         ?.filter((app) => app.isOnDesktop === undefined || false)
         ?.map((app) => {
