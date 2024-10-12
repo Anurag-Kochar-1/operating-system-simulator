@@ -38,8 +38,8 @@ export const Topbar = ({
           onClick={() => removeWindow(id)}
           size={"icon"}
           variant={"destructive"}
-          className="h-7 w-7 rounded-sm hover:bg-destructive hover:text-destructive-foreground transition-all duration-75 ease-in"
-        >
+          className="h-7 btn-cancel w-7 rounded-sm hover:bg-destructive hover:text-destructive-foreground transition-all duration-75 ease-in"
+          >
           <X size={12} />
         </Button>
       </div>
