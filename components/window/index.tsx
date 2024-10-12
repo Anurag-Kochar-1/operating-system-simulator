@@ -77,6 +77,7 @@ const Window: React.FC<WindowProps> = ({ id, title, type }) => {
   return (
     <Draggable
       handle=".window-top-bar"
+      cancel=".btn-cancel"
       bounds="parent"
       position={windowState.isMaximized ? { x: 0, y: 0 } : position}
       onStop={(_, data) => setPosition({ x: data.x, y: data.y })}
