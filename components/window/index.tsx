@@ -6,6 +6,7 @@ import { APP_TYPES } from "../../constants/app-types.enum";
 import useMediaQuery from "@/hooks/use-media-query";
 import { Topbar } from "./top-bar";
 import { motion } from "framer-motion";
+import { cn } from "@/lib/utils";
 
 interface WindowProps {
   id: string;
@@ -115,9 +116,11 @@ const Window: React.FC<WindowProps> = ({ id, title, type }) => {
           }}
           transition={{
             opacity: { duration: 0.15 },
-            scale: { duration: 0.2, ease: [0.4, 0.0, 0.2, 1] }, // Smooth, no bounce
+            scale: { duration: 0.2, ease: [0.4, 0.0, 0.2, 1] },
           }}
-          className="flex h-full w-full items-start justify-start overflow-y-auto overflow-x-hidden p-4"
+          className={cn("flex h-full w-full items-start justify-start overflow-y-auto overflow-x-hidden p-4", {
+            "p-0": title === "Browser"
+          })}
         >
           {getAppContentById({ id, type })}
         </motion.div>

@@ -1,11 +1,8 @@
-"use client";
 import { WALLPAPERS } from "@/config/wallpapers.config";
-import { useApp } from "@/hooks/use-app";
 import Image from "next/image";
 import React from "react";
 
 export const WallpapersAppContent = () => {
-  const { setWallpaper } = useApp();
   return (
     <div className="grid w-full auto-rows-auto grid-cols-12 gap-4">
       {WALLPAPERS?.map((item) => (

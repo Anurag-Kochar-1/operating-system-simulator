@@ -11,15 +11,15 @@ import { SpiderManAppContent } from "@/components/apps/spider-man";
 import { StudyMaterialAppContent } from "@/components/apps/study-material";
 import { WallpapersAppContent } from "@/components/apps/wallpapers";
 import { App } from "@/types";
-import { Camera, FileVideo, Folder, Gamepad2, PaintBucket } from "lucide-react";
+import { Camera, FileVideo, Folder, Gamepad2, Globe, PaintBucket } from "lucide-react";
 
 export const APPS: App[] = [
-  {
-    id: "about",
-    title: "About",
-    icon: <Folder size={50} />,
-    content: <AboutMeAppContent />,
-  },
+  // {
+  //   id: "about",
+  //   title: "About",
+  //   icon: <Folder size={50} />,
+  //   content: <AboutMeAppContent />,
+  // },
   {
     id: "skills",
     title: "Skills",
@@ -59,7 +59,8 @@ export const APPS: App[] = [
   {
     id: "browser",
     title: "Browser",
-    icon: <Folder size={50} />,
+    icon: <Globe size={50} />,
+    // content: <Browser />
     content: (
       <iframe
         src={"https://www.google.com/webhp?igu=1"}
