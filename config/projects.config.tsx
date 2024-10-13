@@ -142,14 +142,14 @@ export const PROJECTS_BY_GROUPS: ProjectGroup[] = [
         content: <Project id="gta-6-vs-code-theme" />,
         tagline:
           "unofficial, fan-made vscode theme based on gta 6 color palette.",
-        thumbnail: "/images/project-images/gta-6-vs-code-theme/1.jfif",
+        thumbnail: "/images/project-images/gta-6-vs-code-theme/thumbnail.jpg",
         images: [
           {
-            src: "/images/project-images/gta-6-vs-code-theme/1.jfif",
+            src: "/images/project-images/gta-6-vs-code-theme/thumbnail.jpg",
             title: "",
           },
           {
-            src: "/images/project-images/gta-6-vs-code-theme/1.jfif",
+            src: "/images/project-images/gta-6-vs-code-theme/thumbnail.jpg",
             title: "",
           },
         ],

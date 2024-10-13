@@ -1,17 +1,12 @@
-import { AboutMeAppContent } from "@/components/apps/about-me";
 import { BlogsAppContent } from "@/components/apps/blogs";
-import { CameraAppContent } from "@/components/apps/camera";
-import { ContactAppContent } from "@/components/apps/contact";
 import { GameAppContent } from "@/components/apps/game";
 import { PaintAppContent } from "@/components/apps/paint";
 import { ProjectsAppContent } from "@/components/apps/projects";
 import { ResumeAppContent } from "@/components/apps/resume";
 import { SkillsAppContent } from "@/components/apps/skills";
-import { SpiderManAppContent } from "@/components/apps/spider-man";
-import { StudyMaterialAppContent } from "@/components/apps/study-material";
 import { WallpapersAppContent } from "@/components/apps/wallpapers";
 import { App } from "@/types";
-import { Camera, FileVideo, Folder, Gamepad2, Globe, PaintBucket } from "lucide-react";
+import { Folder, Gamepad2, PaintBucket, Globe } from "lucide-react";
 
 export const APPS: App[] = [
   // {
