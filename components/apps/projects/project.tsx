@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { ProjectImagesCarousel } from "./images-carousel";
 import { PROJECTS_BY_GROUPS } from "@/config/projects.config";
-import { Project as ProjecType } from "@/types";
+import { Project as ProjectType } from "@/types";
 import { Badge } from "@/components/ui/badge";
 
 type Props = {
@@ -9,7 +9,7 @@ type Props = {
 };
 
 export function Project({ id }: Props) {
-  const getProject = (id: string): ProjecType | null => {
+  const getProject = (id: string): ProjectType | null => {
     for (const group of PROJECTS_BY_GROUPS) {
       for (const project of group.projects) {
         if (project.id === id) {

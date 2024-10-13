@@ -159,91 +159,195 @@ export const PROJECTS_BY_GROUPS: ProjectGroup[] = [
         sourceCodeUrl: "https://github.com/Anurag-Kochar-1/GTA-6-theme",
         features: ["Its a theme bro"],
       },
-    ],
-  },
-  {
-    id: "old-top-projects",
-    title: "Old top projects 😁",
-    projects: [
       {
-        id: "comm-comm",
-        title: "CommComm Community Builder",
-        content: <Project id="comm-comm" />,
-        tagline:
-          "The Ultimate Community platform for students who want to learn in a community at ZERO cost via free resources.",
-        thumbnail:
-          "/images/project-images/commcomm-community-builder/thumbnail.png",
+        id: "medium-clone-project",
+        title: "Medium",
+        content: <Project id="medium-clone-project" />,
+        tagline: "A clone of medium.com site",
+        thumbnail: "/images/project-images/medium/thumbnail.png",
         images: [
           {
-            src: "/images/project-images/commcomm-community-builder/cover-image.png",
-            title: "CommComm Community Builder",
+            src: "/images/project-images/medium/homepage.png",
+            title: "",
           },
           {
-            src: "/images/project-images/commcomm-community-builder/commcomm_1.png",
-            title: "Landing page",
-            description:
-              "It have several sections such as, sidebars for my joined & trending communities, midde container contains courses carousel and posts",
+            src: "/images/project-images/medium/blog-page.png",
+            title: "",
           },
           {
-            src: "/images/project-images/commcomm-community-builder/commcomm_2.png",
-            title: "A Community",
-            description:
-              "It have several features such as, community posts, group chat, courses, classes, leaderboard, and about section",
+            src: "/images/project-images/medium/blogs-by-tag-page.png",
+            title: "",
           },
           {
-            src: "/images/project-images/commcomm-community-builder/commcomm_3.png",
-            title: "Group live chat",
-          },
-          {
-            src: "/images/project-images/commcomm-community-builder/commcomm_4.png",
-            title: "Course",
-            description:
-              "Community's own created course (from youtube playlist) which divided into paths, whereas each video from playlist is equal to a path",
-          },
-          {
-            src: "/images/project-images/commcomm-community-builder/commcomm_5.png",
-            title: "Classes",
-            description: "Each path's class",
-          },
-          {
-            src: "/images/project-images/commcomm-community-builder/commcomm_6.png",
-            title: "Community leaderboard",
-          },
-          {
-            src: "/images/project-images/commcomm-community-builder/commcomm_7.png",
-            title: "Explore posts / communities / courses",
-          },
-          {
-            src: "/images/project-images/commcomm-community-builder/commcomm_8.png",
-            title: "User profile",
-          },
-          {
-            src: "/images/project-images/commcomm-community-builder/commcomm_9.png",
-            title: "Sign up page.",
+            src: "/images/project-images/medium/post-blog-page.png",
+            title: "",
           },
         ],
         techStack: [
-          { title: "Next JS" },
-          { title: "Redux" },
-          { title: "Firebase" },
-          { title: "TypeScript" },
+          { title: "Next js" },
+          { title: "Sanity CMS" },
+          { title: "Next Auth" },
+          { title: "Typescript" },
         ],
-        liveSiteUrl: "https://th3-project.vercel.app/",
+        liveSiteUrl: "https://medium-clone-nextjs-1.vercel.app/",
         sourceCodeUrl:
-          "https://github.com/Anurag-Kochar-1/CommComm-Community-Platform/tree/v2",
+          "https://github.com/Anurag-Kochar-1/medium-clone-nextjs-1",
         features: [
-          "Authentication - email & password, Google, and Facebook.",
-          "Community - create in 3 steps - Name, Category, and Subcategory",
-          "Content - upload videos, images, and captions posts in a community",
-          "Group Chat - real-time chat in a community.",
-          "Courses -  community owner can create a course via YT ID, each course will have several paths depending on the course duration. Each Path has the option to claim coins.",
-          "Classes - community owner can create a class for a specific path",
-          "Explore - communities, posts, and courses",
-          "Gamification - users can earn coins by creating an account, attending more classes, and building communities.",
-          "Community Leaderboard - users can climb the global or community leaderboard by having more coins",
-          "User Profile page",
+          "Google Sign-In for easy access",
+          "Write and publish blogs",
+          "Read a wide range of blogs",
+          "Search blogs by tags",
+          "Bookmark blogs for later reading",
+        ],
+      },
+      {
+        id: "twitter-clone",
+        title: "Twitter",
+        content: <Project id="twitter-clone" />,
+        tagline: "A clone of x.com site",
+        thumbnail: "/images/project-images/twitter/thumbnail.png",
+        images: [
+          {
+            src: "/images/project-images/twitter/homepage.png",
+            title: "",
+          },
+          {
+            src: "/images/project-images/twitter/homepage.png",
+            title: "",
+          },
+        ],
+        techStack: [
+          { title: "Next js" },
+          { title: "Sanity CMS" },
+          { title: "Next Auth" },
+          { title: "Typescript" },
+        ],
+        liveSiteUrl: "https://twitter-clone-nextjs-1.netlify.app/",
+        sourceCodeUrl:
+          "https://github.com/Anurag-Kochar-1/twitter-clone-nextjs-1",
+        features: [
+          "Google Sign-In for easy access",
+          "Read and publish tweets",
+          "Reply to tweets",
+          "Dark mode",
+        ],
+      },
+      {
+        id: "litpire",
+        title: "Litpire - Search Movies / TV Shows",
+        content: <Project id={"litpire"} />,
+        tagline: "The Ultimate app for findiny any movie or tv show",
+        thumbnail: "/images/project-images/litpire/thumbnail.png",
+        images: [
+          {
+            src: "/images/project-images/litpire/homepage.png",
+            title: "",
+          },
+          {
+            src: "/images/project-images/litpire/moviepage.png",
+            title: "",
+          },
+          {
+            src: "/images/project-images/litpire/search-results-page.png",
+            title: "",
+          },
+        ],
+        techStack: [{ title: "React js" }, { title: "JavaScript" }],
+        liveSiteUrl: "https://flimpire-clone-1-v-6.netlify.app/",
+        sourceCodeUrl:
+          "https://github.com/Anurag-Kochar-1/litpire-movie-app/tree/version-6",
+        features: [
+          "Toggle between movies and TV shows",
+          "Sort by popularity, top ratings, upcoming releases, or genres",
+          "View detailed information about movies and TV shows",
+          "Search for specific titles easily",
         ],
       },
     ],
   },
+  // {
+  //   id: "old-top-projects",
+  //   title: "Old top projects 😁",
+  //   projects: [
+  //     {
+  //       id: "comm-comm",
+  //       title: "CommComm Community Builder",
+  //       content: <Project id="comm-comm" />,
+  //       tagline:
+  //         "The Ultimate Community platform for students who want to learn in a community at ZERO cost via free resources.",
+  //       thumbnail:
+  //         "/images/project-images/commcomm-community-builder/thumbnail.png",
+  //       images: [
+  //         {
+  //           src: "/images/project-images/commcomm-community-builder/cover-image.png",
+  //           title: "CommComm Community Builder",
+  //         },
+  //         {
+  //           src: "/images/project-images/commcomm-community-builder/commcomm_1.png",
+  //           title: "Landing page",
+  //           description:
+  //             "It have several sections such as, sidebars for my joined & trending communities, midde container contains courses carousel and posts",
+  //         },
+  //         {
+  //           src: "/images/project-images/commcomm-community-builder/commcomm_2.png",
+  //           title: "A Community",
+  //           description:
+  //             "It have several features such as, community posts, group chat, courses, classes, leaderboard, and about section",
+  //         },
+  //         {
+  //           src: "/images/project-images/commcomm-community-builder/commcomm_3.png",
+  //           title: "Group live chat",
+  //         },
+  //         {
+  //           src: "/images/project-images/commcomm-community-builder/commcomm_4.png",
+  //           title: "Course",
+  //           description:
+  //             "Community's own created course (from youtube playlist) which divided into paths, whereas each video from playlist is equal to a path",
+  //         },
+  //         {
+  //           src: "/images/project-images/commcomm-community-builder/commcomm_5.png",
+  //           title: "Classes",
+  //           description: "Each path's class",
+  //         },
+  //         {
+  //           src: "/images/project-images/commcomm-community-builder/commcomm_6.png",
+  //           title: "Community leaderboard",
+  //         },
+  //         {
+  //           src: "/images/project-images/commcomm-community-builder/commcomm_7.png",
+  //           title: "Explore posts / communities / courses",
+  //         },
+  //         {
+  //           src: "/images/project-images/commcomm-community-builder/commcomm_8.png",
+  //           title: "User profile",
+  //         },
+  //         {
+  //           src: "/images/project-images/commcomm-community-builder/commcomm_9.png",
+  //           title: "Sign up page.",
+  //         },
+  //       ],
+  //       techStack: [
+  //         { title: "Next JS" },
+  //         { title: "Redux" },
+  //         { title: "Firebase" },
+  //         { title: "TypeScript" },
+  //       ],
+  //       liveSiteUrl: "https://th3-project.vercel.app/",
+  //       sourceCodeUrl:
+  //         "https://github.com/Anurag-Kochar-1/CommComm-Community-Platform/tree/v2",
+  //       features: [
+  //         "Authentication - email & password, Google, and Facebook.",
+  //         "Community - create in 3 steps - Name, Category, and Subcategory",
+  //         "Content - upload videos, images, and captions posts in a community",
+  //         "Group Chat - real-time chat in a community.",
+  //         "Courses -  community owner can create a course via YT ID, each course will have several paths depending on the course duration. Each Path has the option to claim coins.",
+  //         "Classes - community owner can create a class for a specific path",
+  //         "Explore - communities, posts, and courses",
+  //         "Gamification - users can earn coins by creating an account, attending more classes, and building communities.",
+  //         "Community Leaderboard - users can climb the global or community leaderboard by having more coins",
+  //         "User Profile page",
+  //       ],
+  //     },
+  //   ],
+  // },
 ];

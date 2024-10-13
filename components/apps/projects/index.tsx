@@ -9,10 +9,6 @@ export const ProjectsAppContent = () => {
           key={group.id}
           className="flex flex-col items-start justify-start gap-10"
         >
-          <h3 className="text-xl font-bold md:text-2xl lg:text-4xl">
-            {" "}
-            {group.title}{" "}
-          </h3>
           <div className="grid w-full auto-rows-auto grid-cols-12 gap-4">
             {group.projects?.map((project) => (
               <ProjectCard key={project.id} project={project} />
@@ -21,17 +17,15 @@ export const ProjectsAppContent = () => {
         </div>
       ))}
 
-      <p className="font-medium text-sm">
+      <p className="text-sm font-medium">
         {" "}
-        (My old projects are available in my{" "}
         <a
           href="https://anurag-kochar.vercel.app/"
           target="_blank"
           className="text-sky-600 underline hover:text-sky-700"
         >
-          old portfolio
+          Old portfolio
         </a>{" "}
-        ){" "}
       </p>
     </div>
   );

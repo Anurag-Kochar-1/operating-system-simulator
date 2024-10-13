@@ -9,7 +9,7 @@ export const ProjectCard = ({ project }: { project: Project }) => {
   return (
     <div
       key={project.title}
-      className="col-span-full flex flex-col items-start justify-start gap-2 overflow-hidden rounded-lg border-2 hover:cursor-pointer lg:col-span-6 hover:bg-secondary transition-all duration-75 ease-in"
+      className="col-span-full flex flex-col items-start justify-start gap-2 overflow-hidden rounded-lg border-2 hover:cursor-pointer lg:col-span-6 hover:bg-secondary transition-all duration-75 ease-in group"
       onClick={() => {
         addWindow({
           id: project.id,
@@ -34,7 +34,7 @@ export const ProjectCard = ({ project }: { project: Project }) => {
             return (
               <div
                 key={idx}
-                className="rounded-sm border-2 bg-secondary p-1.5 text-xs font-medium text-secondary-foreground"
+                className="rounded-sm border-2 bg-secondary p-1.5 group-hover:bg-background text-xs font-medium text-secondary-foreground"
               >
                 {" "}
                 {item.title}{" "}

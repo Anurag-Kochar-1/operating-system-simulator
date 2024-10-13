@@ -94,7 +94,7 @@ const Window: React.FC<WindowProps> = ({ id, title, type }) => {
           flex flex-col bg-background
           ${focusedWindow?.id === id ? "z-30" : "z-20"} 
           ${windowState.isMaximized ? "rounded-none" : "rounded-lg"}
-          border shadow-lg
+          border-2 border-border
         `}
       >
         <Topbar

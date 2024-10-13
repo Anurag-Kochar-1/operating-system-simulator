@@ -7,7 +7,7 @@ import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const DATA = {
-  name: "Anurag Kochar",
+  name: "OS | Anurag Kochar",
   description: "Web-based Operating System Simulator",
   url: "http://os.anuragkochar.com/",
 } as const;
