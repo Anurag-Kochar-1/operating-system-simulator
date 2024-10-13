@@ -6,6 +6,7 @@ import { ContextMenu, ContextMenuTrigger } from "@/components/ui/context-menu";
 import { ContextMenuContentOptions } from "@/components/context-menu-content";
 import { MusicPlayer } from "@/components/music-player";
 import { PromotionWidget } from "@/components/promotion-widget";
+import { UnderConstructionWidget } from "@/components/under-construction-widget";
 
 export default function Home() {
   return (
@@ -21,6 +22,7 @@ export default function Home() {
             <div className="mx-auto flex h-full w-[90%] flex-col items-start justify-start gap-10 md:mx-0 md:max-w-sm md:p-2 lg:max-w-md lg:flex-col-reverse lg:justify-between lg:gap-0 lg:p-4">
               <MusicPlayer />
               <PromotionWidget />
+              <UnderConstructionWidget />
             </div>
             <Dock />
           </section>
