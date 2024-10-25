@@ -24,7 +24,7 @@ export const ResumeAppContent = () => {
         </div>
       )}
       <iframe
-        src="https://docs.google.com/file/d/1wXPzS7NYn4tsVK4vxlXsN1BcmS8tkyvH/preview?usp=sharing"
+        src="https://drive.google.com/file/d/1AEQ8C-hp886sEoNOsLmAIjOdD5VK7trK/view?usp=sharing"
         className="h-full w-full border-none"
         allowFullScreen
         onLoad={handleLoad}
