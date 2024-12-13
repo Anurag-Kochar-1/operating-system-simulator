@@ -1,12 +1,33 @@
-// lib/jwt.ts
-import jwt, { JwtPayload } from 'jsonwebtoken'
+import { SignJWT, jwtVerify } from 'jose'
 
-const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key'
+const JWT_SECRET = new TextEncoder().encode(
+    process.env.JWT_SECRET || 'your-secret-key'
+)
 
-export function signJWT(payload: JwtPayload): string {
-    return jwt.sign(payload, JWT_SECRET, { expiresIn: '3d' })
+export interface CustomJWTPayload {
+    userId: string
+    [key: string]: string | number
 }
 
-export function verifyJWT(token: string): JwtPayload {
-    return jwt.verify(token, JWT_SECRET) as JwtPayload
+export async function signJWT(payload: { userId: string }): Promise<string> {
+    const token = await new SignJWT({ ...payload })
+        .setProtectedHeader({ alg: 'HS256' })
+        .setExpirationTime('1d')
+        .sign(JWT_SECRET)
+
+    return token
+}
+
+export async function verifyJWT(token: string): Promise<CustomJWTPayload> {
+    try {
+        const { payload } = await jwtVerify(token, JWT_SECRET)
+
+        if (!payload.userId || typeof payload.userId !== 'string') {
+            throw new Error('Invalid token payload')
+        }
+
+        return payload as unknown as CustomJWTPayload
+    } catch (error) {
+        throw new Error('Invalid token')
+    }
 }

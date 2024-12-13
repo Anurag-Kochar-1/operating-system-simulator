@@ -4,6 +4,7 @@ import { RegisterRequest, AuthResponse } from '@/types/auth'
 import { z } from 'zod'
 import prisma from '@/lib/db'
 import { hashPassword } from '@/utils/password'
+import { ApiResponse, createResponse } from '@/utils/api-response'
 
 const registerSchema = z.object({
     name: z.string().min(2, 'Name must be at least 2 characters'),
@@ -13,16 +14,17 @@ const registerSchema = z.object({
 
 export async function POST(
     request: NextRequest
-): Promise<NextResponse<AuthResponse | { error: string }>> {
+): Promise<NextResponse<AuthResponse | ApiResponse<AuthResponse>>> {
     try {
         const body: RegisterRequest = await request.json()
 
         const validation = registerSchema.safeParse(body)
         if (!validation.success) {
-            return NextResponse.json(
-                { error: validation.error.errors[0].message },
-                { status: 400 }
-            )
+            return NextResponse.json(createResponse({
+                error: validation.error.errors[0].message,
+                statusMessage: validation.error.errors[0].message,
+                statusCode: 400
+            }))
         }
 
         const existingUser = await prisma.user.findUnique({
@@ -31,8 +33,11 @@ export async function POST(
 
         if (existingUser) {
             return NextResponse.json(
-                { error: 'User already exists' },
-                { status: 400 }
+                createResponse({
+                    error: 'User already exists',
+                    statusCode: 400,
+                    statusMessage: 'User already exists'
+                })
             )
         }
 
@@ -58,13 +63,21 @@ export async function POST(
             },
         })
 
-        const token = signJWT({ userId: user.id })
-
-        return NextResponse.json({ token }, { status: 201 })
+        const token = await signJWT({ userId: user.id })
+        return NextResponse.json(createResponse({
+            statusCode: 201,
+            statusMessage: "Account created successfully",
+            data: {
+                token
+            }
+        }))
     } catch (error) {
         return NextResponse.json(
-            { error: 'Input validation failed' },
-            { status: 400 }
+            createResponse({
+                error: 'Input validation failed',
+                statusCode: 400,
+                statusMessage: 'Input validation failed'
+            })
         )
     }
 }

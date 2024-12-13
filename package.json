@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "postinstall": "prisma generate && prisma migrate deploy"
   },
   "dependencies": {
     "@plaiceholder/next": "^3.0.0",
@@ -24,6 +25,7 @@
     "clsx": "^2.1.0",
     "embla-carousel-react": "^8.0.0-rc22",
     "framer-motion": "^11.0.8",
+    "jose": "^5.9.6",
     "jsonwebtoken": "^9.0.2",
     "lucide-react": "^0.330.0",
     "mini-svg-data-uri": "^1.4.4",
