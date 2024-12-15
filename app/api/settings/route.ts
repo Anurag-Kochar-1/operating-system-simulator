@@ -3,6 +3,7 @@ import prisma from '@/lib/db';
 import { z } from 'zod';
 import { createResponse } from '@/utils/api-response';
 
+export const dynamic = 'force-dynamic'
 export async function GET(request: NextRequest) {
     try {
         const userId = request.headers.get('userId');

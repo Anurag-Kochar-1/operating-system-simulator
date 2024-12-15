@@ -5,12 +5,15 @@ import { LoginRequest, AuthResponse } from '@/types/auth'
 import { z } from 'zod'
 import prisma from '@/lib/db'
 import { ApiResponse, createResponse } from '@/utils/api-response'
+import { cookies } from 'next/headers'
 
 const loginSchema = z.object({
     email: z.string().email('Invalid email address'),
     password: z.string().min(1, 'Password is required'),
 })
 
+
+export const dynamic = 'force-dynamic'
 export async function POST(
     request: NextRequest
 ): Promise<NextResponse<AuthResponse | ApiResponse<AuthResponse>>> {
@@ -55,11 +58,21 @@ export async function POST(
         }
 
         const token = await signJWT({ userId: user.id })
+        cookies().set({
+            name: 'token',
+            value: token,
+            httpOnly: true,
+            secure: process.env.NODE_ENV === 'production',
+            sameSite: 'lax',
+            path: '/',
+        })
+
+        const { password: _, ...userWithoutPassword } = user
 
         return NextResponse.json(createResponse({
             statusCode: 200,
             statusMessage: 'Login Successful',
-            data: { token }
+            data: { token, user: userWithoutPassword }
         }))
     } catch (error) {
         return NextResponse.json(createResponse({

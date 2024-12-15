@@ -1,10 +1,8 @@
-// middleware.ts
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
-import { verifyJWT } from './utils/jwt'
-import { createResponse } from './utils/api-response'
+import { verifyJWT } from '@/utils/jwt'
 
-const publicPaths = ['/api/auth/login', '/api/auth/register', "/api/wallpapers"]
+const publicPaths = ['/api/auth/login', '/api/auth/register', '/api/wallpapers']
 
 export async function middleware(request: NextRequest) {
     const path = request.nextUrl.pathname
@@ -14,17 +12,15 @@ export async function middleware(request: NextRequest) {
     }
 
     if (path.startsWith('/api/')) {
-        const authHeader = request.headers.get('Authorization')
+        // Get token from httpOnly cookie
+        const token = request.cookies.get('token')?.value
 
-        if (!authHeader || !authHeader.startsWith('Bearer ')) {
-            return NextResponse.json(createResponse({
-                error: "Authentication required",
-                statusCode: 401,
-                statusMessage: "Authentication required"
-            }))
+        if (!token) {
+            return NextResponse.json(
+                { error: 'Authentication required' },
+                { status: 401 }
+            )
         }
-
-        const token = authHeader.split(' ')[1]
 
         try {
             const decoded = await verifyJWT(token)
@@ -37,12 +33,10 @@ export async function middleware(request: NextRequest) {
                 },
             })
         } catch (error) {
-
-            return NextResponse.json(createResponse({
-                error: "Invalid or expired token",
-                statusCode: 401,
-                statusMessage: "Invalid or expired token"
-            }))
+            return NextResponse.json(
+                { error: 'Invalid or expired token' },
+                { status: 401 }
+            )
         }
     }
 
@@ -50,7 +44,5 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-    matcher: [
-        '/api/:path*'
-    ]
+    matcher: ['/api/:path*']
 }

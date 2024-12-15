@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { memo, useEffect, useState } from "react";
 import { useApp } from "@/hooks/use-app";
 import { App as AppType } from "@/types";
 import { cn } from "@/lib/utils";
@@ -29,7 +29,7 @@ export const AllApps = () => {
   );
 };
 
-const App = ({ app }: { app: Omit<AppType, "content"> }) => {
+const App = memo(({ app }: { app: Omit<AppType, "content"> }) => {
   const selectedAppId = useApp((state) => state.selectedAppId);
   const setSelectedAppId = useApp((state) => state.setSelectedAppId);
 
@@ -46,9 +46,10 @@ const App = ({ app }: { app: Omit<AppType, "content"> }) => {
         <div
           key={app.id}
           className={cn(
-            "flex w-min select-none flex-col items-start justify-start gap-1 transition-all duration-100 ease-in text-left hover:cursor-pointer border-2 border-transparent p-2",
+            "flex w-min select-none flex-col items-start justify-start gap-1 border-2 border-transparent p-2 text-left transition-all duration-100 ease-in hover:cursor-pointer",
             {
-              "bg-blue-400 border-2 border-blue-400 bg-opacity-50 rounded-sm": selectedAppId === app.id, 
+              "rounded-sm border-2 border-blue-400 bg-blue-400 bg-opacity-50":
+                selectedAppId === app.id,
             },
           )}
           onClick={() => {
@@ -70,8 +71,21 @@ const App = ({ app }: { app: Omit<AppType, "content"> }) => {
         </div>
       </ContextMenuTrigger>
       <ContextMenuContent>
-        <ContextMenuItem>Delete</ContextMenuItem>
+        <ContextMenuItem
+          onClick={() => {
+            addWindow({
+              id: app.id,
+              title: app.title,
+              type: "APP",
+            });
+            setSelectedAppId(null);
+          }}
+        >
+          Open
+        </ContextMenuItem>
       </ContextMenuContent>
     </ContextMenu>
   );
-};
+});
+
+App.displayName = "App";

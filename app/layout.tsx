@@ -6,6 +6,8 @@ const inter = Inter({ subsets: ["latin"] });
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import Script from "next/script";
+import TanstackReactQueryProvider from "@/providers/tanstack-react-query";
+import { AuthWrapper } from "@/components/auth-wrapper";
 
 const DATA = {
   name: "OS | Anurag Kochar",
@@ -57,17 +59,21 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} overflow-hidden`}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          {children}
-        </ThemeProvider>
-        <Analytics />
-        <SpeedInsights />
-        {/* <Script src="https://unpkg.com/react-scan/dist/auto.global.js"></Script> */}
+        <TanstackReactQueryProvider>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <AuthWrapper>{children}</AuthWrapper>
+          </ThemeProvider>
+          <Analytics />
+          <SpeedInsights />
+          {/* {process.env.NODE_ENV !== "production" && (
+            <Script src="https://unpkg.com/react-scan/dist/auto.global.js"></Script>
+          )} */}
+        </TanstackReactQueryProvider>
       </body>
     </html>
   );
