@@ -5,6 +5,7 @@ import { Inter } from "next/font/google";
 const inter = Inter({ subsets: ["latin"] });
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import Script from "next/script";
 
 const DATA = {
   name: "OS | Anurag Kochar",
@@ -66,6 +67,7 @@ export default function RootLayout({
         </ThemeProvider>
         <Analytics />
         <SpeedInsights />
+        {/* <Script src="https://unpkg.com/react-scan/dist/auto.global.js"></Script> */}
       </body>
     </html>
   );

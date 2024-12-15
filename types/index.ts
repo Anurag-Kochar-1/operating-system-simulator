@@ -79,3 +79,4 @@ export type Wallpaper = {
   thumbnail: string
   compatibleTheme: "light" | "dark";
 };
+

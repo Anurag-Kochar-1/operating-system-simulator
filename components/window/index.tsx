@@ -23,17 +23,19 @@ interface WindowState {
 const Window: React.FC<WindowProps> = ({ id, title, type }) => {
   const { focusedWindow, setFocusedWindow, getAppContentById } = useApp();
   const isDesktop = useMediaQuery("(min-width: 1024px)");
+  const [isPositioned, setIsPositioned] = useState<boolean>(false);
+
   const [width, setWidth] = useState(80);
   const [height, setHeight] = useState(75);
+
   const [windowState, setWindowState] = useState<WindowState>({
     isMaximized: false,
     previousPosition: { x: 0, y: 0 },
     previousSize: { width: 80, height: 75 },
   });
-  const [position, setPosition] = useState<{ x: number; y: number }>({
-    x: 0,
-    y: 0,
-  });
+  const [position, setPosition] = useState<{ x: number; y: number }>(
+    isDesktop ? getRandomPair() : { x: 0, y: 0 },
+  );
 
   function getRandomPair(): { x: number; y: number } {
     const minX = 75;
@@ -46,11 +48,14 @@ const Window: React.FC<WindowProps> = ({ id, title, type }) => {
 
     return { x: randomX, y: randomY };
   }
-
   useEffect(() => {
     if (isDesktop) {
       setPosition(getRandomPair());
+    } else {
+      setPosition({ x: 0, y: 0 });
     }
+    // Set isPositioned after a very short delay to ensure smooth transition
+    setTimeout(() => setIsPositioned(true), 50);
   }, [isDesktop]);
 
   const handleMaximizeToggle = () => {
@@ -89,6 +94,8 @@ const Window: React.FC<WindowProps> = ({ id, title, type }) => {
           position: "absolute",
           width: `${!isDesktop ? 100 : width}%`,
           height: `${!isDesktop ? 100 : height}%`,
+          opacity: isPositioned ? 1 : 0, // Add this
+          transition: "opacity 0.2s",
         }}
         onClick={() => setFocusedWindow({ id, title, type })}
         className={`
@@ -118,9 +125,12 @@ const Window: React.FC<WindowProps> = ({ id, title, type }) => {
             opacity: { duration: 0.15 },
             scale: { duration: 0.2, ease: [0.4, 0.0, 0.2, 1] },
           }}
-          className={cn("flex h-full w-full items-start justify-start overflow-y-auto overflow-x-hidden p-4", {
-            "p-0": title === "Browser"
-          })}
+          className={cn(
+            "flex h-full w-full items-start justify-start overflow-y-auto overflow-x-hidden p-4",
+            {
+              "p-0": title === "Browser",
+            },
+          )}
         >
           {getAppContentById({ id, type })}
         </motion.div>
