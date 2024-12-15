@@ -90,3 +90,34 @@ export function useLogout() {
         }
     })
 }
+
+export function useGuestLogin() {
+    const router = useRouter()
+    const { setAuth } = useAuth()
+
+    return useMutation({
+        mutationFn: async () => {
+            const response = await api.post<ApiResponse<AuthResponse>>('/auth/guest', undefined, {
+                withCredentials: true
+            })
+            return response.data
+        },
+        onSuccess: (response) => {
+            if (response.data?.user) {
+                setAuth(response.data.user)
+                toast({
+                    title: 'Welcome, Guest!',
+                    description: 'You are logged in as a guest user',
+                })
+                router.push('/')
+            }
+        },
+        onError: (error: any) => {
+            toast({
+                variant: 'destructive',
+                title: 'Error',
+                description: error.response?.data?.error || 'Guest login failed',
+            })
+        },
+    })
+}

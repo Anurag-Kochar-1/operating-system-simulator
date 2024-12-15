@@ -1,4 +1,3 @@
-// store/useAuth.ts
 import { User } from '@/types/auth'
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
@@ -8,7 +7,6 @@ interface AuthState {
     user: User | null
     setAuth: (user: User) => void
     logout: () => void
-
     isLoading: boolean
     setLoading: (loading: boolean) => void
 

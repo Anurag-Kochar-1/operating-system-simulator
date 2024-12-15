@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 import { verifyJWT } from '@/utils/jwt'
 
-const publicPaths = ['/api/auth/login', '/api/auth/register', '/api/wallpapers']
+const publicPaths = ['/api/auth/login', '/api/auth/register', "/api/auth/guest", '/api/wallpapers']
 
 export async function middleware(request: NextRequest) {
     const path = request.nextUrl.pathname
@@ -12,7 +12,6 @@ export async function middleware(request: NextRequest) {
     }
 
     if (path.startsWith('/api/')) {
-        // Get token from httpOnly cookie
         const token = request.cookies.get('token')?.value
 
         if (!token) {

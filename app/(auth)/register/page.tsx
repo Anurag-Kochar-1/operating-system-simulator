@@ -15,6 +15,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
+import { GuestLoginButton } from "@/components/guest-login-button";
 
 export default function RegisterPage() {
   const { mutate: register, isPending } = useRegister();
@@ -98,6 +99,7 @@ export default function RegisterPage() {
             </Link>
           </p>
         </div>
+        <GuestLoginButton />
       </div>
     </div>
   );
