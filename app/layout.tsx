@@ -67,7 +67,7 @@ export default function RootLayout({
         </ThemeProvider>
         <Analytics />
         <SpeedInsights />
-        <Script src="https://unpkg.com/react-scan/dist/auto.global.js"></Script>
+        {/* <Script src="https://unpkg.com/react-scan/dist/auto.global.js"></Script> */}
       </body>
     </html>
   );
