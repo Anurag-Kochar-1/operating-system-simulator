@@ -18,6 +18,9 @@ type State = {
   }) => JSX.Element | null;
   currentWallpaper: Wallpaper;
   setWallpaper: (data: Wallpaper) => void;
+
+  selectedAppId: string | null;
+  setSelectedAppId: (data: string | null) => void;
 };
 
 export const useApp = create<State>()((set, get) => ({
@@ -60,5 +63,9 @@ export const useApp = create<State>()((set, get) => ({
   currentWallpaper: WALLPAPERS[0],
   setWallpaper(data) {
     set({ currentWallpaper: data });
+  },
+  selectedAppId: null,
+  setSelectedAppId(data) {
+    set({ selectedAppId: data });
   },
 }));

@@ -1,6 +1,14 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useApp } from "@/hooks/use-app";
+import { App as AppType } from "@/types";
+import { cn } from "@/lib/utils";
+import {
+  ContextMenu,
+  ContextMenuContent,
+  ContextMenuItem,
+  ContextMenuTrigger,
+} from "@/components/ui/context-menu";
 
 export const AllApps = () => {
   const { apps, windows, addWindow, setFocusedWindow } = useApp();
@@ -10,27 +18,60 @@ export const AllApps = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [windows]);
   return (
-    <div className="flex h-max w-[90%] flex-wrap items-start justify-start gap-10 px-8 py-6 md:h-[93vh] md:w-min md:flex-col">
+    // <div className="flex h-full w-[90%] flex-wrap items-start justify-start gap-10 px-8 py-6 md:h-[93vh] md:w-min md:flex-col bg-green-900">
+    <div className="flex h-full w-full flex-wrap items-start justify-start gap-10 px-8 py-6 md:h-[90vh] md:w-min md:flex-col">
       {apps
         ?.filter((app) => app.isOnDesktop === undefined || false)
         ?.map((app) => {
-          return (
-            <div
-              key={app.id}
-              className="flex w-min flex-col items-start justify-start gap-1 text-left hover:cursor-pointer"
-              onClick={() => {
-                addWindow({
-                  id: app.id,
-                  title: app.title,
-                  type: "APP",
-                }); 
-              }}
-            >
-              {app.icon}
-              <span className="text-sm"> {app.title} </span>
-            </div>
-          );
+          return <App key={app.id} app={app} />;
         })}
     </div>
+  );
+};
+
+const App = ({ app }: { app: Omit<AppType, "content"> }) => {
+  const selectedAppId = useApp((state) => state.selectedAppId);
+  const setSelectedAppId = useApp((state) => state.setSelectedAppId);
+
+  const { addWindow } = useApp();
+
+  return (
+    <ContextMenu
+      onOpenChange={() => {
+        setSelectedAppId(app.id);
+      }}
+    >
+      <ContextMenuTrigger>
+        {" "}
+        <div
+          key={app.id}
+          className={cn(
+            "flex w-min select-none flex-col items-start justify-start gap-1 transition-all duration-100 ease-in text-left hover:cursor-pointer border-2 border-transparent p-2",
+            {
+              "bg-blue-400 border-2 border-blue-400 bg-opacity-50 rounded-sm": selectedAppId === app.id, 
+            },
+          )}
+          onClick={() => {
+            setSelectedAppId(app.id);
+          }}
+          onDoubleClick={() => {
+            if (selectedAppId === app.id) {
+              addWindow({
+                id: app.id,
+                title: app.title,
+                type: "APP",
+              });
+              setSelectedAppId(null);
+            }
+          }}
+        >
+          {app.icon}
+          <span className="text-sm"> {app.title} </span>
+        </div>
+      </ContextMenuTrigger>
+      <ContextMenuContent>
+        <ContextMenuItem>Delete</ContextMenuItem>
+      </ContextMenuContent>
+    </ContextMenu>
   );
 };
