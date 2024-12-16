@@ -1,10 +1,16 @@
-"use client";
-    
-import { Button } from "@/components/ui/button";
 import { useGuestLogin } from "@/hooks/use-authentication";
+import { Button } from "./ui/button";
 
-export function GuestLoginButton() {
-  const { mutate: loginAsGuest, isPending } = useGuestLogin();
+interface GuestLoginButtonProps {
+  onSuccess?: () => void;
+}
+
+export function GuestLoginButton({ onSuccess }: GuestLoginButtonProps) {
+  const { mutate: loginAsGuest, isPending } = useGuestLogin({
+    onSuccess: () => {
+      onSuccess?.();
+    },
+  });
 
   return (
     <Button

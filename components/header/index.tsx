@@ -1,20 +1,18 @@
 "use client";
 import { memo } from "react";
 import { Banana } from "lucide-react";
-import Link from "next/link";
 import { UserInfo } from "./user-info";
+import { useAuth } from "@/store/use-auth";
+import { GettingStarted } from "../getting-started";
 
 export const Header = memo(() => {
+  const { isAuthenticated } = useAuth();
   return (
     <header className="flex h-10 items-center justify-between border-b bg-background px-4">
-      {/* <Menu /> */}
       <Banana size={20} />
       {/* <DateTime /> */}
 
-      <Link href={`/register`}>register </Link>
-      <Link href={`/login`}>login </Link>
-
-      <UserInfo />
+      {isAuthenticated ? <UserInfo /> : <GettingStarted />}
     </header>
   );
 });

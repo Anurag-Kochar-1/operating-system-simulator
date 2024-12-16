@@ -20,7 +20,7 @@ export default function Home() {
           <Header />
           <section className="flex h-full w-full flex-col items-start justify-between gap-10 overflow-y-auto pb-72 md:h-[calc(100vh-128px)] md:max-h-[calc(100vh-40px)] md:flex-row md:overflow-y-hidden md:pb-0">
             <AllApps />
-            <div className="mx-auto flex h-full w-[90%] flex-col items-start justify-start gap-10 md:mx-0 md:max-w-sm md:p-2 lg:max-w-md lg:flex-col-reverse lg:justify-between lg:gap-0 lg:p-4 border-2  ">
+            <div className="mx-auto flex h-full w-[90%] flex-col items-start justify-start gap-10 md:mx-0 md:max-w-sm md:p-2 lg:max-w-md lg:flex-col-reverse lg:justify-between lg:gap-0 lg:p-4 ">
               <MusicPlayer />
               <PromotionWidget />
               <UnderConstructionWidget />

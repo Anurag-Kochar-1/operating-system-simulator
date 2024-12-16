@@ -7,7 +7,14 @@ import { toast } from '@/hooks/use-toast'
 import { AuthResponse, LoginRequest, RegisterRequest } from '@/types/auth'
 import { ApiResponse } from '@/utils/api-response'
 
-export function useRegister() {
+
+interface AuthHookOptions {
+    onSuccess?: () => void;
+    onError?: () => void;
+}
+
+
+export function useRegister(callbacks?: AuthHookOptions) {
     const router = useRouter()
     const setAuth = useAuth((state) => state.setAuth)
 
@@ -25,6 +32,10 @@ export function useRegister() {
                     title: 'Success',
                     description: response.statusMessage,
                 })
+
+                if (callbacks?.onSuccess) {
+                    callbacks?.onSuccess()
+                }
                 router.push('/')
             }
         },
@@ -34,11 +45,14 @@ export function useRegister() {
                 title: 'Error',
                 description: error.response?.data?.statusMessage || 'Registration failed',
             })
+            if (callbacks?.onError) {
+                callbacks?.onError()
+            }
         },
     })
 }
 
-export function useLogin() {
+export function useLogin(callbacks?: AuthHookOptions) {
     const router = useRouter()
     const setAuth = useAuth((state) => state.setAuth)
 
@@ -56,6 +70,9 @@ export function useLogin() {
                     title: 'Success',
                     description: response.statusMessage,
                 })
+                if (callbacks?.onSuccess) {
+                    callbacks?.onSuccess()
+                }
                 router.push('/')
             }
         },
@@ -65,11 +82,15 @@ export function useLogin() {
                 title: 'Error',
                 description: error.response?.data?.statusMessage || 'Login failed',
             })
+
+            if (callbacks?.onSuccess) {
+                callbacks?.onSuccess()
+            }
         },
     })
 }
 
-export function useGuestLogin() {
+export function useGuestLogin(callbacks?: AuthHookOptions) {
     const router = useRouter()
     const { setAuth } = useAuth()
 
@@ -87,6 +108,10 @@ export function useGuestLogin() {
                     title: 'Welcome, Guest!',
                     description: 'You are logged in as a guest user',
                 })
+
+                if (callbacks?.onSuccess) {
+                    callbacks.onSuccess()
+                }
                 router.push('/')
             }
         },
@@ -96,11 +121,14 @@ export function useGuestLogin() {
                 title: 'Error',
                 description: error.response?.data?.statusMessage || 'Guest login failed',
             })
+            if (callbacks?.onError) {
+                callbacks.onError()
+            }
         },
     })
 }
 
-export function useLogout() {
+export function useLogout(callbacks?: AuthHookOptions) {
     const router = useRouter()
     const { logout } = useAuth()
 
@@ -112,6 +140,9 @@ export function useLogout() {
         onSuccess: () => {
             logout()
             router.push('/')
+            if (callbacks?.onSuccess) {
+                callbacks?.onSuccess()
+            }
         },
         onError: (error: any) => {
             toast({
@@ -119,6 +150,9 @@ export function useLogout() {
                 title: 'Error',
                 description: error.response?.data?.statusMessage || 'Logout failed',
             })
+            if (callbacks?.onError) {
+                callbacks?.onError()
+            }
         }
     })
 }
