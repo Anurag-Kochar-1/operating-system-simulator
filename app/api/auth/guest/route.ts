@@ -45,7 +45,7 @@ export async function POST(
 
         const response = NextResponse.json(
             createResponse({
-                statusCode: 201,
+
                 statusMessage: 'Guest account created successfully',
                 data: {
                     user: {
@@ -54,7 +54,10 @@ export async function POST(
                         email: user.email
                     }
                 }
-            })
+            }),
+            {
+                status: 201
+            }
         )
 
         response.cookies.set({
@@ -71,10 +74,9 @@ export async function POST(
         console.error('Guest login error:', error)
         return NextResponse.json(
             createResponse({
-                statusCode: 500,
                 statusMessage: 'Failed to create guest account',
                 error: 'Failed to create guest account'
-            })
+            }), { status: 500 }
         )
     }
 }

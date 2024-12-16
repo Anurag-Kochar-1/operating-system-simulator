@@ -10,10 +10,10 @@ export async function GET(request: NextRequest) {
         if (!userId) {
             return NextResponse.json(
                 createResponse({
-                    statusCode: 401,
+
                     statusMessage: 'Unauthorized',
                     error: 'Not authenticated'
-                })
+                }), { status: 401 }
             )
         }
 
@@ -29,10 +29,9 @@ export async function GET(request: NextRequest) {
         if (!user) {
             return NextResponse.json(
                 createResponse({
-                    statusCode: 404,
                     statusMessage: 'User not found',
                     error: 'User not found'
-                })
+                }), { status: 404 }
             )
         }
 
@@ -40,18 +39,17 @@ export async function GET(request: NextRequest) {
 
         return NextResponse.json(
             createResponse({
-                statusCode: 200,
+
                 statusMessage: 'User fetched successfully',
                 data: { user }
-            })
+            }), { status: 200 }
         )
     } catch (error) {
         return NextResponse.json(
             createResponse({
-                statusCode: 500,
                 statusMessage: 'Internal server error',
                 error: 'Failed to fetch user'
-            })
+            }), { status: 500 }
         )
     }
 }

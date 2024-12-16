@@ -8,6 +8,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import Script from "next/script";
 import TanstackReactQueryProvider from "@/providers/tanstack-react-query";
 import { AuthWrapper } from "@/components/auth-wrapper";
+import { Toaster } from "@/components/ui/toaster";
 
 const DATA = {
   name: "OS | Anurag Kochar",
@@ -67,6 +68,7 @@ export default function RootLayout({
             disableTransitionOnChange
           >
             <AuthWrapper>{children}</AuthWrapper>
+            <Toaster />
           </ThemeProvider>
           <Analytics />
           <SpeedInsights />

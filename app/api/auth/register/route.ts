@@ -27,8 +27,8 @@ export async function POST(
       return NextResponse.json(createResponse({
         error: validation.error.errors[0].message,
         statusMessage: validation.error.errors[0].message,
-        statusCode: 400
-      }))
+      }), { status: 400 })
+
     }
 
     const existingUser = await prisma.user.findUnique({
@@ -39,9 +39,11 @@ export async function POST(
       return NextResponse.json(
         createResponse({
           error: 'User already exists',
-          statusCode: 400,
           statusMessage: 'User already exists'
-        })
+        }),
+        {
+          status: 400
+        }
       )
     }
 
@@ -82,20 +84,21 @@ export async function POST(
 
 
     return NextResponse.json(createResponse({
-      statusCode: 201,
       statusMessage: "Account created successfully",
       data: {
         token,
         user
       }
-    }))
+    }), { status: 201 })
   } catch (error) {
     return NextResponse.json(
       createResponse({
         error: 'Input validation failed',
-        statusCode: 400,
         statusMessage: 'Input validation failed'
-      })
+      }),
+      {
+        status: 400
+      }
     )
   }
 }

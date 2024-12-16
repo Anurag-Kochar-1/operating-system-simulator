@@ -26,8 +26,8 @@ export async function POST(
             return NextResponse.json(createResponse({
                 error: validation.error.errors[0].message,
                 statusMessage: validation.error.errors[0].message,
-                statusCode: 400
-            }))
+
+            }), { status: 400 })
         }
 
         const user = await prisma.user.findUnique({
@@ -42,19 +42,17 @@ export async function POST(
 
         if (!user) {
             return NextResponse.json(createResponse({
-                statusCode: 401,
                 error: "Invalid Credentials",
                 statusMessage: 'Invalid Credentials'
-            }))
+            }), { status: 401 })
         }
 
         const isValidPassword = await verifyPassword(body.password, user.password)
         if (!isValidPassword) {
             return NextResponse.json(createResponse({
-                statusCode: 401,
                 error: "Invalid Password",
                 statusMessage: 'Invalid Password'
-            }))
+            }), { status: 401 })
         }
 
         const token = await signJWT({ userId: user.id })
@@ -70,15 +68,13 @@ export async function POST(
         const { password: _, ...userWithoutPassword } = user
 
         return NextResponse.json(createResponse({
-            statusCode: 200,
             statusMessage: 'Login Successful',
             data: { token, user: userWithoutPassword }
-        }))
+        }), { status: 200 })
     } catch (error) {
         return NextResponse.json(createResponse({
-            statusCode: 400,
             error: "Failed to login",
             statusMessage: 'Failed to login'
-        }))
+        }), { status: 400 })
     }
 }   

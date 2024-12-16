@@ -19,7 +19,7 @@ export const AllApps = () => {
   }, [windows]);
   return (
     // <div className="flex h-full w-[90%] flex-wrap items-start justify-start gap-10 px-8 py-6 md:h-[93vh] md:w-min md:flex-col bg-green-900">
-    <div className="flex h-full w-full flex-wrap items-start justify-start gap-10 px-8 py-6 md:h-[90vh] md:w-min md:flex-col">
+    <div className="flex h-full w-full flex-wrap items-start justify-start gap-10 px-8 py-6 md:h-[89vh] md:w-min md:flex-col">
       {apps
         ?.filter((app) => app.isOnDesktop === undefined || false)
         ?.map((app) => {

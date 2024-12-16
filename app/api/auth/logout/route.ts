@@ -5,10 +5,9 @@ export const dynamic = 'force-dynamic'
 export async function POST() {
     const response = NextResponse.json(
         createResponse({
-            statusCode: 200,
             statusMessage: 'Logged out successfully',
             data: null
-        })
+        }), { status: 200 }
     )
 
     response.cookies.set({

@@ -32,7 +32,7 @@ export function useRegister() {
             toast({
                 variant: 'destructive',
                 title: 'Error',
-                description: error.response?.data?.error || 'Registration failed',
+                description: error.response?.data?.statusMessage || 'Registration failed',
             })
         },
     })
@@ -63,31 +63,9 @@ export function useLogin() {
             toast({
                 variant: 'destructive',
                 title: 'Error',
-                description: error.response?.data?.error || 'Login failed',
+                description: error.response?.data?.statusMessage || 'Login failed',
             })
         },
-    })
-}
-export function useLogout() {
-    const router = useRouter()
-    const { logout } = useAuth()
-
-    return useMutation({
-        mutationFn: async () => {
-            const response = await api.post<ApiResponse<null>>('/auth/logout')
-            return response.data
-        },
-        onSuccess: () => {
-            logout()
-            router.push('/')
-        },
-        onError: (error: any) => {
-            toast({
-                variant: 'destructive',
-                title: 'Error',
-                description: error.response?.data?.error || 'Logout failed',
-            })
-        }
     })
 }
 
@@ -116,8 +94,31 @@ export function useGuestLogin() {
             toast({
                 variant: 'destructive',
                 title: 'Error',
-                description: error.response?.data?.error || 'Guest login failed',
+                description: error.response?.data?.statusMessage || 'Guest login failed',
             })
         },
+    })
+}
+
+export function useLogout() {
+    const router = useRouter()
+    const { logout } = useAuth()
+
+    return useMutation({
+        mutationFn: async () => {
+            const response = await api.post<ApiResponse<null>>('/auth/logout')
+            return response.data
+        },
+        onSuccess: () => {
+            logout()
+            router.push('/')
+        },
+        onError: (error: any) => {
+            toast({
+                variant: 'destructive',
+                title: 'Error',
+                description: error.response?.data?.statusMessage || 'Logout failed',
+            })
+        }
     })
 }
