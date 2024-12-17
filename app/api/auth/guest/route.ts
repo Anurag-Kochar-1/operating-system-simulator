@@ -36,7 +36,6 @@ export async function POST(
         await prisma.settings.create({
             data: {
                 userId: user.id,
-                theme: 'dark',
                 wallpaperId: null,
             },
         })

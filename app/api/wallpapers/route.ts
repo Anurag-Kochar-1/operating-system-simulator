@@ -9,7 +9,13 @@ export async function GET() {
             orderBy: { createdAt: 'desc' },
         });
 
-        return NextResponse.json(wallpapers);
+        return NextResponse.json(createResponse({
+            data: wallpapers,
+            statusMessage: "Wallpaper fetched successfully"
+        }), {
+            status: 200
+        });
+
     } catch (error) {
         console.error('Error fetching wallpapers:', error);
         return NextResponse.json(createResponse({

@@ -1,5 +1,5 @@
 "use client";
-import { useApp } from "@/hooks/use-app";
+import { useApp } from "@/store/use-app";
 import React, { useEffect, useState } from "react";
 import Draggable from "react-draggable";
 import { APP_TYPES } from "../../constants/app-types.enum";

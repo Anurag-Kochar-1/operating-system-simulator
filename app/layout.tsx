@@ -1,5 +1,5 @@
 import "./globals.css";
-import { ThemeProvider } from "@/providers/theme-provider";
+import { ThemeProvider } from "@/providers/theme";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 const inter = Inter({ subsets: ["latin"] });
@@ -9,6 +9,7 @@ import Script from "next/script";
 import TanstackReactQueryProvider from "@/providers/tanstack-react-query";
 import { AuthWrapper } from "@/components/auth-wrapper";
 import { Toaster } from "@/components/ui/toaster";
+import { SettingsProvider } from "@/providers/settings";
 
 const DATA = {
   name: "OS | Anurag Kochar",
@@ -67,7 +68,9 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            <AuthWrapper>{children}</AuthWrapper>
+            <SettingsProvider>
+              <AuthWrapper>{children}</AuthWrapper>
+            </SettingsProvider>
             <Toaster />
           </ThemeProvider>
           <Analytics />

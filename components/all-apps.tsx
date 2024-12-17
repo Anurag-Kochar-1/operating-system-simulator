@@ -1,6 +1,6 @@
 "use client";
 import React, { memo, useEffect, useState } from "react";
-import { useApp } from "@/hooks/use-app";
+import { useApp } from "@/store/use-app";
 import { App as AppType } from "@/types";
 import { cn } from "@/lib/utils";
 import {

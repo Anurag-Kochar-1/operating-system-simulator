@@ -1,0 +1,1 @@
+export const DEFAULT_WALLPAPER: string = "https://wallpapercave.com/wp/wp13508913.jpg"

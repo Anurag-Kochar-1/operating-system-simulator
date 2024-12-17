@@ -6,7 +6,7 @@ import {
   MenubarMenu,
   MenubarTrigger,
 } from "@/components/ui/menubar";
-import { useApp } from "@/hooks/use-app";
+import { useApp } from "@/store/use-app";
 
 export function Menu() {
   const addWindow = useApp((state) => state.addWindow);

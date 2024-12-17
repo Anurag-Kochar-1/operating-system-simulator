@@ -33,7 +33,6 @@ export async function GET(request: NextRequest) {
             const defaultSettings = await prisma.settings.create({
                 data: {
                     userId,
-                    theme: 'dark',
                 },
                 include: {
                     wallpaper: {
@@ -68,7 +67,7 @@ export async function GET(request: NextRequest) {
 }
 
 const updateSettingsSchema = z.object({
-    theme: z.enum(['dark', 'light']).optional(),
+    theme: z.enum(['DARK', 'LIGHT']).optional(), 
     wallpaperId: z.string().uuid().nullable().optional(),
 });
 
@@ -112,11 +111,9 @@ export async function PATCH(request: NextRequest) {
             where: { userId },
             create: {
                 userId,
-                theme: body.theme || 'dark',
                 wallpaperId: body.wallpaperId,
             },
             update: {
-                theme: body.theme,
                 wallpaperId: body.wallpaperId,
             },
             include: {

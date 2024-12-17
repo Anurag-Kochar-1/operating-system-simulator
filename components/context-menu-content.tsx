@@ -6,7 +6,7 @@ import {
 } from "@/components/ui/context-menu";
 import { useTheme } from "next-themes";
 import { Image, Moon, RefreshCcw, Sun } from "lucide-react";
-import { useApp } from "@/hooks/use-app";
+import { useApp } from "@/store/use-app";
 export const ContextMenuContentOptions = () => {
   const { addWindow } = useApp();
   const { theme, setTheme } = useTheme();

@@ -13,6 +13,11 @@ enum UserType {
   GUEST
 }
 
+enum Theme {
+  DARK
+  LIGHT
+}
+
 model User {
   id        String    @id @default(uuid())
   name      String
@@ -29,7 +34,6 @@ model Settings {
   userId String @unique
   user   User   @relation(fields: [userId], references: [id])
 
-  theme       String     @default("dark")
   wallpaperId String?
   wallpaper   Wallpaper? @relation(fields: [wallpaperId], references: [id])
 
@@ -37,9 +41,10 @@ model Settings {
 }
 
 model Wallpaper {
-  id        String     @id @default(uuid())
-  name      String
-  thumbnail String
-  createdAt DateTime   @default(now())
-  Settings  Settings[]
+  id               String     @id @default(uuid())
+  name             String
+  thumbnail        String
+  createdAt        DateTime   @default(now())
+  Settings         Settings[]
+  recommendedTheme Theme      @default(DARK)
 }

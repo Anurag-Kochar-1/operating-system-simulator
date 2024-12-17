@@ -24,6 +24,7 @@
     "@radix-ui/react-toast": "^1.2.3",
     "@radix-ui/react-tooltip": "^1.0.7",
     "@tanstack/react-query": "^5.62.7",
+    "@tanstack/react-query-devtools": "^5.62.8",
     "@vercel/analytics": "^1.2.2",
     "@vercel/speed-insights": "^1.0.10",
     "axios": "^1.7.9",
