@@ -76,7 +76,7 @@ export const WallpapersAppContent = () => {
 
   if (wallpapers?.data?.length === 0) {
     return (
-      <Alert variant="destructive" className="flex flex-col items-center gap-4">
+      <Alert variant="destructive" className="mx-auto max-w-md">
         <AlertTitle>Not found</AlertTitle>
         <AlertDescription>
           No wallpapers found. Please try again later.

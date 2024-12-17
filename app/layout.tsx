@@ -68,9 +68,10 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            <SettingsProvider>
-              <AuthWrapper>{children}</AuthWrapper>
-            </SettingsProvider>
+            <AuthWrapper>
+              <SettingsProvider>{children}</SettingsProvider>
+            </AuthWrapper>
+
             <Toaster />
           </ThemeProvider>
           <Analytics />
