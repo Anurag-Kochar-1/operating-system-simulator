@@ -18,8 +18,7 @@ export const AllApps = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [windows]);
   return (
-    // <div className="flex h-full w-[90%] flex-wrap items-start justify-start gap-10 px-8 py-6 md:h-[93vh] md:w-min md:flex-col bg-green-900">
-    <div className="flex h-max w-full flex-wrap items-start justify-start gap-10  px-8 py-6 md:h-[89vh] md:w-min md:flex-col">
+    <div className="flex h-max w-full flex-wrap items-start justify-start gap-10 px-8 py-6 md:h-[89vh] md:w-min md:flex-col">
       {apps
         ?.filter((app) => app.isOnDesktop === undefined || false)
         ?.map((app) => {
@@ -46,7 +45,7 @@ const App = memo(({ app }: { app: Omit<AppType, "content"> }) => {
         <div
           key={app.id}
           className={cn(
-            "flex w-min select-none flex-col items-start justify-start gap-1 border-2 border-transparent p-2 text-left transition-all duration-100 ease-in hover:cursor-pointer",
+            "flex w-min select-none flex-col items-start justify-start gap-1 border-2 border-transparent p-2 text-left transition-all duration-100 ease-in hover:cursor-pointer hover:border-blue-200 hover:bg-blue-200 hover:bg-opacity-50",
             {
               "rounded-sm border-2 border-blue-400 bg-blue-400 bg-opacity-50":
                 selectedAppId === app.id,

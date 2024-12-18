@@ -10,8 +10,10 @@ import { Alert, AlertDescription, AlertTitle } from "../ui/alert";
 import { Button } from "../ui/button";
 import { RefreshCcw } from "lucide-react";
 import { Wallpaper } from "@prisma/client";
+import { useAuth } from "@/store/use-auth";
 
 export const WallpapersAppContent = () => {
+  const isAuthenticated = useAuth((state) => state.isAuthenticated);
   const setWallpaper = useApp((state) => state.setWallpaper);
   const wallpaperUrl = useApp((state) => state.currentWallpaper);
   const { toast } = useToast();
@@ -20,6 +22,10 @@ export const WallpapersAppContent = () => {
   const { mutateAsync: updateSettings } = useUpdateSettings();
 
   const handleWallpaperSelect = async (wallpaper: Wallpaper) => {
+    if (!isAuthenticated) {
+      alert("Please login to apply wallpaper");
+      return;
+    }
     try {
       setWallpaper(wallpaper.thumbnail);
       setTheme(wallpaper.recommendedTheme.toLowerCase());

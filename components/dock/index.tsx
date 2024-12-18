@@ -23,7 +23,7 @@ export function Dock() {
     <motion.div
       onMouseMove={(e) => mouseX.set(e.pageX)}
       onMouseLeave={() => mouseX.set(Infinity)}
-      className="fixed bottom-5 left-0 right-0 mx-auto flex h-16 w-min max-w-[85%] items-center justify-start gap-4 overflow-x-auto rounded-2xl border-2 bg-secondary px-4 scrollbar-hide lg:max-w-min lg:overflow-x-visible"
+      className="fixed bottom-5 left-0 right-0 mx-auto flex h-16 w-min max-w-[85%] items-center justify-start gap-4 overflow-x-auto rounded-2xl border-2 bg-secondary px-4 scrollbar-hide lg:max-w-min lg:overflow-x-visible z-30"
     >
       <TooltipProvider delayDuration={0}>
         {SOCIALS?.map((social, idx) => (

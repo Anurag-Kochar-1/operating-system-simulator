@@ -2,9 +2,9 @@ import { Social } from "@/types";
 
 export const SOCIALS: Social[] = [
   {
-    id: "x",
-    title: "X",
-    icon: "⬛",
+    id: "search",
+    title: "Search",
+    icon: "🔍",
     userName: "@anurag__kochar",
     url: "https://twitter.com/anurag__kochar",
   },
