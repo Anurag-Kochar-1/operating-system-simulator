@@ -9,9 +9,10 @@ export const Wallpaper = () => {
       src={currentWallpaper}
       width={1000}
       height={1000}
-      alt="Wallpaper"
+      alt="wallpaper"
       className="absolute inset-0 z-10 h-full w-full object-cover object-center"
       draggable={false}
+      fetchPriority="low"
     />
   );
 };

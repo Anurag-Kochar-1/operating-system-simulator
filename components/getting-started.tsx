@@ -64,10 +64,6 @@ export function GettingStarted() {
                   : "Continue as Guest"}
               </Button>
 
-              {/* <Button>Submit</Button>
-            <DrawerClose>
-              <Button variant="outline">Cancel</Button>
-            </DrawerClose> */}
             </DrawerFooter>
           </DrawerContent>
         </Drawer>

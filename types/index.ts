@@ -64,13 +64,14 @@ export interface Window {
   type: APP_TYPES;
 }
 
+export type IconType = "folder" | "file" | "calculator" | "paint" | "game";
 
 export interface App {
   id: string;
   title: string;
   content: JSX.Element | (Folder | File)[];
   isOnDesktop?: boolean;
-  icon: "folder" | "file" | "calculator"
+  icon: IconType
 }
 
 export interface Social {

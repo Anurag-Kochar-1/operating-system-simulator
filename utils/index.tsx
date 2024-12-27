@@ -1,14 +1,12 @@
-import { Icon } from "@/components/ui/icon";
+import { IconType } from "@/types";
 import {
-  Calculator,
-  Camera,
-  File,
+  Brush,
+  Calculator, File,
   Folder,
-  Globe,
-  PaintBucket,
+  Gamepad2
 } from "lucide-react";
 
-export const getIcon = (icon: "folder" | "file" | "calculator") => {
+export const getIcon = (icon: IconType) => {
   switch (icon) {
     case "folder":
       return <Folder size={50} />;
@@ -16,6 +14,10 @@ export const getIcon = (icon: "folder" | "file" | "calculator") => {
       return <File size={50} />;
     case "calculator":
       return <Calculator size={50} />;
+    case "paint":
+      return <Brush size={50} />;
+      case "game" :
+        return <Gamepad2 size={50} />;
     default:
       return <Folder size={50} />;
   }

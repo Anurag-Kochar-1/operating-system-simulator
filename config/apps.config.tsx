@@ -16,21 +16,21 @@ export const APPS: App[] = [
   //   icon: <Folder size={50} />,
   //   content: <AboutMeAppContent />,
   // },
+  // {
+  //   id: "skills",
+  //   title: "Skills",
+  //   content: <SkillsAppContent />,
+  //   icon: "folder",
+  // },
+  // {
+  //   id: "projects",
+  //   title: "Projects",
+  //   content: <ProjectsAppContent />,
+  //   icon: "folder",
+  // },
   {
-    id: "skills",
-    title: "Skills",
-    content: <SkillsAppContent />,
-    icon: "folder",
-  },
-  {
-    id: "projects",
-    title: "Projects",
-    content: <ProjectsAppContent />,
-    icon: "folder",
-  },
-  {
-    id: "resume",
-    title: "Resume",
+    id: "portfolio",
+    title: "portfolio",
     content: <ResumeAppContent />,
     icon: "file",
   },
@@ -40,43 +40,43 @@ export const APPS: App[] = [
   //   icon: <Folder size={50} />,
   //   content: <GamesAppContent />,
   // },
-  {
-    id: "blogs",
-    title: "Blogs",
-    content: <BlogsAppContent />,
-    icon: "folder",
-  },
+  // {
+  //   id: "blogs",
+  //   title: "Blogs",
+  //   content: <BlogsAppContent />,
+  //   icon: "folder",
+  // },
   // {
   //   id: "camera",
   //   title: "Camera",
   //   icon: <Camera size={50} />,
   //   content: <CameraAppContent />,
   // },
-  {
-    id: "browser",
-    title: "Browser",
-    // content: <Browser />
-    content: (
-      <iframe
-        src={"https://www.google.com/webhp?igu=1"}
-        className="h-full w-full"
-        id="chrome-screen"
-        title="chrome-url"
-      ></iframe>
-    ),
-    icon: "folder",
-  },
+  // {
+  //   id: "browser",
+  //   title: "Browser",
+  //   // content: <Browser />
+  //   content: (
+  //     <iframe
+  //       src={"https://www.google.com/webhp?igu=1"}
+  //       className="h-full w-full"
+  //       id="chrome-screen"
+  //       title="chrome-url"
+  //     ></iframe>
+  //   ),
+  //   icon: "folder",
+  // },
   {
     id: "paint",
     title: "Paint",
     content: <PaintAppContent />,
-    icon: "folder",
+    icon: "paint",
   },
   {
     id: "car-game",
     title: "Game",
     content: <GameAppContent />,
-    icon: "folder",
+    icon: "game",
   },
   // {
   //   id: "studyMateral",

@@ -1,21 +1,26 @@
 "use client";
-import { memo } from "react";
+import { memo, use } from "react";
 import { Citrus } from "lucide-react";
 import { UserInfo } from "./user-info";
 import { useAuth } from "@/store/use-auth";
 import { GettingStarted } from "../getting-started";
-import { useApp } from "@/store/use-app";
+import { Skeleton } from "../ui/skeleton";
 
 export const Header = memo(() => {
   const isAuthenticated = useAuth((state) => state.isAuthenticated);
-  const isWindowDragging = useApp((state) => state.isWindowDragging);
+  const isAuthLoading = useAuth((state) => state.isLoading);
   return (
     <header className="z-20 flex h-10 items-center justify-between border-b bg-background px-4">
       <Citrus size={20} />
-      {isWindowDragging ? "Dragging" : "Not dragging"}
 
       <div className="flex items-center justify-center gap-2">
-        {isAuthenticated ? <UserInfo /> : <GettingStarted />}
+        {isAuthLoading ? (
+          <Skeleton className="h-7 w-28 rounded-md" />
+        ) : isAuthenticated ? (
+          <UserInfo />
+        ) : (
+          <GettingStarted />
+        )}
       </div>
     </header>
   );
