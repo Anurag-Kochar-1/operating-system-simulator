@@ -6,6 +6,7 @@ import {
   MenubarMenu,
   MenubarTrigger,
 } from "@/components/ui/menubar";
+import { APP_TYPES } from "@/constants/app-types.enum";
 import { useApp } from "@/store/use-app";
 
 export function Menu() {
@@ -26,7 +27,7 @@ export function Menu() {
       addWindow({
         id: window.id,
         title: window.title,
-        type: "APP",
+        type: APP_TYPES.APP,
       });
     } else {
       alert("Error!");

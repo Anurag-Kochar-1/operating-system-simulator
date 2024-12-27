@@ -17,6 +17,7 @@ import "react-resizable/css/styles.css";
 import { MusicPlayer } from "@/components/widgets/music-player";
 import { PromotionWidget } from "@/components/widgets/promotion-widget";
 import { UnderConstructionWidget } from "@/components/widgets/under-construction-widget";
+import { APP_TYPES } from "@/constants/app-types.enum";
 
 const ResponsiveGridLayout = WidthProvider(Responsive);
 
@@ -45,7 +46,7 @@ const DraggableApp = memo(
         addWindow({
           id: app.id,
           title: app.title,
-          type: "APP",
+          type: APP_TYPES.APP,
         });
         setSelectedAppId(null);
       }
@@ -83,7 +84,7 @@ const DraggableApp = memo(
                   addWindow({
                     id: app.id,
                     title: app.title,
-                    type: "APP",
+                    type: APP_TYPES.APP,
                   });
                   setSelectedAppId(null);
                 }

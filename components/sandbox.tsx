@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import React, { useState, memo, useEffect } from "react";
 import { Responsive, WidthProvider } from "react-grid-layout";
@@ -17,6 +17,7 @@ import "react-resizable/css/styles.css";
 import { MusicPlayer } from "./widgets/music-player";
 import { PromotionWidget } from "./widgets/promotion-widget";
 import { UnderConstructionWidget } from "./widgets/under-construction-widget";
+import { APP_TYPES } from "@/constants/app-types.enum";
 
 const ResponsiveGridLayout = WidthProvider(Responsive);
 
@@ -27,71 +28,76 @@ const DragHandle = () => (
   </div>
 );
 
-const DraggableApp = memo(({ app, layoutKey }: { 
-  app: Omit<AppType, "content">; 
-  layoutKey: string;
-}) => {
-  const selectedAppId = useApp((state) => state.selectedAppId);
-  const setSelectedAppId = useApp((state) => state.setSelectedAppId);
-  const { addWindow } = useApp();
+const DraggableApp = memo(
+  ({
+    app,
+    layoutKey,
+  }: {
+    app: Omit<AppType, "content">;
+    layoutKey: string;
+  }) => {
+    const selectedAppId = useApp((state) => state.selectedAppId);
+    const setSelectedAppId = useApp((state) => state.setSelectedAppId);
+    const { addWindow } = useApp();
 
-  const handleClick = () => {
-    setSelectedAppId(app.id);
-  };
+    const handleClick = () => {
+      setSelectedAppId(app.id);
+    };
 
-  const handleDoubleClick = () => {
-    if (selectedAppId === app.id) {
-      addWindow({
-        id: app.id,
-        title: app.title,
-        type: "APP",
-      });
-      setSelectedAppId(null);
-    }
-  };
+    const handleDoubleClick = () => {
+      if (selectedAppId === app.id) {
+        addWindow({
+          id: app.id,
+          title: app.title,
+          type: APP_TYPES.APP,
+        });
+        setSelectedAppId(null);
+      }
+    };
 
-  return (
-    <div key={layoutKey} className="group relative">
-      <ContextMenu
-        onOpenChange={() => {
-          setSelectedAppId(app.id);
-        }}
-      >
-        <ContextMenuTrigger>
-          <div
-            className={cn(
-              "flex w-min select-none flex-col items-start justify-start gap-1 border-2 border-transparent p-2 text-left transition-all duration-100 ease-in hover:cursor-pointer hover:border-blue-200 hover:bg-blue-200 hover:bg-opacity-50",
-              {
-                "rounded-sm border-2 border-blue-400 bg-blue-400 bg-opacity-50":
-                  selectedAppId === app.id,
-              },
-            )}
-            onClick={handleClick}
-            onDoubleClick={handleDoubleClick}
-          >
-            {app.icon}
-            <span className="text-sm">{app.title}</span>
-          </div>
-          <DragHandle />
-        </ContextMenuTrigger>
-        <ContextMenuContent>
-          <ContextMenuItem
-            onClick={() => {
-              addWindow({
-                id: app.id,
-                title: app.title,
-                type: "APP",
-              });
-              setSelectedAppId(null);
-            }}
-          >
-            Open
-          </ContextMenuItem>
-        </ContextMenuContent>
-      </ContextMenu>
-    </div>
-  );
-});
+    return (
+      <div key={layoutKey} className="group relative">
+        <ContextMenu
+          onOpenChange={() => {
+            setSelectedAppId(app.id);
+          }}
+        >
+          <ContextMenuTrigger>
+            <div
+              className={cn(
+                "flex w-min select-none flex-col items-start justify-start gap-1 border-2 border-transparent p-2 text-left transition-all duration-100 ease-in hover:cursor-pointer hover:border-blue-200 hover:bg-blue-200 hover:bg-opacity-50",
+                {
+                  "rounded-sm border-2 border-blue-400 bg-blue-400 bg-opacity-50":
+                    selectedAppId === app.id,
+                },
+              )}
+              onClick={handleClick}
+              onDoubleClick={handleDoubleClick}
+            >
+              {app.icon}
+              <span className="text-sm">{app.title}</span>
+            </div>
+            <DragHandle />
+          </ContextMenuTrigger>
+          <ContextMenuContent>
+            <ContextMenuItem
+              onClick={() => {
+                addWindow({
+                  id: app.id,
+                  title: app.title,
+                  type: APP_TYPES.APP,
+                });
+                setSelectedAppId(null);
+              }}
+            >
+              Open
+            </ContextMenuItem>
+          </ContextMenuContent>
+        </ContextMenu>
+      </div>
+    );
+  },
+);
 
 DraggableApp.displayName = "DraggableApp";
 
@@ -106,7 +112,7 @@ const DraggableWidget = ({ children }: { children: React.ReactNode }) => (
 const DesktopLayout = () => {
   const isDesktop = typeof window !== "undefined" && window.innerWidth >= 768;
   const { apps } = useApp();
-  
+
   // Generate initial layouts for all breakpoints
   const generateLayouts = () => {
     const appLayouts = apps
@@ -130,34 +136,34 @@ const DesktopLayout = () => {
     // Create responsive layouts
     return {
       lg: layout,
-      md: layout.map(item => ({
+      md: layout.map((item) => ({
         ...item,
-        w: item.i.startsWith('widget-') ? 2 : 1,
+        w: item.i.startsWith("widget-") ? 2 : 1,
       })),
-      sm: layout.map(item => ({
+      sm: layout.map((item) => ({
         ...item,
-        w: item.i.startsWith('widget-') ? 2 : 1,
+        w: item.i.startsWith("widget-") ? 2 : 1,
       })),
-      xs: layout.map(item => ({
+      xs: layout.map((item) => ({
         ...item,
-        w: item.i.startsWith('widget-') ? 2 : 1,
+        w: item.i.startsWith("widget-") ? 2 : 1,
       })),
-      xxs: layout.map(item => ({
+      xxs: layout.map((item) => ({
         ...item,
-        w: item.i.startsWith('widget-') ? 2 : 1,
+        w: item.i.startsWith("widget-") ? 2 : 1,
       })),
     };
   };
 
   const [layouts, setLayouts] = useState(() => {
     // Try to load layouts from localStorage on initial render
-    if (typeof window !== 'undefined') {
-      const savedLayouts = localStorage.getItem('desktop-layouts');
+    if (typeof window !== "undefined") {
+      const savedLayouts = localStorage.getItem("desktop-layouts");
       if (savedLayouts) {
         try {
           return JSON.parse(savedLayouts);
         } catch (error) {
-          console.error('Error parsing saved layouts:', error);
+          console.error("Error parsing saved layouts:", error);
           return generateLayouts();
         }
       }
@@ -167,8 +173,8 @@ const DesktopLayout = () => {
 
   // Save layouts when they change
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      localStorage.setItem('desktop-layouts', JSON.stringify(layouts));
+    if (typeof window !== "undefined") {
+      localStorage.setItem("desktop-layouts", JSON.stringify(layouts));
     }
   }, [layouts]);
 
@@ -176,7 +182,7 @@ const DesktopLayout = () => {
     // Update the layouts while maintaining bounds
     const updatedLayouts = Object.keys(allLayouts).reduce((acc, breakpoint) => {
       const boundedLayout = allLayouts[breakpoint].map((item: any) => {
-        if (item.i.startsWith('widget-')) {
+        if (item.i.startsWith("widget-")) {
           return { ...item, x: Math.max(8, item.x) };
         } else {
           return { ...item, x: Math.min(item.x, 7) };
@@ -194,25 +200,27 @@ const DesktopLayout = () => {
         "h-screen w-full overflow-y-auto overflow-x-hidden bg-[url('/api/placeholder/1920/1080')] bg-cover bg-center p-4",
         {
           "overflow-y-hidden": isDesktop,
-        }
+        },
       )}
     >
       <div className="pb-20">
         <ResponsiveGridLayout
           className="layout"
-          layouts={{ 
-            lg: layouts.lg, 
+          layouts={{
+            lg: layouts.lg,
             md: layouts.md,
             sm: layouts.sm,
             xs: layouts.xs,
-            xxs: layouts.xxs
+            xxs: layouts.xxs,
           }}
           breakpoints={{ lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0 }}
           cols={{ lg: 12, md: 8, sm: 6, xs: 4, xxs: 2 }}
           margin={[16, 16]}
           containerPadding={[16, 16]}
           rowHeight={100}
-          onLayoutChange={(currentLayout, allLayouts) => handleLayoutChange(currentLayout, allLayouts)}
+          onLayoutChange={(currentLayout, allLayouts) =>
+            handleLayoutChange(currentLayout, allLayouts)
+          }
           isDraggable={isDesktop}
           isResizable={false}
           compactType={null}

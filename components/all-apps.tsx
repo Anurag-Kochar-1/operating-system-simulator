@@ -9,6 +9,9 @@ import {
   ContextMenuItem,
   ContextMenuTrigger,
 } from "@/components/ui/context-menu";
+import { APP_TYPES } from "@/constants/app-types.enum";
+import { LucideProps } from "lucide-react";
+import { getIcon } from "@/utils";
 
 export const AllApps = () => {
   const { apps, windows, addWindow, setFocusedWindow } = useApp();
@@ -22,7 +25,23 @@ export const AllApps = () => {
       {apps
         ?.filter((app) => app.isOnDesktop === undefined || false)
         ?.map((app) => {
-          return <App key={app.id} app={app} />;
+          return (
+            <App
+              key={app.id}
+              app={{
+                icon: app.icon,
+                title: app.title,
+                id: app.id,
+                isOnDesktop: app.isOnDesktop,
+              }}
+            />
+          );
+          // return (
+          //   <div key={app.id} className="border-4 border-red-400">
+          //     {" "}
+          //     {JSON.stringify(app)} <br />
+          //   </div>
+          // );
         })}
     </div>
   );
@@ -59,13 +78,18 @@ const App = memo(({ app }: { app: Omit<AppType, "content"> }) => {
               addWindow({
                 id: app.id,
                 title: app.title,
-                type: "APP",
+                type: APP_TYPES.APP,
               });
               setSelectedAppId(null);
             }
           }}
         >
-          {app.icon}
+          {getIcon("folder")}
+          {/* <Icon icon={app.icon} /> */}
+
+          {/* {JSON.stringify(app.icon)}
+
+          {typeof app.icon === "function" ? <Icon icon={app.icon} /> : "null"} */}
           <span className="text-sm"> {app.title} </span>
         </div>
       </ContextMenuTrigger>
@@ -75,7 +99,7 @@ const App = memo(({ app }: { app: Omit<AppType, "content"> }) => {
             addWindow({
               id: app.id,
               title: app.title,
-              type: "APP",
+              type: APP_TYPES.APP,
             });
             setSelectedAppId(null);
           }}

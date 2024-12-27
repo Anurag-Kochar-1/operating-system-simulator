@@ -18,19 +18,19 @@ export const APPS: App[] = [
   {
     id: "skills",
     title: "Skills",
-    icon: <Folder size={50} />,
+    icon: Folder,
     content: <SkillsAppContent />,
   },
   {
     id: "projects",
     title: "Projects",
-    icon: <Folder size={50} />,
+    icon: Folder,
     content: <ProjectsAppContent />,
   },
   {
     id: "resume",
     title: "Resume",
-    icon: <Folder size={50} />,
+    icon: Folder,
     content: <ResumeAppContent />,
   },
   // {
@@ -42,7 +42,7 @@ export const APPS: App[] = [
   {
     id: "blogs",
     title: "Blogs",
-    icon: <Folder size={50} />,
+    icon: Folder,
     content: <BlogsAppContent />,
   },
   // {
@@ -54,7 +54,7 @@ export const APPS: App[] = [
   {
     id: "browser",
     title: "Browser",
-    icon: <Globe size={50} />,
+    icon: Globe,
     // content: <Browser />
     content: (
       <iframe
@@ -68,13 +68,13 @@ export const APPS: App[] = [
   {
     id: "paint",
     title: "Paint",
-    icon: <PaintBucket size={50} />,
+    icon: PaintBucket,
     content: <PaintAppContent />,
   },
   {
     id: "car-game",
     title: "Game",
-    icon: <Gamepad2 size={50} />,
+    icon: Gamepad2,
     content: <GameAppContent />,
   },
   // {
@@ -86,7 +86,7 @@ export const APPS: App[] = [
   {
     id: "wallpapers",
     title: "Wallpapers",
-    icon: <Folder size={50} />,
+    icon: Folder,
     content: <WallpapersAppContent />,
     isOnDesktop: false,
   },

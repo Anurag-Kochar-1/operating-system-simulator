@@ -1,19 +1,77 @@
-
+import { APP_TYPES } from "@/constants/app-types.enum";
+import { LucideProps } from "lucide-react";
 import { ReactNode } from "react";
+
+export type Folder = {
+  content: (Folder | TextDocument)[];
+  name: string
+  createdAt?: Date
+  updatedAt?: Date
+}
+
+export type TextDocument = {
+  content: string
+  name: string
+  createdAt?: Date
+  updatedAt?: Date
+}
+
+const nestedFolder: Folder = {
+  name: "RootFolder",
+  content: [
+    {
+      name: "Folder1",
+      content: [
+        {
+          name: "Document1.txt",
+          content: "This is the content of Document1.",
+        } as TextDocument,
+        {
+          name: "Document2.txt",
+          content: "This is the content of Document2.",
+        } as TextDocument,
+        {
+          name: "SubFolder1",
+          content: [
+            {
+              name: "Document3.txt",
+              content: "This is the content of Document3 inside SubFolder1.",
+            } as TextDocument,
+          ],
+        } as Folder,
+      ],
+    } as Folder,
+    {
+      name: "Folder2",
+      content: [
+        {
+          name: "Document4.txt",
+          content: "This is the content of Document4.",
+        } as TextDocument,
+      ],
+    } as Folder,
+    {
+      name: "Document5.txt",
+      content: "This is the content of Document5 in RootFolder.",
+    } as TextDocument,
+  ],
+};
+
 
 export interface Window {
   id: string;
   title: string;
-  type: "APP" | "PROJECT" | "GAME";
+  type: APP_TYPES;
 }
 
 export interface App {
   id: string;
   title: string;
-  icon: ReactNode;
-  content: JSX.Element;
+  icon: React.FC<LucideProps>
+  content: JSX.Element | (Folder | File)[];
   isOnDesktop?: boolean;
 }
+
 export interface Social {
   id: string;
   title: string;

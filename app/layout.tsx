@@ -10,6 +10,7 @@ import TanstackReactQueryProvider from "@/providers/tanstack-react-query";
 import { AuthWrapper } from "@/components/auth-wrapper";
 import { Toaster } from "@/components/ui/toaster";
 import { SettingsProvider } from "@/providers/settings";
+import { NuqsAdapter } from "nuqs/adapters/next/app";
 
 const DATA = {
   name: "OS | Anurag Kochar",
@@ -68,11 +69,13 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            <AuthWrapper>
-              <SettingsProvider>{children}</SettingsProvider>
-            </AuthWrapper>
+            <NuqsAdapter>
+              <AuthWrapper>
+                <SettingsProvider>{children}</SettingsProvider>
+              </AuthWrapper>
 
-            <Toaster />
+              <Toaster />
+            </NuqsAdapter>
           </ThemeProvider>
           <Analytics />
           <SpeedInsights />

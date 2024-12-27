@@ -3,18 +3,19 @@ import { useApp } from "@/store/use-app";
 import React from "react";
 import { Project } from "@/types";
 import Image from "next/image";
+import { APP_TYPES } from "@/constants/app-types.enum";
 
 export const ProjectCard = ({ project }: { project: Project }) => {
   const { addWindow } = useApp();
   return (
     <div
       key={project.title}
-      className="col-span-full flex flex-col items-start justify-start gap-2 overflow-hidden rounded-lg border-2 hover:cursor-pointer lg:col-span-6 hover:bg-secondary transition-all duration-75 ease-in group"
+      className="group col-span-full flex flex-col items-start justify-start gap-2 overflow-hidden rounded-lg border-2 transition-all duration-75 ease-in hover:cursor-pointer hover:bg-secondary lg:col-span-6"
       onClick={() => {
         addWindow({
           id: project.id,
           title: project.title,
-          type: "PROJECT",
+          type: APP_TYPES.PROJECT,
         });
       }}
     >
@@ -34,7 +35,7 @@ export const ProjectCard = ({ project }: { project: Project }) => {
             return (
               <div
                 key={idx}
-                className="rounded-sm border-2 bg-secondary p-1.5 group-hover:bg-background text-xs font-medium text-secondary-foreground"
+                className="rounded-sm border-2 bg-secondary p-1.5 text-xs font-medium text-secondary-foreground group-hover:bg-background"
               >
                 {" "}
                 {item.title}{" "}

@@ -40,6 +40,18 @@ const nextConfig = {
         port: "",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "www.clipartmax.com",
+        port: "",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "cdn1.iconfinder.com",
+        port: "",
+        pathname: "/**",
+      },
     ],
   },
 };
