@@ -25,3 +25,7 @@ export const getIcon = (icon: IconType) => {
       return <Folder size={50} />;
   }
 };
+
+export function truncateText(text: string, maxLength: number): string {
+  return text.length > maxLength ? text.slice(0, maxLength) + '...' : text;
+}

@@ -63,7 +63,7 @@ const Player = ({ audioRef, isLoading }: IProps) => {
   return (
     <>
       <div
-        className={`mx-auto flex h-40 w-full select-none flex-col items-center justify-center bg-foreground md:mx-0 md:ml-auto md:mr-12 md:mt-12 xl:mb-12 xl:mt-auto ${isSongPlaying ? " animate-flicker border" : "border-2 border-foreground"}`}
+        className={`mx-auto flex h-40 w-full !font-mono select-none flex-col items-center justify-center bg-foreground md:mx-0 md:ml-auto md:mr-12 md:mt-12 xl:mb-12 xl:mt-auto ${isSongPlaying ? " animate-flicker border" : "border-2 border-foreground"}`}
       >
         <div className="flex h-full w-full flex-col items-center justify-start bg-secondary">
           {/* ========== Header ========== */}
@@ -91,13 +91,13 @@ const Player = ({ audioRef, isLoading }: IProps) => {
           {/* ========== Container ========== */}
           <div className="flex h-full w-full items-center justify-start py-1 pl-2 xs:py-0 xs:pl-0">
             <div className="hidden items-center justify-center px-1 py-1 xs:flex sm:px-2">
-              <div className="relative aspect-square flex justify-center items-center w-20 rounded-full">
+              <div className="relative flex aspect-square w-20 items-center justify-center rounded-full">
                 <Image
                   src={currentSong?.thumbnail as string}
                   alt={"Thumbnail"}
                   width={80}
                   height={80}
-                  className={`absolute z-10 size-10 rounded-full aspect-square ${isSongPlaying && "animate-spin"}`}
+                  className={`absolute z-10 aspect-square size-10 rounded-full ${isSongPlaying && "animate-spin-slow"}`}
                   draggable={false}
                 />
                 <Image
@@ -105,7 +105,7 @@ const Player = ({ audioRef, isLoading }: IProps) => {
                   alt="vynil"
                   width={100}
                   height={100}
-                  className={`absolute inset-0 h-full w-full ${isSongPlaying && "motion-preset-spin motion-duration-2000"}`}
+                  className={`absolute inset-0 h-full w-full ${isSongPlaying && "animate-spin-slow"}`}
                   draggable={false}
                 />
               </div>
@@ -117,7 +117,7 @@ const Player = ({ audioRef, isLoading }: IProps) => {
                 {" "}
                 {currentSong?.title}{" "}
               </h5>
-              <h6 className="text-xs font-normal text-foreground xs:text-sm">
+              <h6 className="text-xs font-normal text-foreground xs:text-sm my-0.5">
                 {" "}
                 {currentSong?.songBy}{" "}
               </h6>
