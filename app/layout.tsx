@@ -64,7 +64,7 @@ export default function RootLayout({
         <TanstackReactQueryProvider>
           <ThemeProvider
             attribute="class"
-            defaultTheme="system"
+            defaultTheme="dark"
             enableSystem
             disableTransitionOnChange
           >

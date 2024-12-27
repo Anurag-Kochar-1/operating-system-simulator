@@ -62,9 +62,9 @@ const Player = ({ audioRef, isLoading }: IProps) => {
 
   return (
     <>
-    {/* w-[90%] max-w-md */}
+      {/* w-[90%] max-w-md */}
       <div
-        className={`mx-auto flex h-40 w-full select-none flex-col items-center justify-center bg-foreground md:mx-0 md:ml-auto md:mr-12 md:mt-12 xl:mb-12 xl:mt-auto ${isSongPlaying ? " animate-flicker border" : "border-2 border-foreground"}`}
+        className={`mx-auto flex h-40 w-full select-none flex-col items-center justify-center bg-foreground font-mono md:mx-0 md:ml-auto md:mr-12 md:mt-12 xl:mb-12 xl:mt-auto ${isSongPlaying ? " animate-flicker border" : "border-2 border-foreground"}`}
       >
         <div className="flex h-full w-full flex-col items-center justify-start bg-secondary">
           {/* ========== Header ========== */}
@@ -108,7 +108,7 @@ const Player = ({ audioRef, isLoading }: IProps) => {
                 {" "}
                 {currentSong?.title}{" "}
               </h5>
-              <h6 className="text-xs font-normal text-foreground xs:text-sm">
+              <h6 className="text-xs text-foreground xs:text-sm">
                 {" "}
                 {currentSong?.songBy}{" "}
               </h6>

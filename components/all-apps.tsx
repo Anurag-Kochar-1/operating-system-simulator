@@ -58,9 +58,9 @@ const App = memo(({ app }: { app: Omit<AppType, "content"> }) => {
         <div
           key={app.id}
           className={cn(
-            "flex w-min select-none flex-col items-start justify-start gap-1 border-2 border-transparent p-2 text-left transition-all duration-100 ease-in hover:cursor-pointer hover:border-blue-200 hover:bg-blue-200 hover:bg-opacity-50",
+            "flex size-24 w-min select-none flex-col items-center justify-center gap-2 border-2 border-transparent p-2 text-left transition-all duration-100 ease-in hover:cursor-pointer rounded-sm hover:border-blue-200 hover:bg-blue-200 hover:bg-opacity-50 sm:size-28",
             {
-              "rounded-sm border-2 border-blue-400 bg-blue-400 bg-opacity-50":
+              "border-2 border-blue-400 bg-blue-400 bg-opacity-50":
                 selectedAppId === app.id,
             },
           )}
@@ -79,7 +79,7 @@ const App = memo(({ app }: { app: Omit<AppType, "content"> }) => {
           }}
         >
           {getIcon(app.icon)}
-          <span className="text-sm"> {app.title} </span>
+          <span className="text-sm font-medium  "> {app.title} </span>
         </div>
       </ContextMenuTrigger>
       <ContextMenuContent>

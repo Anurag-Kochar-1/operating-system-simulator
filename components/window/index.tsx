@@ -132,7 +132,7 @@ const Window: React.FC<WindowProps> = ({ id, title, type }) => {
           className={cn(
             "flex h-full w-full items-start justify-start overflow-y-auto overflow-x-hidden p-4",
             {
-              "p-0": title === "Browser",
+              "p-0": title === "Browser" || title === "Paint",
             },
           )}
         >

@@ -1,5 +1,6 @@
 import { IconType } from "@/types";
 import {
+  Briefcase,
   Brush,
   Calculator, File,
   Folder,
@@ -18,6 +19,8 @@ export const getIcon = (icon: IconType) => {
       return <Brush size={50} />;
       case "game" :
         return <Gamepad2 size={50} />;
+      case "briefcase" :
+        return <Briefcase size={50} />;
     default:
       return <Folder size={50} />;
   }

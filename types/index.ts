@@ -1,5 +1,4 @@
 import { APP_TYPES } from "@/constants/app-types.enum";
-import { LucideProps } from "lucide-react";
 import { ReactNode } from "react";
 
 export type Folder = {
@@ -64,7 +63,7 @@ export interface Window {
   type: APP_TYPES;
 }
 
-export type IconType = "folder" | "file" | "calculator" | "paint" | "game";
+export type IconType = "folder" | "file" | "calculator" | "paint" | "game" | "briefcase";
 
 export interface App {
   id: string;

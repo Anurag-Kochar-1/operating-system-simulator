@@ -3,7 +3,7 @@ import { CalculatorAppContent } from "@/components/apps/calculator";
 import { GameAppContent } from "@/components/apps/game";
 import { PaintAppContent } from "@/components/apps/paint";
 import { ProjectsAppContent } from "@/components/apps/projects";
-import { ResumeAppContent } from "@/components/apps/resume";
+import { PortfolioAppContent } from "@/components/apps/portfolio";
 import { SkillsAppContent } from "@/components/apps/skills";
 import { WallpapersAppContent } from "@/components/apps/wallpapers";
 import { App } from "@/types";
@@ -30,9 +30,9 @@ export const APPS: App[] = [
   // },
   {
     id: "portfolio",
-    title: "portfolio",
-    content: <ResumeAppContent />,
-    icon: "file",
+    title: "Portfolio",
+    content: <PortfolioAppContent />,
+    icon: "briefcase",
   },
   // {
   //   id: "games",
