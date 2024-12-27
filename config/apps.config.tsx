@@ -8,6 +8,7 @@ import { SkillsAppContent } from "@/components/apps/skills";
 import { WallpapersAppContent } from "@/components/apps/wallpapers";
 import { App } from "@/types";
 import { Folder, Gamepad2, PaintBucket, Globe, Calculator } from "lucide-react";
+import { StickyNotesAppContent } from "@/components/apps/sticky-note";
 
 export const APPS: App[] = [
   // {
@@ -96,5 +97,11 @@ export const APPS: App[] = [
     title: "Calculator",
     content: <CalculatorAppContent />,
     icon: "calculator",
+  },
+  {
+    id: "sticky-notes",
+    title: "Sticky Note",
+    content: <StickyNotesAppContent />,
+    icon: "sticky-notes",
   },
 ];

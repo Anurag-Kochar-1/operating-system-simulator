@@ -1,4 +1,3 @@
-// app/components/WeatherWidget.tsx
 import { truncateText } from "@/utils";
 import { headers } from "next/headers";
 

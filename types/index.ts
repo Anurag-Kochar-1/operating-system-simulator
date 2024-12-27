@@ -63,7 +63,7 @@ export interface Window {
   type: APP_TYPES;
 }
 
-export type IconType = "folder" | "file" | "calculator" | "paint" | "game" | "briefcase";
+export type IconType = "folder" | "file" | "calculator" | "paint" | "game" | "briefcase" | "sticky-notes";
 
 export interface App {
   id: string;

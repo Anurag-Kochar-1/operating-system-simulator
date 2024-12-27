@@ -31,7 +31,7 @@ export const Topbar = ({
       <h2 className="text-sm font-medium">{title}</h2>
 
       <div className="flex items-center gap-1">
-        {id !== "calculator" && (
+        {id !== "calculator" && id !== "sticky-notes" && (
           <Button
             onClick={onMaximizeToggle}
             size={"icon"}

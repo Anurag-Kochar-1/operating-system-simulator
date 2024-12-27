@@ -60,14 +60,14 @@ export async function GET() {
     try {
         const headersList = headers();
         const ip = headersList.get('x-forwarded-for') || '127.0.0.1';
-        console.log(`api ${ip}`)
+        console.log(`IP: ${ip}`)
         const API_KEY = process.env.WEATHER_API_KEY
 
         if (!API_KEY) {
             throw new Error(`Weather API Key not provided!`);
         }
         const response = await fetch(
-            `http://api.weatherapi.com/v1/current.json?key=${API_KEY}&q=${ip}&aqi=no`,
+            `https://api.weatherapi.com/v1/current.json?key=${API_KEY}&q=${ip}&aqi=no`,
             {
                 headers: {
                     'Content-Type': 'application/json',
