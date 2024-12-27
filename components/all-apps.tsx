@@ -29,19 +29,13 @@ export const AllApps = () => {
             <App
               key={app.id}
               app={{
-                icon: app.icon,
                 title: app.title,
                 id: app.id,
                 isOnDesktop: app.isOnDesktop,
+                icon: app.icon,
               }}
             />
           );
-          // return (
-          //   <div key={app.id} className="border-4 border-red-400">
-          //     {" "}
-          //     {JSON.stringify(app)} <br />
-          //   </div>
-          // );
         })}
     </div>
   );
@@ -84,12 +78,7 @@ const App = memo(({ app }: { app: Omit<AppType, "content"> }) => {
             }
           }}
         >
-          {getIcon("folder")}
-          {/* <Icon icon={app.icon} /> */}
-
-          {/* {JSON.stringify(app.icon)}
-
-          {typeof app.icon === "function" ? <Icon icon={app.icon} /> : "null"} */}
+          {getIcon(app.icon)}
           <span className="text-sm"> {app.title} </span>
         </div>
       </ContextMenuTrigger>

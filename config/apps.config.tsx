@@ -1,4 +1,5 @@
 import { BlogsAppContent } from "@/components/apps/blogs";
+import { CalculatorAppContent } from "@/components/apps/calculator";
 import { GameAppContent } from "@/components/apps/game";
 import { PaintAppContent } from "@/components/apps/paint";
 import { ProjectsAppContent } from "@/components/apps/projects";
@@ -6,7 +7,7 @@ import { ResumeAppContent } from "@/components/apps/resume";
 import { SkillsAppContent } from "@/components/apps/skills";
 import { WallpapersAppContent } from "@/components/apps/wallpapers";
 import { App } from "@/types";
-import { Folder, Gamepad2, PaintBucket, Globe } from "lucide-react";
+import { Folder, Gamepad2, PaintBucket, Globe, Calculator } from "lucide-react";
 
 export const APPS: App[] = [
   // {
@@ -18,20 +19,20 @@ export const APPS: App[] = [
   {
     id: "skills",
     title: "Skills",
-    icon: Folder,
     content: <SkillsAppContent />,
+    icon: "folder",
   },
   {
     id: "projects",
     title: "Projects",
-    icon: Folder,
     content: <ProjectsAppContent />,
+    icon: "folder",
   },
   {
     id: "resume",
     title: "Resume",
-    icon: Folder,
     content: <ResumeAppContent />,
+    icon: "file",
   },
   // {
   //   id: "games",
@@ -42,8 +43,8 @@ export const APPS: App[] = [
   {
     id: "blogs",
     title: "Blogs",
-    icon: Folder,
     content: <BlogsAppContent />,
+    icon: "folder",
   },
   // {
   //   id: "camera",
@@ -54,7 +55,6 @@ export const APPS: App[] = [
   {
     id: "browser",
     title: "Browser",
-    icon: Globe,
     // content: <Browser />
     content: (
       <iframe
@@ -64,18 +64,19 @@ export const APPS: App[] = [
         title="chrome-url"
       ></iframe>
     ),
+    icon: "folder",
   },
   {
     id: "paint",
     title: "Paint",
-    icon: PaintBucket,
     content: <PaintAppContent />,
+    icon: "folder",
   },
   {
     id: "car-game",
     title: "Game",
-    icon: Gamepad2,
     content: <GameAppContent />,
+    icon: "folder",
   },
   // {
   //   id: "studyMateral",
@@ -86,8 +87,14 @@ export const APPS: App[] = [
   {
     id: "wallpapers",
     title: "Wallpapers",
-    icon: Folder,
     content: <WallpapersAppContent />,
+    icon: "folder",
     isOnDesktop: false,
+  },
+  {
+    id: "calculator",
+    title: "Calculator",
+    content: <CalculatorAppContent />,
+    icon: "calculator",
   },
 ];

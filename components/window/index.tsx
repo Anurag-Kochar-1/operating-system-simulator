@@ -1,6 +1,6 @@
 "use client";
 import { useApp } from "@/store/use-app";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import Draggable from "react-draggable";
 import { APP_TYPES } from "../../constants/app-types.enum";
 import useMediaQuery from "@/hooks/use-media-query";
@@ -92,9 +92,13 @@ const Window: React.FC<WindowProps> = ({ id, title, type }) => {
       <div
         style={{
           position: "absolute",
-          width: `${!isDesktop ? 100 : width}%`,
-          height: `${!isDesktop ? 100 : height}%`,
-          opacity: isPositioned ? 1 : 0, // Add this
+          ...(id !== "calculator" && {
+            width: `${isDesktop ? width : 100}%`,
+          }),
+          ...(id !== "calculator" && {
+            height: `${isDesktop ? height : 100}%`,
+          }),
+          opacity: isPositioned ? 1 : 0,
           transition: "opacity 0.2s",
         }}
         onClick={() => setFocusedWindow({ id, title, type })}

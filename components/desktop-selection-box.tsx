@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useState, useRef, useCallback, ReactNode } from "react";
+import { useApp } from "@/store/use-app";
+import React, { useState, useRef, useCallback, ReactNode, use } from "react";
 
 interface Position {
   x: number;
@@ -8,6 +9,8 @@ interface Position {
 }
 
 export const DesktopSelectionBox = ({ children }: { children: ReactNode }) => {
+  const windows = useApp((state) => state.windows);
+  const isWindowDragging = useApp((state) => state.isWindowDragging);
   const [isSelecting, setIsSelecting] = useState(false);
   const [selectionBox, setSelectionBox] = useState<{
     start: Position;
@@ -45,12 +48,12 @@ export const DesktopSelectionBox = ({ children }: { children: ReactNode }) => {
 
   const handleMouseMove = useCallback(
     (e: React.MouseEvent) => {
-      if (!isMouseDownRef.current || !selectionBox) return;
+      if (!isMouseDownRef.current || !selectionBox || isWindowDragging) return;
 
       const currentPos = getRelativePosition(e);
       setSelectionBox((prev) => (prev ? { ...prev, end: currentPos } : null));
     },
-    [getRelativePosition, selectionBox],
+    [getRelativePosition, selectionBox, isWindowDragging],
   );
 
   const handleMouseUp = useCallback(() => {

@@ -26,6 +26,9 @@ type State = {
   setSelectedAppId: (data: string | null) => void;
 
   addApp: (data: Omit<App, "content">) => void;
+
+  isWindowDragging: boolean;
+  setIsWindowDragging: (data: boolean) => void;
 };
 
 export const useApp = create<State>()(
@@ -77,5 +80,10 @@ export const useApp = create<State>()(
     },
     addApp(data) {
       set((state) => ({ apps: [...state.apps, data] }));
+    },
+
+    isWindowDragging: false,
+    setIsWindowDragging(data) {
+      set({ isWindowDragging: data });
     },
   }));

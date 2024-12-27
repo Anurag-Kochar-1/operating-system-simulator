@@ -64,12 +64,13 @@ export interface Window {
   type: APP_TYPES;
 }
 
+
 export interface App {
   id: string;
   title: string;
-  icon: React.FC<LucideProps>
   content: JSX.Element | (Folder | File)[];
   isOnDesktop?: boolean;
+  icon: "folder" | "file" | "calculator"
 }
 
 export interface Social {
