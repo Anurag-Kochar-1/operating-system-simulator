@@ -8,13 +8,19 @@ export async function PATCH(
 ) {
     try {
         const userId = request.headers.get('userId');
-        const body = await request.json();
-        const { content } = body;
+        let body;
+        try {
+            body = await request.json();
+        } catch (error) {
+            return NextResponse.json({ error: "Invalid or empty request body" }, { status: 400 });
+        }
 
-        if (!content) {
+        const { content } = body || {};
+
+        if (!content || typeof content !== 'string') {
             return NextResponse.json(createResponse({
-                error: "Content is required!",
-                statusMessage: "Content is required!"
+                error: "Content is required and must be a string",
+                statusMessage: "Content is required and must be a string"
             }), { status: 404 });
         }
 
@@ -42,6 +48,7 @@ export async function PATCH(
         const updatedNote = await prisma.stickyNote.update({
             where: {
                 id: params.id,
+                userId: userId!,
             },
             data: {
                 content,
@@ -49,11 +56,14 @@ export async function PATCH(
         });
 
         return NextResponse.json(createResponse({
-            data: updatedNote,
+            data: "updatedNote",
             statusMessage: "Note updated successfully",
         }), { status: 201 });
     } catch (error) {
         console.error("Error updating note:", error);
-        return new NextResponse("Internal Server Error", { status: 500 });
+        return NextResponse.json(createResponse({
+            error: "Error updating note",
+            statusMessage: "Error updating note"
+        }), { status: 500 });
     }
 }

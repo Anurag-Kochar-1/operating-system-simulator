@@ -5,6 +5,20 @@ import { NextResponse } from "next/server";
 export async function GET(request: Request) {
     try {
         const userId = request.headers.get('userId');
+        const user = await prisma.user.findUnique({
+            where: {
+                id: userId!,
+            },
+        });
+
+        if (!user) {
+            return NextResponse.json(createResponse({
+                error: "User not found",
+                statusMessage: "User not found"
+            }), { status: 404 });
+        }
+
+
         const notes = await prisma.stickyNote.findMany({
             where: {
                 userId: userId!,
