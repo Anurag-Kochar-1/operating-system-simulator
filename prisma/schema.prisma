@@ -19,14 +19,15 @@ enum Theme {
 }
 
 model User {
-  id        String    @id @default(uuid())
-  name      String
-  email     String    @unique
-  password  String
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
-  settings  Settings?
-  type      UserType  @default(USER)
+  id         String       @id @default(uuid())
+  name       String
+  email      String       @unique
+  password   String
+  createdAt  DateTime     @default(now())
+  updatedAt  DateTime     @updatedAt
+  settings   Settings?
+  type       UserType     @default(USER)
+  StickyNote StickyNote[]
 }
 
 model Settings {
@@ -47,4 +48,15 @@ model Wallpaper {
   createdAt        DateTime   @default(now())
   Settings         Settings[]
   recommendedTheme Theme      @default(DARK)
+}
+
+model StickyNote {
+  id              String   @id @default(uuid())
+  content         String   @default("Hey there 👋 ")
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  userId          String
+  user            User     @relation(fields: [userId], references: [id])
+  backgroundColor String   @default("#fff")
+  textColor       String   @default("#000")
 }

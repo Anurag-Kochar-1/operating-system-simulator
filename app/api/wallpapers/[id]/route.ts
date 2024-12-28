@@ -23,7 +23,6 @@ export async function GET(
     } catch (error) {
         return NextResponse.json(createResponse({
             error: "Failed to fetch wallpaper",
-
             statusMessage: "Failed to fetch wallpaper"
         }), { status: 500 });
     }

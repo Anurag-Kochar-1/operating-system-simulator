@@ -62,6 +62,15 @@ export async function POST(
       },
     })
 
+    await prisma.stickyNote.create({
+      data: {
+        userId: user.id,
+        content: "Hey there 👋\nWelcome to your first sticky note!",
+        backgroundColor: "#fff",
+        textColor: "#000"
+      },
+    });
+
     await prisma.settings.create({
       data: {
         userId: user.id,
