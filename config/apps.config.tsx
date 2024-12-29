@@ -45,13 +45,13 @@ export const APPS: App[] = [
     content: <StickyNotesAppContent />,
     icon: "sticky-notes",
   },
-  {
-    id: "task-manager",
-    title: "Task Manager",
-    content: <TaskManagerAppContent />,
-    icon: "file",
-    isOnDesktop: false,
-  },
+  // {
+  //   id: "task-manager",
+  //   title: "Task Manager",
+  //   content: <TaskManagerAppContent />,
+  //   icon: "file",
+  //   isOnDesktop: false,
+  // },
   {
     id: "settings",
     title: "Settings",

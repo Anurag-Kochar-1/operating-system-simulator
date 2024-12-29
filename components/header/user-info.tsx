@@ -13,9 +13,13 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { ExternalLink, User } from "lucide-react";
+import { useApp } from "@/stores/use-app";
+import { useSettingsStore } from "@/stores/use-settings";
+import { APP_TYPES } from "@/constants/app-types.enum";
 
 export function UserInfo() {
-  const { isAuthenticated, user } = useAuth();
+  const addWindow = useApp((state) => state.addWindow);
+  const setActiveTab = useSettingsStore((state) => state.setActiveTab);
   const { mutate: logout, isPending } = useLogout();
   useCheckAuth();
 
@@ -30,10 +34,45 @@ export function UserInfo() {
       <DropdownMenuContent>
         <DropdownMenuLabel>My Account</DropdownMenuLabel>
         <DropdownMenuSeparator />
-        <DropdownMenuItem>Settings</DropdownMenuItem>
-        <DropdownMenuItem onClick={() => window.open(`https://github.com/Anurag-Kochar-1/operating-system-simulator`)}>Github <ExternalLink size={5} /> </DropdownMenuItem>
+        <DropdownMenuItem
+          onClick={() => {
+            setActiveTab({ id: "profile", title: "Profile" });
+            addWindow({
+              id: "settings",
+              title: "Settings",
+              type: APP_TYPES.APP,
+            });
+          }}
+        >
+          Profile
+        </DropdownMenuItem>
+        <DropdownMenuItem
+          onClick={() => {
+            setActiveTab({ id: "about", title: "About" });
+            addWindow({
+              id: "settings",
+              title: "Settings",
+              type: APP_TYPES.APP,
+            });
+          }}
+        >
+          Settings
+        </DropdownMenuItem>
+        <DropdownMenuItem
+          onClick={() =>
+            window.open(
+              `https://github.com/Anurag-Kochar-1/operating-system-simulator`,
+            )
+          }
+        >
+          Github <ExternalLink size={5} />{" "}
+        </DropdownMenuItem>
         <DropdownMenuSeparator />
-        <DropdownMenuItem onClick={() => logout()} disabled={isPending} className="text-destructive">
+        <DropdownMenuItem
+          onClick={() => logout()}
+          disabled={isPending}
+          className="text-destructive"
+        >
           {isPending ? "Logging out..." : "Log out"}
         </DropdownMenuItem>
       </DropdownMenuContent>

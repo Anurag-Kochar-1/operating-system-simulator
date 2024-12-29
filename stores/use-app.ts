@@ -29,6 +29,9 @@ type State = {
 
   isWindowDragging: boolean;
   setIsWindowDragging: (data: boolean) => void;
+
+  isSearchCommandOpen: boolean;
+  setIsSearchCommandOpen: (data: boolean) => void;
 };
 
 export const useApp = create<State>()(
@@ -85,5 +88,10 @@ export const useApp = create<State>()(
     isWindowDragging: false,
     setIsWindowDragging(data) {
       set({ isWindowDragging: data });
+    },
+
+    isSearchCommandOpen: false,
+    setIsSearchCommandOpen(data) {
+      set({ isSearchCommandOpen: data });
     },
   }));

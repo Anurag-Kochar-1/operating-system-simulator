@@ -11,9 +11,10 @@ import { AuthWrapper } from "@/components/auth-wrapper";
 import { Toaster } from "@/components/ui/toaster";
 import { SettingsProvider } from "@/providers/settings";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { SearchCommand } from "@/components/search-command";
 
 const DATA = {
-  name: "OS | Anurag Kochar",
+  name: "OS",
   description: "Web-based Operating System Simulator",
   url: "http://os.anuragkochar.com/",
 } as const;
@@ -71,7 +72,10 @@ export default function RootLayout({
           >
             <TooltipProvider delayDuration={0}>
               <AuthWrapper>
-                <SettingsProvider>{children}</SettingsProvider>
+                <SettingsProvider>
+                  {children}
+                  <SearchCommand />
+                </SettingsProvider>
               </AuthWrapper>
               <Toaster />
             </TooltipProvider>
