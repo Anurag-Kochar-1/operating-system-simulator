@@ -1,6 +1,6 @@
 "use client";
-import { useApp } from "@/hooks/use-app";
-import React, { useEffect, useState } from "react";
+import { useApp } from "@/stores/use-app";
+import React, { useEffect, useMemo, useState } from "react";
 import Draggable from "react-draggable";
 import { APP_TYPES } from "../../constants/app-types.enum";
 import useMediaQuery from "@/hooks/use-media-query";
@@ -92,9 +92,15 @@ const Window: React.FC<WindowProps> = ({ id, title, type }) => {
       <div
         style={{
           position: "absolute",
-          width: `${!isDesktop ? 100 : width}%`,
-          height: `${!isDesktop ? 100 : height}%`,
-          opacity: isPositioned ? 1 : 0, // Add this
+          ...(id !== "calculator" &&
+            id !== "sticky-notes" && {
+              width: `${isDesktop ? width : 100}%`,
+            }),
+          ...(id !== "calculator" &&
+            id !== "sticky-notes" && {
+              height: `${isDesktop ? height : 100}%`,
+            }),
+          opacity: isPositioned ? 1 : 0,
           transition: "opacity 0.2s",
         }}
         onClick={() => setFocusedWindow({ id, title, type })}
@@ -128,7 +134,12 @@ const Window: React.FC<WindowProps> = ({ id, title, type }) => {
           className={cn(
             "flex h-full w-full items-start justify-start overflow-y-auto overflow-x-hidden p-4",
             {
-              "p-0": title === "Browser",
+              "p-0":
+                id === "paint" ||
+                id === "sticky-notes" ||
+                id === "portfolio" ||
+                id === "browser" ||
+                id === "settings",
             },
           )}
         >

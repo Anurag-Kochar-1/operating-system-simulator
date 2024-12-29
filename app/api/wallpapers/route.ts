@@ -9,14 +9,22 @@ export async function GET() {
             orderBy: { createdAt: 'desc' },
         });
 
-        return NextResponse.json(wallpapers);
+        return NextResponse.json(createResponse({
+            data: wallpapers,
+            statusMessage: "Wallpaper fetched successfully"
+        }), {
+            status: 200
+        });
+
     } catch (error) {
         console.error('Error fetching wallpapers:', error);
         return NextResponse.json(createResponse({
             error: "Failed to fetch wallpapers",
-            statusCode: 500,
+
             statusMessage: "Failed to fetch wallpapers"
-        }))
+        }), {
+            status: 500
+        })
     }
 }
 
@@ -46,14 +54,16 @@ export async function POST(request: NextRequest) {
 
         return NextResponse.json(createResponse({
             data: wallpaper,
-            statusCode: 201,
             statusMessage: "Wallpaper created successfully"
-        }));
+        }), {
+            status: 201
+        });
     } catch (error) {
         return NextResponse.json(createResponse({
             error: "Failed to create wallpaper",
-            statusCode: 500,
             statusMessage: "Failed to create wallpaper"
-        }))
+        }), {
+            status: 500
+        })
     }
 }

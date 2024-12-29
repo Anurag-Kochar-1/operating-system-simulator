@@ -1,93 +1,61 @@
-import { BlogsAppContent } from "@/components/apps/blogs";
+import { CalculatorAppContent } from "@/components/apps/calculator";
 import { GameAppContent } from "@/components/apps/game";
 import { PaintAppContent } from "@/components/apps/paint";
-import { ProjectsAppContent } from "@/components/apps/projects";
-import { ResumeAppContent } from "@/components/apps/resume";
-import { SkillsAppContent } from "@/components/apps/skills";
-import { WallpapersAppContent } from "@/components/apps/wallpapers";
+import { PortfolioAppContent } from "@/components/apps/portfolio";
 import { App } from "@/types";
-import { Folder, Gamepad2, PaintBucket, Globe } from "lucide-react";
+import { StickyNotesAppContent } from "@/components/apps/sticky-note";
+import { BrowserAppContent } from "@/components/apps/browser";
+import { TaskManagerAppContent } from "@/components/apps/task-manager";
+import { SettingsAppContent } from "@/components/apps/settings";
 
 export const APPS: App[] = [
-  // {
-  //   id: "about",
-  //   title: "About",
-  //   icon: <Folder size={50} />,
-  //   content: <AboutMeAppContent />,
-  // },
   {
-    id: "skills",
-    title: "Skills",
-    icon: <Folder size={50} />,
-    content: <SkillsAppContent />,
+    id: "portfolio",
+    title: "Portfolio",
+    content: <PortfolioAppContent />,
+    icon: "briefcase",
   },
-  {
-    id: "projects",
-    title: "Projects",
-    icon: <Folder size={50} />,
-    content: <ProjectsAppContent />,
-  },
-  {
-    id: "resume",
-    title: "Resume",
-    icon: <Folder size={50} />,
-    content: <ResumeAppContent />,
-  },
-  // {
-  //   id: "games",
-  //   title: "Games",
-  //   icon: <Folder size={50} />,
-  //   content: <GamesAppContent />,
-  // },
-  {
-    id: "blogs",
-    title: "Blogs",
-    icon: <Folder size={50} />,
-    content: <BlogsAppContent />,
-  },
-  // {
-  //   id: "camera",
-  //   title: "Camera",
-  //   icon: <Camera size={50} />,
-  //   content: <CameraAppContent />,
-  // },
   {
     id: "browser",
     title: "Browser",
-    icon: <Globe size={50} />,
-    // content: <Browser />
-    content: (
-      <iframe
-        src={"https://www.google.com/webhp?igu=1"}
-        className="h-full w-full"
-        id="chrome-screen"
-        title="chrome-url"
-      ></iframe>
-    ),
+    content: <BrowserAppContent />,
+    icon: "browser",
   },
   {
     id: "paint",
     title: "Paint",
-    icon: <PaintBucket size={50} />,
     content: <PaintAppContent />,
+    icon: "paint",
   },
   {
     id: "car-game",
     title: "Game",
-    icon: <Gamepad2 size={50} />,
     content: <GameAppContent />,
+    icon: "game",
   },
-  // {
-  //   id: "studyMateral",
-  //   title: "Study Materal",
-  //   icon: <Folder size={50} />,
-  //   content: <StudyMaterialAppContent />,
-  // },
   {
-    id: "wallpapers",
-    title: "Wallpapers",
-    icon: <Folder size={50} />,
-    content: <WallpapersAppContent />,
+    id: "calculator",
+    title: "Calculator",
+    content: <CalculatorAppContent />,
+    icon: "calculator",
+  },
+  {
+    id: "sticky-notes",
+    title: "Note",
+    content: <StickyNotesAppContent />,
+    icon: "sticky-notes",
+  },
+  {
+    id: "task-manager",
+    title: "Task Manager",
+    content: <TaskManagerAppContent />,
+    icon: "file",
     isOnDesktop: false,
+  },
+  {
+    id: "settings",
+    title: "Settings",
+    content: <SettingsAppContent />,
+    icon: "gear",
   },
 ];

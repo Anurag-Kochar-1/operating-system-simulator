@@ -1,11 +1,16 @@
 import "./globals.css";
-import { ThemeProvider } from "@/providers/theme-provider";
+import { ThemeProvider } from "@/providers/theme";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 const inter = Inter({ subsets: ["latin"] });
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import Script from "next/script";
+import TanstackReactQueryProvider from "@/providers/tanstack-react-query";
+import { AuthWrapper } from "@/components/auth-wrapper";
+import { Toaster } from "@/components/ui/toaster";
+import { SettingsProvider } from "@/providers/settings";
+import { TooltipProvider } from "@/components/ui/tooltip";
 
 const DATA = {
   name: "OS | Anurag Kochar",
@@ -57,17 +62,26 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} overflow-hidden`}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          {children}
-        </ThemeProvider>
-        <Analytics />
-        <SpeedInsights />
-        {/* <Script src="https://unpkg.com/react-scan/dist/auto.global.js"></Script> */}
+        <TanstackReactQueryProvider>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="dark"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <TooltipProvider delayDuration={0}>
+              <AuthWrapper>
+                <SettingsProvider>{children}</SettingsProvider>
+              </AuthWrapper>
+              <Toaster />
+            </TooltipProvider>
+          </ThemeProvider>
+          <Analytics />
+          <SpeedInsights />
+          {/* {process.env.NODE_ENV !== "production" && (
+            <Script src="https://unpkg.com/react-scan/dist/auto.global.js"></Script>
+          )} */}
+        </TanstackReactQueryProvider>
       </body>
     </html>
   );

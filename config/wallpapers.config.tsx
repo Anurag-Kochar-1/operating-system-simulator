@@ -1,4 +1,5 @@
 import { Wallpaper } from "@/types";
+import Image from "next/image";
 
 export const WALLPAPERS: Wallpaper[] = [
   {
@@ -221,6 +222,38 @@ export const WALLPAPERS: Wallpaper[] = [
         <rect x="0" y="0" fill="url(#a)" width="100%" height="100%" />
         <rect x="0" y="0" fill="url(#b)" width="100%" height="100%" />
       </svg>
+    ),
+  },
+  {
+    compatibleTheme: "dark",
+    name: "3",
+    thumbnail: "https://wallpapercave.com/wp/wp6705749.jpg",
+    url: (
+      <div>
+        <Image
+          src={"https://wallpapercave.com/wp/wp6705749.jpg"}
+          width={1000}
+          height={1000}
+          alt="mountains wallpaper"
+          className="absolute inset-0 z-10 h-full w-full object-cover object-center"
+        />
+      </div>
+    ),
+  },
+  {
+    compatibleTheme: "dark",
+    name: "4",
+    thumbnail: "https://wallpapercave.com/wp/wp13456025.jpg",
+    url: (
+      <div>
+        <Image
+          src={"https://wallpapercave.com/wp/wp13456025.jpg"}
+          width={1000}
+          height={1000}
+          alt="mountains wallpaper"
+          className="absolute inset-0 z-10 h-full w-full object-cover object-center"
+        />
+      </div>
     ),
   },
 ];

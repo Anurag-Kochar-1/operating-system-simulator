@@ -89,12 +89,24 @@ const config = {
           "20%, 24%, 55%": {
             boxShadow: "none",
           },
+
         },
+        raindrops: {
+          '0%': { transform: 'translateY(-100%)' },
+          '100%': { transform: 'translateY(1000%)' }
+        },
+        float: {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-10px)' }
+        }
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         flicker: "flicker 1.5s infinite alternate",
+        'spin-slow': 'spin 5s linear infinite',
+        'raindrops': 'raindrops 1.5s linear infinite',
+        'float': 'float 3s ease-in-out infinite'
       },
     },
   },

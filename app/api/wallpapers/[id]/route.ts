@@ -14,18 +14,17 @@ export async function GET(
         if (!wallpaper) {
             return NextResponse.json(createResponse({
                 error: "Wallpaper not found",
-                statusCode: 404,
+
                 statusMessage: "Wallpaper not found"
-            }));
+            }), { status: 404 });
         }
 
         return NextResponse.json(wallpaper);
     } catch (error) {
         return NextResponse.json(createResponse({
             error: "Failed to fetch wallpaper",
-            statusCode: 500,
             statusMessage: "Failed to fetch wallpaper"
-        }))
+        }), { status: 500 });
     }
 }
 
@@ -34,7 +33,6 @@ export async function DELETE(
     { params }: { params: { id: string } }
 ) {
     try {
-        // Check if wallpaper is in use
         const settingsUsingWallpaper = await prisma.settings.findFirst({
             where: { wallpaperId: params.id },
         });
@@ -42,9 +40,8 @@ export async function DELETE(
         if (settingsUsingWallpaper) {
             return NextResponse.json(createResponse({
                 error: "Wallpaper is currently in use",
-                statusCode: 400,
                 statusMessage: "Wallpaper is currently in use"
-            }))
+            }), { status: 400 })
 
         }
 
@@ -54,18 +51,18 @@ export async function DELETE(
 
         return NextResponse.json(createResponse({
             error: "Wallpaper deleted successfully",
-            statusCode: 200,
             statusMessage: "Wallpaper deleted successfully"
-        }))
+        }), { status: 200 })
 
 
     } catch (error) {
         console.error('Error deleting wallpaper:', error);
         return NextResponse.json(createResponse({
             error: "Failed to delete wallpaper",
-            statusCode: 500,
             statusMessage: "Failed to delete wallpaper"
-        }))
+        }), {
+            status: 500
+        })
 
     }
 }

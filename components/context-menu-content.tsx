@@ -1,42 +1,74 @@
 "use client";
-import React from "react";
 import {
   ContextMenuContent,
   ContextMenuItem,
 } from "@/components/ui/context-menu";
-import { useTheme } from "next-themes";
-import { Image, Moon, RefreshCcw, Sun } from "lucide-react";
-import { useApp } from "@/hooks/use-app";
+import { Copy, Image as ImageIcon, RefreshCcw, BarChart } from "lucide-react";
+import { useApp } from "@/stores/use-app";
+import { APP_TYPES } from "@/constants/app-types.enum";
+import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard";
+import { useSettingsStore } from "@/stores/use-settings";
 export const ContextMenuContentOptions = () => {
-  const { addWindow } = useApp();
-  const { theme, setTheme } = useTheme();
-  const toggleTheme = () => {
-    if (theme === "light") {
-      setTheme("dark");
-    } else {
-      setTheme("light");
-    }
-  };
+  const addWindow = useApp((state) => state.addWindow);
+  const setActiveSidebarNavTab = useSettingsStore(
+    (state) => state.setActiveTab,
+  );
+  const { copyToClipboard } = useCopyToClipboard();
+
   return (
     <ContextMenuContent>
-      <ContextMenuItem onClick={toggleTheme} className="gap-2">
-        {theme === "light" ? <Moon size={15} /> : <Sun size={15} />}
-        Use {theme === "light" ? "dark" : "light"} mode
-      </ContextMenuItem>
       <ContextMenuItem
-        onClick={() =>
-          addWindow({ id: "wallpapers", title: "Wallpapers", type: "APP" })
-        }
+        onClick={() => {
+          setActiveSidebarNavTab({ id: "wallpaper", title: "Wallpaper" });
+          addWindow({
+            id: "settings",
+            title: "Settings",
+            type: APP_TYPES.APP,
+          });
+        }}
         className="gap-2"
       >
         {/* eslint-disable-next-line jsx-a11y/alt-text */}
-        <Image size={15} />
+        <ImageIcon size={15} />
         Change wallpaper
       </ContextMenuItem>
-      <ContextMenuItem className="gap-2" onClick={() => window.location.reload()}>
+      <ContextMenuItem
+        className="gap-2"
+        onClick={() => window.location.reload()}
+      >
         <RefreshCcw size={15} />
         Refresh
       </ContextMenuItem>
+      <ContextMenuItem
+        className="gap-2"
+        onClick={() => copyToClipboard(window.location.href)}
+      >
+        <Copy size={15} />
+        Share
+      </ContextMenuItem>
+      <ContextMenuItem
+        className="gap-2"
+        onClick={() =>
+          addWindow({
+            id: "task-manager",
+            title: "Task Manager",
+            type: APP_TYPES.APP,
+          })
+        }
+      >
+        <BarChart size={15} />
+        Task Manager
+      </ContextMenuItem>
+      {/* <ContextMenuSub>
+        <ContextMenuSubTrigger className="gap-2">
+          <Plus size={15} />
+          Add
+        </ContextMenuSubTrigger>
+        <ContextMenuSubContent className="w-48">
+          <ContextMenuItem onClick={addFolder}>Folder</ContextMenuItem>
+          <ContextMenuItem onClick={addFile}>Text Document</ContextMenuItem>
+        </ContextMenuSubContent>
+      </ContextMenuSub> */}
     </ContextMenuContent>
   );
 };

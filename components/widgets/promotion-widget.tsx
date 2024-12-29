@@ -12,7 +12,7 @@ export const PromotionWidget = () => {
         src={`https://static.vecteezy.com/system/resources/previews/027/395/710/original/twitter-brand-new-logo-3-d-with-new-x-shaped-graphic-of-the-world-s-most-popular-social-media-free-png.png`}
         alt="x-logo"
         priority
-        className="aspect-square w-12 "
+        className="aspect-square w-12"
         width={150}
         height={150}
       />

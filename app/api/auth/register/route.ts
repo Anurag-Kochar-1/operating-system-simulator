@@ -6,12 +6,15 @@ import prisma from '@/lib/db'
 import { hashPassword } from '@/utils/password'
 import { ApiResponse, createResponse } from '@/utils/api-response'
 import { UserType } from '@prisma/client'
+import { cookies } from 'next/headers'
 
 const registerSchema = z.object({
   name: z.string().min(2, 'Name must be at least 2 characters'),
   email: z.string().email('Invalid email address'),
   password: z.string().min(6, 'Password must be at least 6 characters'),
 })
+
+export const dynamic = 'force-dynamic'
 
 export async function POST(
   request: NextRequest
@@ -24,8 +27,8 @@ export async function POST(
       return NextResponse.json(createResponse({
         error: validation.error.errors[0].message,
         statusMessage: validation.error.errors[0].message,
-        statusCode: 400
-      }))
+      }), { status: 400 })
+
     }
 
     const existingUser = await prisma.user.findUnique({
@@ -36,9 +39,11 @@ export async function POST(
       return NextResponse.json(
         createResponse({
           error: 'User already exists',
-          statusCode: 400,
           statusMessage: 'User already exists'
-        })
+        }),
+        {
+          status: 400
+        }
       )
     }
 
@@ -54,32 +59,54 @@ export async function POST(
         id: true,
         name: true,
         email: true,
+        type: true,
       },
     })
+
+    await prisma.stickyNote.create({
+      data: {
+        userId: user.id,
+        content: "Hey there 👋\nWelcome to your first sticky note!",
+        theme: "amber"
+      },
+    });
 
     await prisma.settings.create({
       data: {
         userId: user.id,
-        theme: 'dark',
         wallpaperId: null,
       },
     })
 
+
     const token = await signJWT({ userId: user.id })
+
+    cookies().set({
+      name: 'token',
+      value: token,
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'lax',
+      path: '/',
+    })
+
+
     return NextResponse.json(createResponse({
-      statusCode: 201,
       statusMessage: "Account created successfully",
       data: {
-        token
+        token,
+        user
       }
-    }))
+    }), { status: 201 })
   } catch (error) {
     return NextResponse.json(
       createResponse({
         error: 'Input validation failed',
-        statusCode: 400,
         statusMessage: 'Input validation failed'
-      })
+      }),
+      {
+        status: 400
+      }
     )
   }
 }

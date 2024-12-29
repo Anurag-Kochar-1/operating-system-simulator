@@ -3,15 +3,17 @@ import prisma from '@/lib/db';
 import { z } from 'zod';
 import { createResponse } from '@/utils/api-response';
 
+export const dynamic = 'force-dynamic'
 export async function GET(request: NextRequest) {
     try {
         const userId = request.headers.get('userId');
         if (!userId) {
             return NextResponse.json(createResponse({
                 error: "Unauthorized",
-                statusCode: 401,
                 statusMessage: "Unauthorized"
-            }));
+            }), {
+                status: 401
+            });
         }
 
         const settings = await prisma.settings.findUnique({
@@ -31,7 +33,6 @@ export async function GET(request: NextRequest) {
             const defaultSettings = await prisma.settings.create({
                 data: {
                     userId,
-                    theme: 'dark',
                 },
                 include: {
                     wallpaper: {
@@ -45,28 +46,28 @@ export async function GET(request: NextRequest) {
             });
             return NextResponse.json(createResponse({
                 data: defaultSettings,
-                statusCode: 201,
+
                 statusMessage: "Default setting Created",
-            }))
+            }), { status: 201 })
         }
 
         return NextResponse.json(createResponse({
             data: settings,
-            statusCode: 200,
+
             statusMessage: "Settings retrieved successfully"
-        }));
+        }), { status: 200 });
     } catch (error) {
         console.error('Error fetching settings:', error);
         return NextResponse.json(createResponse({
             error: "Failed to fetch settings",
-            statusCode: 400,
+
             statusMessage: "Failed to fetch settings"
-        }))
+        }), { status: 400 })
     }
 }
 
 const updateSettingsSchema = z.object({
-    theme: z.enum(['dark', 'light']).optional(),
+    theme: z.enum(['DARK', 'LIGHT']).optional(), 
     wallpaperId: z.string().uuid().nullable().optional(),
 });
 
@@ -75,10 +76,10 @@ export async function PATCH(request: NextRequest) {
         const userId = request.headers.get('userId');
         if (!userId) {
             return NextResponse.json(createResponse({
-                statusCode: 401,
+
                 statusMessage: "Unauthorized",
                 error: "Unauthorized"
-            }))
+            }), { status: 401 })
         }
 
         const body = await request.json();
@@ -88,8 +89,7 @@ export async function PATCH(request: NextRequest) {
             return NextResponse.json(createResponse({
                 error: validation.error.errors[0].message,
                 statusMessage: validation.error.errors[0].message,
-                statusCode: 400
-            }))
+            }), { status: 400 })
         }
 
         if (body.wallpaperId) {
@@ -101,8 +101,8 @@ export async function PATCH(request: NextRequest) {
                 return NextResponse.json(createResponse({
                     error: "Wallpaper not found",
                     statusMessage: "Wallpaper not found",
-                    statusCode: 400
-                }))
+
+                }), { status: 400 })
 
             }
         }
@@ -111,11 +111,9 @@ export async function PATCH(request: NextRequest) {
             where: { userId },
             create: {
                 userId,
-                theme: body.theme || 'dark',
                 wallpaperId: body.wallpaperId,
             },
             update: {
-                theme: body.theme,
                 wallpaperId: body.wallpaperId,
             },
             include: {
@@ -131,14 +129,17 @@ export async function PATCH(request: NextRequest) {
 
         return NextResponse.json(createResponse({
             data: updatedSettings,
-            statusCode: 200,
+
             statusMessage: "Settings updated successfully"
-        }));
+        }), { status: 200 });
     } catch (error) {
         console.error('Error updating settings:', error);
         return NextResponse.json(
-            { error: 'Failed to update settings' },
-            { status: 500 }
-        );
+            createResponse({
+                error: 'Failed to update settings',
+                statusMessage: 'Failed to update settings'
+            }), {
+            status: 500
+        })
     }
 }

@@ -6,7 +6,8 @@ import {
   MenubarMenu,
   MenubarTrigger,
 } from "@/components/ui/menubar";
-import { useApp } from "@/hooks/use-app";
+import { APP_TYPES } from "@/constants/app-types.enum";
+import { useApp } from "@/stores/use-app";
 
 export function Menu() {
   const addWindow = useApp((state) => state.addWindow);
@@ -26,7 +27,7 @@ export function Menu() {
       addWindow({
         id: window.id,
         title: window.title,
-        type: "APP",
+        type: APP_TYPES.APP,
       });
     } else {
       alert("Error!");
