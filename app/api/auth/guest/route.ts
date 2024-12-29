@@ -40,6 +40,14 @@ export async function POST(
             },
         })
 
+        await prisma.stickyNote.create({
+            data: {
+                userId: user.id,
+                content: "Hey there 👋\nWelcome to your first sticky note!",
+                theme: "amber",
+            },
+        });
+
         const token = await signJWT({ userId: user.id })
 
         const response = NextResponse.json(

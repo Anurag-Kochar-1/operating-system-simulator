@@ -140,3 +140,10 @@ export type Wallpaper = {
   compatibleTheme: "light" | "dark";
 };
 
+
+
+export type StickyNoteTheme = {
+  id: string;
+  textColor: string;
+  backgroundColor: string;
+}

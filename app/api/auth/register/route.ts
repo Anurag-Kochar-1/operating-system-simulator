@@ -66,8 +66,7 @@ export async function POST(
       data: {
         userId: user.id,
         content: "Hey there 👋\nWelcome to your first sticky note!",
-        backgroundColor: "#fff",
-        textColor: "#000"
+        theme: "amber"
       },
     });
 

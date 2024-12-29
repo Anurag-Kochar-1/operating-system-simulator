@@ -10,6 +10,7 @@ import TanstackReactQueryProvider from "@/providers/tanstack-react-query";
 import { AuthWrapper } from "@/components/auth-wrapper";
 import { Toaster } from "@/components/ui/toaster";
 import { SettingsProvider } from "@/providers/settings";
+import { TooltipProvider } from "@/components/ui/tooltip";
 
 const DATA = {
   name: "OS | Anurag Kochar",
@@ -68,10 +69,12 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            <AuthWrapper>
-              <SettingsProvider>{children}</SettingsProvider>
-            </AuthWrapper>
-            <Toaster />
+            <TooltipProvider delayDuration={0}>
+              <AuthWrapper>
+                <SettingsProvider>{children}</SettingsProvider>
+              </AuthWrapper>
+              <Toaster />
+            </TooltipProvider>
           </ThemeProvider>
           <Analytics />
           <SpeedInsights />

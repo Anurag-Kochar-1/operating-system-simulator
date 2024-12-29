@@ -1,3 +1,4 @@
+import { STICKY_NOTE_THEMES } from "@/constants/sticky-note-palette";
 import prisma from "@/lib/db";
 import { createResponse } from "@/utils/api-response";
 import { NextResponse } from "next/server";
@@ -15,20 +16,29 @@ export async function PATCH(
             return NextResponse.json({ error: "Invalid or empty request body" }, { status: 400 });
         }
 
-        const { content } = body || {};
+        const { content, theme } = body || {};
 
-        if (!content || typeof content !== 'string') {
+        if (!content && !theme) {
             return NextResponse.json(createResponse({
-                error: "Content is required and must be a string",
+                error: "Content or Theme is required and must be a string",
                 statusMessage: "Content is required and must be a string"
             }), { status: 404 });
         }
 
-        if (content.length > 1000) {
+        if (content && content.length > 1000) {
             return NextResponse.json(createResponse({
                 error: "Content is too long!",
                 statusMessage: "Content is too long!"
             }), { status: 404 });
+        }
+
+        if (theme) {
+            if (!STICKY_NOTE_THEMES.map((item) => item.id).includes(theme)) {
+                return NextResponse.json(createResponse({
+                    error: "Invalid theme",
+                    statusMessage: "Invalid theme"
+                }), { status: 404 });
+            }
         }
 
         const note = await prisma.stickyNote.findUnique({
@@ -45,20 +55,21 @@ export async function PATCH(
             }), { status: 404 });
         }
 
-        const updatedNote = await prisma.stickyNote.update({
+        await prisma.stickyNote.update({
             where: {
                 id: params.id,
                 userId: userId!,
             },
             data: {
                 content,
+                theme
             },
         });
 
         return NextResponse.json(createResponse({
             data: "updatedNote",
             statusMessage: "Note updated successfully",
-        }), { status: 201 });
+        }), { status: 200 });
     } catch (error) {
         console.error("Error updating note:", error);
         return NextResponse.json(createResponse({
