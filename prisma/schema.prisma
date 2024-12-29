@@ -50,7 +50,7 @@ model StickyNote {
 model Quote {
   id        String   @id @default(uuid())
   content   String   @default("...")
-  author    String
+  author    String   @default("Anonymous")
   createdAt DateTime @default(now())
   updatedAt DateTime
 }

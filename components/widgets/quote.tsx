@@ -22,7 +22,7 @@ export const QuoteWidget = () => {
             {quote?.content}
           </blockquote>
           <cite className="font-sans text-sm not-italic transition-opacity duration-500 ease-in-out hover:opacity-80 md:text-lg">
-            — {quote?.by}
+            — {quote?.author}
           </cite>
         </div>
       </CardContent>
