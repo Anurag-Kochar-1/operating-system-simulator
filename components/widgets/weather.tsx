@@ -44,7 +44,7 @@ export async function WeatherWidget() {
   const weatherCondition = truncateText(weatherData.current.condition.text, 20);
 
   return (
-    <div className="relative w-full overflow-hidden rounded-2xl bg-gradient-to-r from-blue-300 to-blue-800 p-6 backdrop-blur-lg">
+    <div className="relative w-full rounded-2xl bg-gradient-to-r from-blue-300 to-blue-800 p-6 backdrop-blur-lg">
       <div className="absolute inset-0 overflow-hidden">
         {weatherData.current.condition.text.toLowerCase().includes("cloud") && (
           <div className="absolute inset-0">

@@ -114,9 +114,9 @@ export const BrowserToolbar = () => {
         variant="outline"
         size="icon"
         onClick={handleRefresh}
-        className={`h-8 w-8 ${isRefreshing ? "animate-spin" : ""}`}
+        className={`h-8 w-8 `}
       >
-        <RotateCw className="h-4 w-4" />
+        <RotateCw className={`h-4 w-4 ${isRefreshing ? "animate-spin" : ""}`} />
       </Button>
 
       <form onSubmit={handleSubmit(onSubmit)} className="flex-1">

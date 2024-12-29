@@ -7,6 +7,54 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model User {
+  id         String       @id @default(uuid())
+  name       String
+  email      String       @unique
+  password   String
+  createdAt  DateTime     @default(now())
+  updatedAt  DateTime     @updatedAt
+  type       UserType     @default(USER)
+  settings   Settings?
+  StickyNote StickyNote[]
+}
+
+model Settings {
+  id          String     @id @default(uuid())
+  userId      String     @unique
+  wallpaperId String?
+  updatedAt   DateTime   @updatedAt
+  user        User       @relation(fields: [userId], references: [id])
+  wallpaper   Wallpaper? @relation(fields: [wallpaperId], references: [id])
+}
+
+model Wallpaper {
+  id               String     @id @default(uuid())
+  name             String
+  thumbnail        String
+  createdAt        DateTime   @default(now())
+  recommendedTheme Theme      @default(DARK)
+  Settings         Settings[]
+}
+
+model StickyNote {
+  id        String   @id @default(uuid())
+  content   String   @default("Hey there 👋 ")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  userId    String
+  theme     String   @default("amber")
+  user      User     @relation(fields: [userId], references: [id])
+}
+
+model Quote {
+  id        String   @id @default(uuid())
+  content   String   @default("...")
+  author    String
+  createdAt DateTime @default(now())
+  updatedAt DateTime
+}
+
 enum UserType {
   ADMIN
   USER
@@ -16,46 +64,4 @@ enum UserType {
 enum Theme {
   DARK
   LIGHT
-}
-
-model User {
-  id         String       @id @default(uuid())
-  name       String
-  email      String       @unique
-  password   String
-  createdAt  DateTime     @default(now())
-  updatedAt  DateTime     @updatedAt
-  settings   Settings?
-  type       UserType     @default(USER)
-  StickyNote StickyNote[]
-}
-
-model Settings {
-  id     String @id @default(uuid())
-  userId String @unique
-  user   User   @relation(fields: [userId], references: [id])
-
-  wallpaperId String?
-  wallpaper   Wallpaper? @relation(fields: [wallpaperId], references: [id])
-
-  updatedAt DateTime @updatedAt
-}
-
-model Wallpaper {
-  id               String     @id @default(uuid())
-  name             String
-  thumbnail        String
-  createdAt        DateTime   @default(now())
-  Settings         Settings[]
-  recommendedTheme Theme      @default(DARK)
-}
-
-model StickyNote {
-  id        String   @id @default(uuid())
-  content   String   @default("Hey there 👋 ")
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  userId    String
-  user      User     @relation(fields: [userId], references: [id])
-  theme     String   @default("amber")
 }
