@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Brush, Circle, Eraser, Square } from "lucide-react";
-import { usePaintStore } from "@/store/use-paint";
+import { usePaintStore } from "@/stores/use-paint";
 
 export function DrawingTools() {
   const {

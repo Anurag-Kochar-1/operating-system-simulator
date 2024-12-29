@@ -1,5 +1,5 @@
 "use client";
-import { useApp } from "@/store/use-app";
+import { useApp } from "@/stores/use-app";
 import React from "react";
 import Window from "../window";
 import { APP_TYPES } from "../../constants/app-types.enum";

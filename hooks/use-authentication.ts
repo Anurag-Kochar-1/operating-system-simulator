@@ -1,7 +1,7 @@
 
 import { useMutation } from '@tanstack/react-query'
 import { api } from '@/lib/axios'
-import { useAuth } from '@/store/use-auth'
+import { useAuth } from '@/stores/use-auth'
 import { useRouter } from 'next/navigation'
 import { toast } from '@/hooks/use-toast'
 import { AuthResponse, LoginRequest, RegisterRequest } from '@/types/auth'

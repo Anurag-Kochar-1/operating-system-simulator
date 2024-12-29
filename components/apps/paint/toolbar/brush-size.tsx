@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Slider } from "@/components/ui/slider";
-import { usePaintStore } from "@/store/use-paint";
+import { usePaintStore } from "@/stores/use-paint";
 
 export function BrushSize() {
   const {

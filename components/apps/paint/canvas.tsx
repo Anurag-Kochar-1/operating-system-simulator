@@ -2,7 +2,7 @@
 
 import { forwardRef, useEffect, useRef } from "react";
 import { useTheme } from "next-themes";
-import { usePaintStore } from "@/store/use-paint";
+import { usePaintStore } from "@/stores/use-paint";
 
 export const Canvas = forwardRef<HTMLCanvasElement>((_, ref) => {
   const { theme } = useTheme();

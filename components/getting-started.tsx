@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { useGuestLogin } from "@/hooks/use-authentication";
-import { useAuth } from "@/store/use-auth";
+import { useAuth } from "@/stores/use-auth";
 import { RegisterModal } from "./register-modal";
 import { LoginModal } from "./login-modal";
 import useMediaQuery from "@/hooks/use-media-query";

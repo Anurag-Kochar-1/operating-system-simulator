@@ -6,6 +6,7 @@ import {
   File,
   Folder,
   Gamepad2,
+  Globe,
   StickyNote,
 } from "lucide-react";
 
@@ -25,6 +26,8 @@ export const getIcon = (icon: IconType) => {
       return <Briefcase size={50} />;
     case "sticky-notes":
       return <StickyNote size={50} />;
+    case "browser":
+      return <Globe size={50} />;
     default:
       return <Folder size={50} />;
   }

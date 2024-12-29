@@ -1,4 +1,4 @@
-import { useAuth } from '@/store/use-auth'
+import { useAuth } from '@/stores/use-auth'
 import axios from 'axios'
 
 export const api = axios.create({

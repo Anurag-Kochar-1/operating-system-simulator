@@ -4,7 +4,7 @@ import {
   ContextMenuItem,
 } from "@/components/ui/context-menu";
 import { Copy, Image as ImageIcon, RefreshCcw } from "lucide-react";
-import { useApp } from "@/store/use-app";
+import { useApp } from "@/stores/use-app";
 import { APP_TYPES } from "@/constants/app-types.enum";
 import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard";
 export const ContextMenuContentOptions = () => {

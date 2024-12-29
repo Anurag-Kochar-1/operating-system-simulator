@@ -1,5 +1,5 @@
 "use client";
-import { useApp } from "@/store/use-app";
+import { useApp } from "@/stores/use-app";
 import React from "react";
 import { Project } from "@/types";
 import Image from "next/image";

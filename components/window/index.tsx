@@ -1,5 +1,5 @@
 "use client";
-import { useApp } from "@/store/use-app";
+import { useApp } from "@/stores/use-app";
 import React, { useEffect, useMemo, useState } from "react";
 import Draggable from "react-draggable";
 import { APP_TYPES } from "../../constants/app-types.enum";
@@ -134,7 +134,11 @@ const Window: React.FC<WindowProps> = ({ id, title, type }) => {
           className={cn(
             "flex h-full w-full items-start justify-start overflow-y-auto overflow-x-hidden p-4",
             {
-              "p-0": id === "paint" || id === "sticky-notes" || id === "portfolio",
+              "p-0":
+                id === "paint" ||
+                id === "sticky-notes" ||
+                id === "portfolio" ||
+                id === "browser",
             },
           )}
         >

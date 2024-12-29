@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Download, Trash2 } from "lucide-react";
 import { useTheme } from "next-themes";
-import { usePaintStore } from "@/store/use-paint";
+import { usePaintStore } from "@/stores/use-paint";
 
 interface Props {
   canvasRef: React.RefObject<HTMLCanvasElement>;

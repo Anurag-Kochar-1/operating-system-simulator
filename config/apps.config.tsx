@@ -9,6 +9,7 @@ import { WallpapersAppContent } from "@/components/apps/wallpapers";
 import { App } from "@/types";
 import { Folder, Gamepad2, PaintBucket, Globe, Calculator } from "lucide-react";
 import { StickyNotesAppContent } from "@/components/apps/sticky-note";
+import { BrowserAppContent } from "@/components/apps/browser";
 
 export const APPS: App[] = [
   // {
@@ -53,20 +54,13 @@ export const APPS: App[] = [
   //   icon: <Camera size={50} />,
   //   content: <CameraAppContent />,
   // },
-  // {
-  //   id: "browser",
-  //   title: "Browser",
-  //   // content: <Browser />
-  //   content: (
-  //     <iframe
-  //       src={"https://www.google.com/webhp?igu=1"}
-  //       className="h-full w-full"
-  //       id="chrome-screen"
-  //       title="chrome-url"
-  //     ></iframe>
-  //   ),
-  //   icon: "folder",
-  // },
+  {
+    id: "browser",
+    title: "Browser",
+    // content: <Browser />
+    content: <BrowserAppContent />,
+    icon: "browser",
+  },
   {
     id: "paint",
     title: "Paint",

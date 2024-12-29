@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Redo, Undo } from "lucide-react";
-import { usePaintStore } from "@/store/use-paint";
+import { usePaintStore } from "@/stores/use-paint";
 
 export function HistoryControls() {
   const {

@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { useAuth } from '@/store/use-auth'
+import { useAuth } from '@/stores/use-auth'
 import { api } from '@/lib/axios'
 
 

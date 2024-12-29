@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { ChromePicker } from "react-color";
 import { useState } from "react";
-import { usePaintStore } from "@/store/use-paint";
+import { usePaintStore } from "@/stores/use-paint";
 import {
   Popover,
   PopoverContent,

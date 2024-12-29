@@ -2,7 +2,7 @@
 import { memo, use } from "react";
 import { Citrus } from "lucide-react";
 import { UserInfo } from "./user-info";
-import { useAuth } from "@/store/use-auth";
+import { useAuth } from "@/stores/use-auth";
 import { GettingStarted } from "../getting-started";
 import { Skeleton } from "../ui/skeleton";
 

@@ -1,8 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import { useEffect } from "react";
 import { api } from "@/lib/axios";
-import { useApp } from "@/store/use-app";
-import { useAuth } from "@/store/use-auth";
+import { useApp } from "@/stores/use-app";
+import { useAuth } from "@/stores/use-auth";
 
 interface Settings {
   wallpaper: {

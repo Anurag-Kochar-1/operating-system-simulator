@@ -1,5 +1,5 @@
 import { Check } from "lucide-react";
-import { useApp } from "@/store/use-app";
+import { useApp } from "@/stores/use-app";
 import { useUpdateSettings } from "@/hooks/use-settings";
 import { useToast } from "@/hooks/use-toast";
 import { useWallpapers } from "@/hooks/use-wallpapers";
@@ -10,7 +10,7 @@ import { Alert, AlertDescription, AlertTitle } from "../ui/alert";
 import { Button } from "../ui/button";
 import { RefreshCcw } from "lucide-react";
 import { Wallpaper } from "@prisma/client";
-import { useAuth } from "@/store/use-auth";
+import { useAuth } from "@/stores/use-auth";
 
 export const WallpapersAppContent = () => {
   const isAuthenticated = useAuth((state) => state.isAuthenticated);

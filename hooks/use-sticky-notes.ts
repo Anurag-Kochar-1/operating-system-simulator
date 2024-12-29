@@ -1,5 +1,5 @@
 import { api } from "@/lib/axios";
-import { useAuth } from "@/store/use-auth";
+import { useAuth } from "@/stores/use-auth";
 import { StickyNote } from "@prisma/client";
 import { useMutation, useQuery } from "@tanstack/react-query";
 

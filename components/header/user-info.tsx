@@ -1,6 +1,6 @@
 "use client";
 
-import { useAuth } from "@/store/use-auth";
+import { useAuth } from "@/stores/use-auth";
 import { useCheckAuth } from "@/hooks/use-check-auth";
 import { Button } from "../ui/button";
 import { useLogout } from "@/hooks/use-authentication";
