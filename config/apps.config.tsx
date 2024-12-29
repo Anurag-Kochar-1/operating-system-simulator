@@ -100,7 +100,7 @@ export const APPS: App[] = [
   },
   {
     id: "sticky-notes",
-    title: "Sticky Note",
+    title: "Note",
     content: <StickyNotesAppContent />,
     icon: "sticky-notes",
   },

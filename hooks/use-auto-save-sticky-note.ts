@@ -20,7 +20,7 @@ export function useAutoSaveStickyNote({
     initialData,
     enabled = true,
     onError,
-    interval = 2500,
+    interval = 1500,
 }: UseAutoSaveStickyNoteProps) {
     const [pendingData, setPendingData] = useState<StickyNoteData | null>(initialData);
     const lastSavedAtRef = useRef<Date | undefined>(undefined);

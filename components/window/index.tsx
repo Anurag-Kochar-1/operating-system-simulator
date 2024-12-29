@@ -92,12 +92,14 @@ const Window: React.FC<WindowProps> = ({ id, title, type }) => {
       <div
         style={{
           position: "absolute",
-          ...(id !== "calculator" && id !== "sticky-notes" && {
-            width: `${isDesktop ? width : 100}%`,
-          }),
-          ...(id !== "calculator" && id !== "sticky-notes" && {
-            height: `${isDesktop ? height : 100}%`,
-          }),
+          ...(id !== "calculator" &&
+            id !== "sticky-notes" && {
+              width: `${isDesktop ? width : 100}%`,
+            }),
+          ...(id !== "calculator" &&
+            id !== "sticky-notes" && {
+              height: `${isDesktop ? height : 100}%`,
+            }),
           opacity: isPositioned ? 1 : 0,
           transition: "opacity 0.2s",
         }}
@@ -132,7 +134,7 @@ const Window: React.FC<WindowProps> = ({ id, title, type }) => {
           className={cn(
             "flex h-full w-full items-start justify-start overflow-y-auto overflow-x-hidden p-4",
             {
-            "p-0": title === "Browser" || title === "Paint" || title === "Sticky Note",
+              "p-0": id === "paint" || id === "sticky-notes" || id === "portfolio",
             },
           )}
         >

@@ -3,29 +3,16 @@ import {
   ContextMenuContent,
   ContextMenuItem,
 } from "@/components/ui/context-menu";
-import { useTheme } from "next-themes";
-import { Copy, Image as ImageIcon, Moon, RefreshCcw, Sun } from "lucide-react";
+import { Copy, Image as ImageIcon, RefreshCcw } from "lucide-react";
 import { useApp } from "@/store/use-app";
 import { APP_TYPES } from "@/constants/app-types.enum";
 import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard";
 export const ContextMenuContentOptions = () => {
   const addWindow = useApp((state) => state.addWindow);
-  const { theme, setTheme } = useTheme();
   const { copyToClipboard } = useCopyToClipboard();
-  const toggleTheme = () => {
-    if (theme === "light") {
-      setTheme("dark");
-    } else {
-      setTheme("light");
-    }
-  };
 
   return (
     <ContextMenuContent>
-      <ContextMenuItem onClick={toggleTheme} className="gap-2">
-        {theme === "light" ? <Moon size={15} /> : <Sun size={15} />}
-        Use {theme === "light" ? "dark" : "light"} mode
-      </ContextMenuItem>
       <ContextMenuItem
         onClick={() =>
           addWindow({
