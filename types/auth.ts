@@ -1,3 +1,5 @@
+import { UserType } from "@prisma/client"
+
 export interface RegisterRequest {
     name: string
     email: string
@@ -19,4 +21,5 @@ export interface User {
     id: string;
     name: string;
     email: string;
+    type: UserType
 }

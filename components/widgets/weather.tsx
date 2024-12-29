@@ -18,7 +18,7 @@ interface WeatherResponse {
     condition: WeatherCondition;
   };
 }
-
+export const dynamic = "force-dynamic";
 async function getWeather() {
   try {
     const response = await fetch(
@@ -51,7 +51,7 @@ export async function WeatherWidget() {
             {[...Array(3)].map((_, i) => (
               <div
                 key={i}
-                className="animate-float absolute"
+                className="absolute animate-float"
                 style={{
                   left: `${i * 30}%`,
                   animationDelay: `${i * 0.5}s`,

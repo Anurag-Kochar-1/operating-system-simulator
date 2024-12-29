@@ -6,13 +6,13 @@ import { useWallpapers } from "@/hooks/use-wallpapers";
 import { useTheme } from "next-themes";
 import Image from "next/image";
 import React from "react";
-import { Alert, AlertDescription, AlertTitle } from "../ui/alert";
-import { Button } from "../ui/button";
 import { RefreshCcw } from "lucide-react";
 import { Wallpaper } from "@prisma/client";
 import { useAuth } from "@/stores/use-auth";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { Button } from "@/components/ui/button";
 
-export const WallpapersAppContent = () => {
+export const WallpapersSection = () => {
   const isAuthenticated = useAuth((state) => state.isAuthenticated);
   const setWallpaper = useApp((state) => state.setWallpaper);
   const wallpaperUrl = useApp((state) => state.currentWallpaper);
@@ -65,7 +65,7 @@ export const WallpapersAppContent = () => {
     return (
       <Alert variant="destructive" className="flex flex-col items-center gap-4">
         <AlertDescription>
-          Failed to load wallpapers: {error.message}
+          Failed to load wallpapers: {error?.message}
         </AlertDescription>
         <Button
           variant="outline"

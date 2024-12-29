@@ -20,7 +20,7 @@ export function useRegister(callbacks?: AuthHookOptions) {
 
     return useMutation({
         mutationFn: async (data: RegisterRequest) => {
-            const response = await api.post<ApiResponse<AuthResponse>>('/api/v1/user/signup', data, {
+            const response = await api.post<ApiResponse<AuthResponse>>('/auth/register', data, {
                 withCredentials: true
             })
             return response.data

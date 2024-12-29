@@ -63,7 +63,7 @@ export interface Window {
   type: APP_TYPES;
 }
 
-export type IconType = "folder" | "file" | "calculator" | "paint" | "game" | "briefcase" | "sticky-notes" | "browser";
+export type IconType = "folder" | "file" | "calculator" | "paint" | "game" | "briefcase" | "sticky-notes" | "browser" | "gear";
 
 export interface App {
   id: string;
@@ -71,6 +71,18 @@ export interface App {
   content: JSX.Element | (Folder | File)[];
   isOnDesktop?: boolean;
   icon: IconType
+}
+
+export interface ProcessData extends Window {
+  status: string;
+  cpuUsage: number;
+  memoryUsage: number;
+  diskUsage: number;
+  networkUsage: number;
+  gpuUsage: number;
+  gpuEngine: string;
+  powerUsage: string;
+  powerUsageTrend: 'up' | 'down' | 'stable';
 }
 
 export interface Social {

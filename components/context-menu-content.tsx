@@ -3,24 +3,29 @@ import {
   ContextMenuContent,
   ContextMenuItem,
 } from "@/components/ui/context-menu";
-import { Copy, Image as ImageIcon, RefreshCcw } from "lucide-react";
+import { Copy, Image as ImageIcon, RefreshCcw, BarChart } from "lucide-react";
 import { useApp } from "@/stores/use-app";
 import { APP_TYPES } from "@/constants/app-types.enum";
 import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard";
+import { useSettingsStore } from "@/stores/use-settings";
 export const ContextMenuContentOptions = () => {
   const addWindow = useApp((state) => state.addWindow);
+  const setActiveSidebarNavTab = useSettingsStore(
+    (state) => state.setActiveTab,
+  );
   const { copyToClipboard } = useCopyToClipboard();
 
   return (
     <ContextMenuContent>
       <ContextMenuItem
-        onClick={() =>
+        onClick={() => {
+          setActiveSidebarNavTab({ id: "wallpaper", title: "Wallpaper" });
           addWindow({
-            id: "wallpapers",
-            title: "Wallpapers",
+            id: "settings",
+            title: "Settings",
             type: APP_TYPES.APP,
-          })
-        }
+          });
+        }}
         className="gap-2"
       >
         {/* eslint-disable-next-line jsx-a11y/alt-text */}
@@ -40,6 +45,19 @@ export const ContextMenuContentOptions = () => {
       >
         <Copy size={15} />
         Share
+      </ContextMenuItem>
+      <ContextMenuItem
+        className="gap-2"
+        onClick={() =>
+          addWindow({
+            id: "task-manager",
+            title: "Task Manager",
+            type: APP_TYPES.APP,
+          })
+        }
+      >
+        <BarChart size={15} />
+        Task Manager
       </ContextMenuItem>
       {/* <ContextMenuSub>
         <ContextMenuSubTrigger className="gap-2">

@@ -13,3 +13,8 @@ export interface UpdateSettingsRequest {
     theme?: string;
     wallpaperId?: string | null;
 }
+
+export interface SidebarNavItem {
+    id: string;
+    title: string;
+}

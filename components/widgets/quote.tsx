@@ -3,7 +3,7 @@ import { useGetAllQuotes } from "@/hooks/use-quotes";
 import { Card, CardContent } from "../ui/card";
 import { Quote as QuoteIcon } from "lucide-react";
 import { Skeleton } from "../ui/skeleton";
-
+export const dynamic = "force-dynamic";
 export const QuoteWidget = () => {
   const { data: quotes, isLoading, isError, error } = useGetAllQuotes();
   const quote = quotes?.data?.[0];

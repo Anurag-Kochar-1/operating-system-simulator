@@ -138,7 +138,8 @@ const Window: React.FC<WindowProps> = ({ id, title, type }) => {
                 id === "paint" ||
                 id === "sticky-notes" ||
                 id === "portfolio" ||
-                id === "browser",
+                id === "browser" ||
+                id === "settings",
             },
           )}
         >
