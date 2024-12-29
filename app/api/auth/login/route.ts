@@ -37,6 +37,7 @@ export async function POST(
                 name: true,
                 email: true,
                 password: true,
+                type: true,
             },
         })
 
@@ -71,6 +72,7 @@ export async function POST(
             statusMessage: 'Login Successful',
             data: { token, user: userWithoutPassword }
         }), { status: 200 })
+
     } catch (error) {
         return NextResponse.json(createResponse({
             error: "Failed to login",
