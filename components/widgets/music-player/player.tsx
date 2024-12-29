@@ -63,7 +63,7 @@ const Player = ({ audioRef, isLoading }: IProps) => {
   return (
     <>
       <div
-        className={`mx-auto flex h-40 w-full !font-mono select-none flex-col items-center justify-center bg-foreground md:mx-0 md:ml-auto md:mr-12 md:mt-12 xl:mb-12 xl:mt-auto ${isSongPlaying ? " animate-flicker border" : "border-2 border-foreground"}`}
+        className={`mx-auto flex h-40 w-full select-none flex-col items-center justify-center bg-foreground !font-mono md:mx-0 md:ml-auto md:mr-12 md:mt-12 xl:mb-12 xl:mt-auto ${isSongPlaying ? " animate-flicker border" : "border-2 border-foreground"}`}
       >
         <div className="flex h-full w-full flex-col items-center justify-start bg-secondary">
           {/* ========== Header ========== */}
@@ -89,8 +89,8 @@ const Player = ({ audioRef, isLoading }: IProps) => {
           </div>
 
           {/* ========== Container ========== */}
-          <div className="flex h-full w-full items-center justify-start py-1 pl-2 xs:py-0 xs:pl-0">
-            <div className="hidden items-center justify-center px-1 py-1 xs:flex sm:px-2">
+          <div className="flex h-full w-full items-center justify-start gap-2 py-1 pl-2 xs:py-0 xs:pl-0">
+            <div className="flex items-center justify-center px-1 py-1 sm:px-2">
               <div className="relative flex aspect-square w-20 items-center justify-center rounded-full">
                 <Image
                   src={currentSong?.thumbnail as string}
@@ -117,7 +117,7 @@ const Player = ({ audioRef, isLoading }: IProps) => {
                 {" "}
                 {currentSong?.title}{" "}
               </h5>
-              <h6 className="text-xs font-normal text-foreground xs:text-sm my-0.5">
+              <h6 className="my-0.5 text-xs font-normal text-foreground xs:text-sm">
                 {" "}
                 {currentSong?.songBy}{" "}
               </h6>

@@ -39,3 +39,7 @@ export const getIcon = (icon: IconType) => {
 export function truncateText(text: string, maxLength: number): string {
   return text.length > maxLength ? text.slice(0, maxLength) + "..." : text;
 }
+
+export function capitalizeFirstLetter(val: string) {
+  return String(val).charAt(0).toUpperCase() + String(val).slice(1);
+}

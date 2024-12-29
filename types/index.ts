@@ -159,3 +159,10 @@ export type StickyNoteTheme = {
   textColor: string;
   backgroundColor: string;
 }
+
+export type DockItem = {
+  id: string
+  title: string
+  icon: string | ReactNode
+
+}

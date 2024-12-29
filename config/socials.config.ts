@@ -1,6 +1,6 @@
 import { Social } from "@/types";
 
-export const SOCIALS: Social[] = [
+export const DOCK_ITEMS: Social[] = [
   {
     id: "search",
     title: "Search",
