@@ -1,7 +1,7 @@
 import prisma from "@/lib/db";
 import { createResponse } from "@/utils/api-response";
 import { NextResponse } from "next/server";
-
+export const dynamic = "force-dynamic";
 export async function GET() {
     try {
         const quotes = await prisma.quote.findMany()

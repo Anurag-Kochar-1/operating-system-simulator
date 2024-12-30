@@ -55,9 +55,9 @@ interface WeatherResponse {
     location: Location;
     current: Current;
 }
-
+export const dynamic = "force-dynamic";
 export async function GET() {
-    try {
+    try { 
         const headersList = headers();
         const ip = headersList.get('x-forwarded-for') || '127.0.0.1';
         console.log(`IP: ${ip}`)
