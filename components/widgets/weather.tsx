@@ -21,16 +21,15 @@ interface WeatherResponse {
 
 async function getWeather() {
   try {
-    const response = await fetch(`/api/weather`, {
-      headers: headers(),
-    });
-    console.log(`response`)
-    console.log(response)
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_BASE_URL}/api/weather`,
+      {
+        headers: headers(),
+      },
+    );
     if (!response.ok) throw new Error("Failed to fetch weather");
     return response.json();
   } catch (error) {
-    console.log(`error`)
-    console.log(error)
     return null;
   }
 }
@@ -38,7 +37,7 @@ async function getWeather() {
 export async function WeatherWidget() {
   const weatherData: WeatherResponse | null = await getWeather();
 
-  if (!weatherData) return <> {JSON.stringify(weatherData ?? "{}")} </>;
+  if (!weatherData) return null;
 
   const cityName = truncateText(weatherData.location.name, 15);
   const location = `${cityName}, ${weatherData.location.country}`;
