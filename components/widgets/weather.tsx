@@ -18,7 +18,7 @@ interface WeatherResponse {
     condition: WeatherCondition;
   };
 }
-export const dynamic = "force-dynamic";
+
 async function getWeather() {
   try {
     const response = await fetch(
