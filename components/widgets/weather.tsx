@@ -32,12 +32,12 @@ async function getWeather() {
   } catch (error) {
     return null;
   }
-}
+} 
 
 export async function WeatherWidget() {
   const weatherData: WeatherResponse | null = await getWeather();
 
-  if (!weatherData) return null;
+  if (!weatherData) return <> {JSON.stringify(weatherData)} </>;
 
   const cityName = truncateText(weatherData.location.name, 15);
   const location = `${cityName}, ${weatherData.location.country}`;
