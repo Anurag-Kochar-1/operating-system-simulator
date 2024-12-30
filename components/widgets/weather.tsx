@@ -30,14 +30,15 @@ async function getWeather() {
     if (!response.ok) throw new Error("Failed to fetch weather");
     return response.json();
   } catch (error) {
-    return error;
+    console.log(error);
+    return { error };
   }
-} 
+}
 
 export async function WeatherWidget() {
-  const weatherData: WeatherResponse | null = await getWeather();
+  const weatherData: WeatherResponse | any = await getWeather();
 
-  if (!weatherData) return <> {JSON.stringify(weatherData)} </>;
+  if (weatherData?.error) return <> {JSON.stringify(weatherData)} </>;
 
   const cityName = truncateText(weatherData.location.name, 15);
   const location = `${cityName}, ${weatherData.location.country}`;
