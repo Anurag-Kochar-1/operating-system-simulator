@@ -30,7 +30,7 @@ async function getWeather() {
     if (!response.ok) throw new Error("Failed to fetch weather");
     return response.json();
   } catch (error) {
-    return null;
+    return error;
   }
 } 
 
