@@ -7,7 +7,8 @@ const queryClient = new QueryClient();
 const TanstackReactQueryProvider = ({ children }: { children: ReactNode }) => {
   return (
     <QueryClientProvider client={queryClient}>
-      {children} <ReactQueryDevtools initialIsOpen={false} />{" "}
+      {children} 
+      {/* <ReactQueryDevtools initialIsOpen={false} />{" "} */}
     </QueryClientProvider>
   );
 };

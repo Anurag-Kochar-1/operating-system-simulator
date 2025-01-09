@@ -27,6 +27,7 @@ async function getWeather() {
         headers: headers(),
       },
     );
+    console.log(response)
     if (!response.ok) throw new Error("Failed to fetch weather");
     return response.json();
   } catch (error) {
@@ -37,7 +38,7 @@ async function getWeather() {
 export async function WeatherWidget() {
   const weatherData: WeatherResponse | null = await getWeather();
 
-  if (!weatherData) return null;
+  if (!weatherData) return <>{JSON.stringify(weatherData)} </>;
 
   const cityName = truncateText(weatherData.location.name, 15);
   const location = `${cityName}, ${weatherData.location.country}`;
@@ -68,7 +69,7 @@ export async function WeatherWidget() {
       <div className="relative flex items-center justify-between">
         <div className="flex flex-col">
           <span className="text-lg font-medium text-white md:text-xl ">
-            {location}
+            New Delhi, India
           </span>
           <span className="text-sm text-white/90 md:text-base">
             {weatherCondition}
